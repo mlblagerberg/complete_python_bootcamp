@@ -10,4 +10,9 @@ Author: Madeleine L.
 # What's the name of the city you grew up in?
 # What's your pet's name?
 
-print('Hello World')
+print('Hello World!')
+print('Hello, ' + 'You suck... ' + '...JK.')
+
+# Basic interactions with user
+user_name = input("\nOk, really. What is your name? ")
+print(f"Hello, {user_name}")
