@@ -16,3 +16,9 @@ print('Hello, ' + 'You suck... ' + '...JK.')
 # Basic interactions with user
 user_name = input("\nOk, really. What is your name? ")
 print(f"Hello, {user_name}")
+
+# Calculate the length of a tring input
+# print(len(input()))
+
+# Reference user_name above rather than asking for input twice
+print(f'Your name has {len(user_name)} letters in it!')
