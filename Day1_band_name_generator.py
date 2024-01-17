@@ -24,7 +24,6 @@ print(f"Hello, {user_name}")
 print(f'Your name has {len(user_name)} letters in it!')
 
 ### Band name generator
-
 user_hometown = input('\nWhat is the name of your hometown? ')
 pet_name = input('\nWhat is the name of your current pet? ')
 print(f'Alright, {user_name}. Your bandname is... {user_hometown} {pet_name}!')
