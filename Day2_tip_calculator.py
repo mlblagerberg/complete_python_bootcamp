@@ -100,3 +100,5 @@ print(4000 / 52)
 
 # # Return the value each person needs to pay
 # print(f'The amount each person should pay is ${per_person_amount}')
+
+print("{:.2f}".format(34.234444444444444))
