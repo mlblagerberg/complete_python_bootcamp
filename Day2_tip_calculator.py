@@ -10,8 +10,7 @@ Author: Madeleine L.
 
 
 
-### Tip Calculator
-
+### Tip Calculator work prior to lesson
 # Define function to calculate total with tip
 def split_bill(pretax_total, count_people, tip_percent):
     
@@ -39,20 +38,39 @@ def split_bill(pretax_total, count_people, tip_percent):
         print(f'The amount each person should pay is {per_person_amount}')
 
 
-# Program to create user facing calls
-# Print welcome message and ask for total bill amount
-pretax_total = input('Welcome to the tip calculator.\nWhat was the total bill amount? ')
+# # Program to create user facing calls
+# # Print welcome message and ask for total bill amount
+# pretax_total = input('Welcome to the tip calculator.\nWhat was the total bill amount? ')
 
-# Ask how many people are splitting the bill
-count_people = input('How many people are splitting the bill? ')
+# # Ask how many people are splitting the bill
+# count_people = input('How many people are splitting the bill? ')
 
-# Ask what percent tip they want to give
-tip_percent = input('What percentage tip would you like to give? ')
-
-
-split_bill(pretax_total, count_people, tip_percent)
+# # Ask what percent tip they want to give
+# tip_percent = input('What percentage tip would you like to give? ')
 
 
-# # Return the value each person needs to pay
-# print(f'The amount each person should pay is {per_person_amount}')
+# split_bill(pretax_total, count_people, tip_percent)
 
+### Work space during lesson
+## Data types
+
+# Strings
+print("Hello"[4])
+print("123" + "456") # concatenate strings
+
+# Integers
+print(123 + 456)
+# Use _ for decimels for large numbers
+print(123_456_789)
+
+# Floats
+3.1415
+
+# Boolean
+True 
+False
+
+## Matematical Operations
+# ** gives exponent
+# // gives floor division, truncating all decimal places automatically so you don't have to use an int conversion
+# Update values in place using (operation)=; +=,-=,/=, or *= vs using score = score + 1
