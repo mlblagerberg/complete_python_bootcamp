@@ -64,13 +64,7 @@ print(123_456_789)
 # Floats
 3.1415
 
-# Boolean
-True 
-False
 
-## Matematical Operations
-# ** gives exponent
-# // gives floor division, truncating all decimal places automatically so you don't have to use an int conversion
 # Update values in place using (operation)=; +=,-=,/=, or *= vs using score = score + 1
 
 print((4000) - (36 * 52))
