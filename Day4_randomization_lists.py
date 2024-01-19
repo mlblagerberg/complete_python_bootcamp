@@ -33,4 +33,33 @@ print(random_float)
 random_test = random.randint(0,5) * random.random() # simpler would be just 5 * random.random()
 print(random_test)
 
-### Lists
+### Lists: https://docs.python.org/3/tutorial/datastructures.html 
+# states_of_america = ["Delaware", "Pennsylvania", "New Jersey", "Georgia", "Connecticut"
+#                      , "Massachusetts", "Maryland", "South Carolina", "New Hampshire"
+#                      , "Virginia", "New York", "North Carolina", "Rhode Island", "Vermont"
+#                      , "Kentucky", "Tennessee", "Ohio", "Louisiana", "Indiana", "Mississippi"
+#                      , "Illinois", "Alabama", "Maine", "Missouri", "Arkansas", "Michigan"
+#                      , "Florida", "Texas", "Iowa", "Wisconsin", "California", "Minnesota"
+#                      , "Oregon", "Kansas", "West Virginia", "Nevada", "Nebraska", "Colorado"
+#                      , "North Dakota", "South Dakota", "Montana", "Washington", "Idaho"
+#                      , "Wyoming", "Utah", "Oklahoma", "New Mexico", "Arizona", "Alaska", "Hawaii"]
+
+# # Add item to the end of the list
+# states_of_america.append("Puerto Rico")
+# print(states_of_america)
+
+# Most pesticide 
+dirty_dozen = ["Strawberries", "Spinach", "Kale", "Nectarines", "Apples", "Grapes", "Peaches"
+              , "Cheeries", "Pears", "Tomatoes", "Celery", "Potatoes"]
+
+# Creating list of lists
+fruits = ["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cheeries", "Pears", "Tomatoes"]
+vegetables = ["Spinach", "Kale", "Celery", "Potatoes"]
+
+dirty_dozen2 = [fruits, vegetables]
+print(dirty_dozen2)
+
+fruits[-1] = "Melons"
+print(fruits)
+
+print(dirty_dozen2[1][1])
