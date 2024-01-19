@@ -25,6 +25,9 @@ if height >= 48: # height restriction in inches
     elif age > 12 and age < 18:
         print("Youth tickets are $7.00.")
         total = 7.00
+    elif age >= 45 and age <= 55:
+        print("Your ticket is free!")
+        total = 0
     else: 
         print("Adult tickets are $12.00.")
         total = 12.00
@@ -35,10 +38,11 @@ if height >= 48: # height restriction in inches
     if picture == "yes" or picture == "Yes" or picture == "y" or picture == "Y":
         # print(total + 5)
         total += 5
-        print(f"That will be an additional $5.00.\n Your total is {total}")
+        print(f"That will be an additional $5.00.\nYour total is {total}")
     else:
         print(f'Ok, your total is ${total}')
 else:
     print("I am sorry, but you need to be at least 48 inches to ride this roller coaster.")
+
 
 
