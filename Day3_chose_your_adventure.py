@@ -13,8 +13,11 @@ Author: Madeleine L.
 print(f"Welcome to the rollercoaster to no where!")
 height = int(input(f"We need to check to see if you are tall enough to ride.\nWhat is your height in inches? "))
 
+# check height to determine ride eligibility
 if height >= 48: # height restriction in inches
     print("You are tall enough to ride!")
+
+    # check age to determine ticket price
     age = int(input("We will now let you know how much your ticket will cost. What is your age? "))
     if age <= 12 or age > 65:
        print("Child and senior tickets are $5.00.")
@@ -25,7 +28,10 @@ if height >= 48: # height restriction in inches
     else: 
         print("Adult tickets are $12.00.")
         total = 12.00
+    
+    # if their height meets the height requirements ask if they want to purchase a picture
     picture = input("Would you like to buy a picture of your rollercoaster ride? ")
+
     if picture == "yes" or picture == "Yes" or picture == "y" or picture == "Y":
         # print(total + 5)
         total += 5
