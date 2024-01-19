@@ -158,4 +158,4 @@ if step1.lower() == "left":
             print("Well you have to choose a door, so sense you didn't, you are\nnow in an infinite void.\n Game over!\n")
 else:
     print(f"\nYou've followed the light to the {step1.lower()}, and get hypnotized by a witch. Game over!")
-
+    
