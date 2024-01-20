@@ -170,5 +170,5 @@ if user_choice in ["0","1","2"]:
     print("You win!\n")
 
 else: 
-  print("Please input 0, 1 or 2 to play the game.")
+  print(f"...{user_choice} is not a valid input.\nPlease input 0, 1 or 2 to play the game.\n")
   
