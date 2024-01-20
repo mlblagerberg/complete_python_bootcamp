@@ -28,20 +28,55 @@ else:
             print(f"\n{num_count} would exceed the password length. Please input a number count between (0,{pass_length - sym_count})")
         else:
 
-            for i in range(1,num_count):
-                
+            # First let's get the random numbers
+            num_list = []
+            for i in range(0,num_count):
+                # update i to be random with each iteration 
+                i = str(random.randint(0,9))
+                num_list.append(i)
 
-
-            alpha_list = list(string.ascii_lowercase) + list(string.ascii_uppercase)
-            # print(alpha_list)
-
-            # Generate password length
-            for i in range(0,pass_length):
-                password_list.append(i)
+            # print(num_list)
             
+            # Now radom symbols
+            sym_master = ["@","!","$","%","^","&","*","(",")","<",">"]
+            sym_list = []
+            for i in range(0,sym_count):
+                # update i to be random with each iteration
+                i = random.randint(0,9)
+                sym_list.append(sym_master[i])
+            
+            # print(sym_list)
 
+            # create set of all possible letters
+            alpha_master = list(string.ascii_lowercase) + list(string.ascii_uppercase)
+            # print(alpha_master[40])
+
+            # get random letters
+            alpha_list = []
+            alpha_length = pass_length - num_count - sym_count
+            # Generate password length
+            for i in range(0,alpha_length):
+                # update i to be random with each iteration
+                i = random.randint(0,51)
+                # print(i)
+                letter = alpha_master[i]
+                # print(letter)
+                alpha_list.append(letter)
+            
+            # print(alpha_list)
+            
+            character_list = num_list + sym_list + alpha_list
                 
-            # print(password_list)
+            # print(character_list)
+            
+            password_list = []
+            # set random seed to find random start place in password_list
+            random_seed = random.randint(0,len(character_list) - 1)
+            
+            for i in range(0, len(character_list)):
+                password_list.append(character_list[random_seed - i])
+                # print(password_list)
 
+            final_password = ''.join(password_list)
 
-
+print(f"Here is your password: {final_password}")
