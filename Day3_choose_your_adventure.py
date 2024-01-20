@@ -107,7 +107,7 @@ if step1.lower() == "left":
     reminded you of light and all that is good in the world. 
     
     Whatever the reason, you choose correct! Behind the yellow door are 
-    stares which lead to a boat which lets you save the person in the 
+    stairs which lead to a boat which lets you save the person in the 
     water, who happens to be a billionaire and rewards you handsomely!
                   
     You win!
