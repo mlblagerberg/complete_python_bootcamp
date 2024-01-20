@@ -68,12 +68,11 @@ else:
             character_list = num_list + sym_list + alpha_list
                 
             # print(character_list)
-            
-            password_list = []
-            # set random seed to find random start place in password_list
-            # random_seed = random.randint(0,len(character_list) - 1)
-            
+
+            # Create random list using the random character list     
+            password_list = []       
             j = 0
+    
             while len(character_list) > 0:
             
                 j = random.randint(0,len(character_list) - 1)
