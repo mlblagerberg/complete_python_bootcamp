@@ -9,8 +9,8 @@ import random
 import string
 
 ### Attempt before lesson
-print("Welcome to the PyPassword Generator!")
-pass_length = input("How long do you want your password to be? ")
+print("\nWelcome to the PyPassword Generator!")
+pass_length = input("How long do you want your password to be? \n")
 
 # Check for appropriate values
 pass_length = int(pass_length)
@@ -20,12 +20,12 @@ else:
     sym_count = input("How many symbols would you like? ")
     sym_count = int(sym_count)
     if sym_count < 0 or sym_count > pass_length:
-        print(f"\n{sym_count} would exceed the password length. Please input a symbol count between (0,{pass_length}])")
+        print(f"\n{sym_count} would exceed the password length. Please input a symbol count between (0,{pass_length}])\n")
     else:
         num_count = input("How many numbers would you like? ")
         num_count = int(num_count)
         if num_count < 0 or num_count > pass_length - sym_count:
-            print(f"\n{num_count} would exceed the password length. Please input a number count between (0,{pass_length - sym_count})")
+            print(f"\n{num_count} would exceed the password length. Please input a number count between (0,{pass_length - sym_count})\n")
         else:
 
             # First let's get the random numbers
@@ -71,12 +71,22 @@ else:
             
             password_list = []
             # set random seed to find random start place in password_list
-            random_seed = random.randint(0,len(character_list) - 1)
+            # random_seed = random.randint(0,len(character_list) - 1)
             
-            for i in range(0, len(character_list)):
-                password_list.append(character_list[random_seed - i])
+            j = 0
+            while len(character_list) > 0:
+            
+                j = random.randint(0,len(character_list) - 1)
+                # print(j)
+                password_list.append(character_list[j])
+                character_list.remove(character_list[j])
+                # print(character_list)
                 # print(password_list)
 
+                j += 1
+
+            # create string out of listed characters
             final_password = ''.join(password_list)
 
-print(f"Here is your password: {final_password}")
+# Print final password
+print(f"Here is your password: {final_password}\n")
