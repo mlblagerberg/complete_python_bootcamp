@@ -168,6 +168,7 @@ if user_choice in ["0","1","2"]:
     print("You lose.\n")
   else:
     print("You win!\n")
+
 else: 
   print("Please input 0, 1 or 2 to play the game.")
   
