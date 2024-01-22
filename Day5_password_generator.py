@@ -136,3 +136,14 @@ for score in student_scores:
 
 print(f"The highest score in the class is {local_max}")
 
+for number in range(1, 11, 3):
+    print(number)
+
+## Calculation summation of all even numbers between up to a target number
+target = int(input())
+
+even_summation = 0
+for n in range(0, target + 1, 2):
+    even_summation += n
+
+print(even_summation)
