@@ -1,7 +1,7 @@
 """
 Project: Password Generator
 Start: January 20th, 2024
-Last touched: January 20th, 2024 
+Last touched: January 21th, 2024 
 Author: Madeleine L.
 """
 
@@ -91,59 +91,73 @@ import string
 # print(f"Here is your password: {final_password}\n")
 
 
-### After lesson
-fruits = ["Apple", "Peach", "Pear"]
+# ### After lesson
+# fruits = ["Apple", "Peach", "Pear"]
 
-for fruit in fruits:
-    print(fruit)
-    print(fruit + " Pies")
+# for fruit in fruits:
+#     print(fruit)
+#     print(fruit + " Pies")
 
-## Average height
-# Get list of heights
-student_heights = input("Please give us a list of student heights in cm: ")
-student_heights = student_heights.split()
+# ## Average height
+# # Get list of heights
+# student_heights = input("Please give us a list of student heights in cm: ")
+# student_heights = student_heights.split()
 
-# Change list element type to integer
-for height in range(0, len(student_heights)):
-    # print(type(student_heights[height]))
-    student_heights[height] = int(student_heights[height])
-    # print(type(student_heights[height]))
+# # Change list element type to integer
+# for height in range(0, len(student_heights)):
+#     # print(type(student_heights[height]))
+#     student_heights[height] = int(student_heights[height])
+#     # print(type(student_heights[height]))
 
-total_height = 0 
-student_count = 0
-for student in range(0, len(student_heights)):
-    total_height += student_heights[student]
-    student_count += 1
+# total_height = 0 
+# student_count = 0
+# for student in range(0, len(student_heights)):
+#     total_height += student_heights[student]
+#     student_count += 1
 
-average_height = round(total_height / student_count)
-print(f'''total student height is {total_height}
-count of students is {student_count}
-average student height is {average_height}''')
+# average_height = round(total_height / student_count)
+# print(f'''total student height is {total_height}
+# count of students is {student_count}
+# average student height is {average_height}''')
 
 
-## High score
-# create list of scores
-student_scores = input("Please give a list of student scores ").split()
+# ## High score
+# # create list of scores
+# student_scores = input("Please give a list of student scores ").split()
 
-for n in range(0, len(student_scores)):
-    student_scores[n] = int(student_scores[n])
-    # print(type(student_scores[n]))
+# for n in range(0, len(student_scores)):
+#     student_scores[n] = int(student_scores[n])
+#     # print(type(student_scores[n]))
 
-local_max = 0
-for score in student_scores:
-    if score > local_max:
-        local_max = score
+# local_max = 0
+# for score in student_scores:
+#     if score > local_max:
+#         local_max = score
 
-print(f"The highest score in the class is {local_max}")
+# print(f"The highest score in the class is {local_max}")
 
-for number in range(1, 11, 3):
-    print(number)
+# for number in range(1, 11, 3):
+#     print(number)
 
 ## Calculation summation of all even numbers between up to a target number
-target = int(input())
+target = int(input("Input any number... and we will give you the sum of all even numbers "))
 
 even_summation = 0
 for n in range(0, target + 1, 2):
     even_summation += n
 
 print(even_summation)
+
+## The FizzBuzz Game
+num = int(input("Welcome to the FizzBuzz Game!\nInput any number... "))
+
+for n in range(1, num + 1):
+    if n % 15 == 0:
+        print("FizzBuzz")
+    elif n % 5 == 0:
+        print("Buzz")
+    elif n % 3 == 0:
+        print("Fizz")
+    else:
+        print(n)
+
