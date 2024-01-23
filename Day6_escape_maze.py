@@ -5,4 +5,8 @@ Last touched: January 22th, 2024
 Author: Madeleine L.
 """
 
-### Functions
+### Functions & While loops
+def my_function():
+  print("Hello")
+
+my_function()
