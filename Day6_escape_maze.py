@@ -48,3 +48,26 @@ def course():
         
 ## Hurdle 4 needs to check for wall height
             
+# Define new jump hurdle function
+def jump():
+    move()
+    turn_right()
+
+# Define run any hurdle course            
+def course():
+    steps = 0
+    while at_goal() is False:
+        if front_is_clear() is True:
+                move()
+        else:
+            turn_left()
+            jump()
+            
+            steps += 1
+            
+            if front_is_clear() is True and steps != 0:
+                jump()
+                while steps > 0:
+                    move()
+                    steps -= 1
+                turn_left()
