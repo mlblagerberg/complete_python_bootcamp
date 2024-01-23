@@ -218,22 +218,13 @@ else:
                 
             # print(character_list)
 
-            # Create random list using the random character list     
-            password_list = []       
-            j = 0
-    
-            while len(character_list) > 0:
-            
-                j = random.randint(0,len(character_list) - 1)
-                # print(j)
-                password_list.append(character_list[j])
-                character_list.remove(character_list[j])
-                # print(character_list)
-                # print(password_list)
+            # Create random list using the character list with all letters, numbers and symbols to construct the final password
+            random.shuffle(character_list)
 
-                j += 1
+# print(password_list)    
 
             # create string out of listed characters
-            final_password = ''.join(password_list)
+            final_password = ''.join(character_list)
 
-            
+# # Print final password
+print(f"\nHere is your password: {final_password}\n")
