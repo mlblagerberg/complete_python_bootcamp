@@ -7,3 +7,5 @@ Course location: https://www.udemy.com/course/100-days-of-code/learn
 * Day 2: Very basic mathematical operations and using them with user input. Converting datatypes.
 * Day 3: Fun and basic choose your own adventure project. General conditional statement intro.
 * Day 4: Rock, paper, scissor game. Basic randomization and lists. Intro to indexing.
+* Day 5: Randomized password generator. Working with randomization, strings, and lists.
+* Day 7: Reeborg's World escape the maze problem. Working with while loops.
