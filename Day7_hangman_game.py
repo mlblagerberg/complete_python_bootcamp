@@ -1,12 +1,13 @@
 """
-Project: 
+Project: Hangman Game Program
 Start: January 23th, 2024
-Last touched: January 23th, 2024 
+Last touched: January 24th, 2024 
 Author: Madeleine L.
 """
 
 import random
 import string
+import hangman_images
 
 
 ### Hangman attempt before lesson
@@ -29,6 +30,7 @@ word_spaces_str = ''.join(word_spaces)
 
 # Set the number of turns 
 turns = 11
+
 
 # Initiate user interaction and ask for first guess
 print(f'''Welcome to the hangman game! 
