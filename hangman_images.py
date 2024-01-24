@@ -130,6 +130,7 @@ if __name__ == "__main__":
 
     image_list = [zero, one, two, three, four, five, six, seven, eight, nine, ten]
 
+
 # define function to get image
 def get_image(num):
     print(image_list[num])

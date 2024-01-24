@@ -7,7 +7,9 @@ Author: Madeleine L.
 
 import random
 import string
+# import importlib
 import hangman_images
+# importlib.reload(hangman_images)
 
 
 ### Hangman attempt before lesson
@@ -35,16 +37,11 @@ turns = 11
 # Initiate user interaction and ask for first guess
 print(f'''Welcome to the hangman game! 
       
-      _______
-     |/      |
-     |      (_)
-     |      \|/
-     |       |
-     |      / |
-     |
- ____|___________    
+{get_image(0)} 
       
 Word to guess: {word_spaces_str}
+
+You have {turns} turns.
       
 ''')
 
@@ -55,7 +52,7 @@ def user_guess():
 
 # Set empty list to keep track of the letters the user has guessed so far
 guessed_letters = []
-
+failed_attempts = 0
 # print(word_spaces)
 
 while turns > 0 and word_spaces.count("_ ") > 0:
@@ -87,7 +84,10 @@ while turns > 0 and word_spaces.count("_ ") > 0:
             
             print(word_spaces_str)
             turns -= 1
+            
             guessed_letters.append(letter)
+
+            print(get_image(failed_attempts))
 
             if word_spaces.count("_ ") == 0:
                 print(f"\nThe word is {word_spaces_str}\nYou win!!!")
@@ -97,6 +97,7 @@ while turns > 0 and word_spaces.count("_ ") > 0:
             guessed_letters.append(letter)
             print(f"\nLetters guessed so far: {guessed_letters}")
             turns -= 1
+            failed_attempts += 1
 
 
 
