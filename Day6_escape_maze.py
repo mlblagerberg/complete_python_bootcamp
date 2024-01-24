@@ -97,3 +97,21 @@ def maze():
 #                turn_left()
 #                move()
 
+
+# Challenge problem
+def start_north():
+    while is_facing_north() is False:
+        turn_left()
+
+# Define maze function
+def maze():
+    start_north()
+    turn_left()
+    while at_goal() is False:
+        if right_is_clear():
+            turn_right()
+            move()
+        elif front_is_clear():
+            move()
+        else:
+            turn_left()
