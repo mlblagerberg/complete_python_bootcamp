@@ -7,9 +7,7 @@ Author: Madeleine L.
 
 import random
 import string
-# import importlib
 import hangman_images
-# importlib.reload(hangman_images)
 
 
 ### Hangman attempt before lesson
@@ -31,17 +29,14 @@ for i in range(0, len(word_list)):
 word_spaces_str = ''.join(word_spaces)
 
 # Set the number of turns 
-turns = 11
+# turns = 11
 
 
 # Initiate user interaction and ask for first guess
 print(f'''Welcome to the hangman game! 
       
-{get_image(0)} 
       
 Word to guess: {word_spaces_str}
-
-You have {turns} turns.
       
 ''')
 
@@ -55,7 +50,7 @@ guessed_letters = []
 failed_attempts = 0
 # print(word_spaces)
 
-while turns > 0 and word_spaces.count("_ ") > 0:
+while failed_attempts <= 11 and word_spaces.count("_ ") > 0:
     letter = user_guess()
     print(letter)
     if letter in guessed_letters:
@@ -83,11 +78,11 @@ while turns > 0 and word_spaces.count("_ ") > 0:
                 count_letter -= 1
             
             print(word_spaces_str)
-            turns -= 1
+            # turns -= 1
             
             guessed_letters.append(letter)
 
-            print(get_image(failed_attempts))
+            print(hangman_images.get_image(failed_attempts))
 
             if word_spaces.count("_ ") == 0:
                 print(f"\nThe word is {word_spaces_str}\nYou win!!!")
@@ -95,9 +90,12 @@ while turns > 0 and word_spaces.count("_ ") > 0:
         else:
             print(f"{letter} is not in the word. Try again.")
             guessed_letters.append(letter)
-            print(f"\nLetters guessed so far: {guessed_letters}")
-            turns -= 1
+            print(f"Letters guessed so far: {guessed_letters}\n")
+            # turns -= 1
             failed_attempts += 1
+            print(hangman_images.get_image(failed_attempts - 1))
+            if failed_attempts == 11:
+                print("\nYou lost!")
 
 
 
