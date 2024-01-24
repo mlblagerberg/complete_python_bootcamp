@@ -71,3 +71,29 @@ def course():
                     move()
                     steps -= 1
                 turn_left()
+
+## Maze
+def start_north():
+    while is_facing_north() is False:
+        turn_left()
+
+# Define maze function
+def maze():
+#    start_north()
+#    if right_is_clear():
+#        turn_right()
+#        forward_move()
+    while at_goal() is False:
+        if right_is_clear():
+            turn_right()
+            move()
+        elif front_is_clear():
+            move()
+        else:
+            turn_left()
+#            if front_is_clear():
+#                move()
+#            else:
+#                turn_left()
+#                move()
+
