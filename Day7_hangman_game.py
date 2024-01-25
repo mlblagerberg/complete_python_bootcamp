@@ -7,32 +7,18 @@ Author: Madeleine L.
 
 import random
 import string
+from replit import clear
 import hangman_images
 import hangman_words
 
 
 ### Hangman attempt before lesson
-# alpha_list = list(string.ascii_lowercase)
-
-# words = ["bright", "splash", "sunshine", "funny", "mimosa", "victory"]
-# word = random.choice(words).lower()
-
-# # print([*word]) # asterisk before string "unpacks" the letters of word into a list
-
-# word_list = [*word]
-
-# # Create list of ___ to show user length of word
-# word_spaces = []
-# for i in range(0, len(word_list)):
-#     word_spaces.append("_ ")
-
-# # Convert to string to print properly
-# word_spaces_str = ''.join(word_spaces)
 
 # Define function to ask the user to guess a letter
 def user_guess():
     letter_guess = input("\n>>> Guess a letter: ")
     return(letter_guess)
+    clear() # clear screen after every guess to make it easier to read 
 
 # define hangman as function to call
 def hangman_game():
@@ -132,7 +118,7 @@ def hangman_game():
                     guessed_letters.append(letter)
                     no_match_letters.append(letter)
                     
-                    print(f"\nLetters guessed so far: {no_match_letters}\n")
+                    print(f"\nYou guessed {letter}, which is not in the word. \nLetters guessed so far: {no_match_letters}\n")
 
 
 if __name__ == "__main__":
