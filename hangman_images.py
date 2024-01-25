@@ -5,7 +5,6 @@ Last touched: January 24th, 2024
 Author: Madeleine L.
 """
 
-# if __name__ == "__main__":
 # Create images for stages
 zero = '''
     
@@ -127,6 +126,17 @@ ten = '''
     |
 ____|___________  
 '''
+
+logo = ''' 
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/    '''
+
 
 image_list = [zero, one, two, three, four, five, six, seven, eight, nine, ten]
 

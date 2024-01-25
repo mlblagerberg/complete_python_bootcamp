@@ -8,6 +8,7 @@ Author: Madeleine L.
 import random
 import string
 import hangman_images
+import hangman_words
 
 
 ### Hangman attempt before lesson
@@ -37,8 +38,9 @@ def user_guess():
 def hangman_game():
     alpha_list = list(string.ascii_lowercase)
 
-    words = ["bright", "splash", "sunshine", "funny", "mimosa", "victory"]
-    word = random.choice(words).lower()
+    # words = ["bright", "splash", "sunshine", "funny", "mimosa", "victory"]
+    # word = random.choice(words).lower()
+    word = random.choice(hangman_words.word_list)
 
     # print([*word]) # asterisk before string "unpacks" the letters of word into a list
     word_list = [*word]
@@ -53,9 +55,9 @@ def hangman_game():
 
     # Initiate user interaction and ask for first guess
     print(f'''
+    {hangman_images.logo}
+    
     Welcome to the hangman game! 
-        
-    {hangman_images.get_image(0)}
 
     Word to guess: {word_spaces_str}
     ''')
@@ -73,7 +75,7 @@ def hangman_game():
         letter = user_guess().lower()
         # tests to ensure that the input was a letter
         if letter in guessed_letters:
-            print("You've already guessed that letter. Please guess again.")
+            print("You've already guessed {letter}. Please guess again.")
         elif letter not in alpha_list:
             print(f"{letter} is not a valid input. Please guess again.")
         else:
@@ -120,7 +122,7 @@ def hangman_game():
                     print(hangman_images.get_image(failed_attempts))
                     print(f"{word_spaces_str}")
                     print(f"\nLetters guessed so far: {no_match_letters}\n")
-                    print("\nYou lost!")
+                    print(f"\nYou lost!\nThe word was {word.upper()}")
                 # If user has more attempts print updated hangman, word, and list of letters guessed. Update letters guessed and no match list.
                 else:
                     print(hangman_images.get_image(failed_attempts))
