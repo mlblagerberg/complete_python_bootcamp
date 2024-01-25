@@ -7,7 +7,7 @@ Author: Madeleine L.
 
 import random
 import string
-from replit import clear
+import replit
 import hangman_images
 import hangman_words
 
@@ -18,7 +18,7 @@ import hangman_words
 def user_guess():
     letter_guess = input("\n>>> Guess a letter: ")
     return(letter_guess)
-    clear() # clear screen after every guess to make it easier to read 
+    #replit.clear() # clear screen after every guess to make it easier to read 
 
 # define hangman as function to call
 def hangman_game():
@@ -41,9 +41,9 @@ def hangman_game():
 
     # Initiate user interaction and ask for first guess
     print(f'''
+Welcome to...
+          
     {hangman_images.logo}
-    
-    Welcome to the hangman game! 
 
     Word to guess: {word_spaces_str}
     ''')
@@ -59,9 +59,11 @@ def hangman_game():
 
         # get user input letter
         letter = user_guess().lower()
+        replit.clear()
         # tests to ensure that the input was a letter
         if letter in guessed_letters:
-            print("You've already guessed {letter}. Please guess again.")
+            print(f"You've already guessed {letter}. Please guess again.")
+            print(f"\nLetters guessed so far: {no_match_letters}\n")
         elif letter not in alpha_list:
             print(f"{letter} is not a valid input. Please guess again.")
         else:
