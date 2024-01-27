@@ -1,7 +1,7 @@
 """
 Project: Hangman Game Program
 Start: January 23th, 2024
-Last touched: January 24th, 2024 
+Last touched: January 25th, 2024 
 Author: Madeleine L.
 """
 
