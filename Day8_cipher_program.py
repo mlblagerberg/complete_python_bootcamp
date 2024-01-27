@@ -40,12 +40,14 @@ def cipher_encode(word, num):
         letter = word_list[i]
  
         # decode_index.append(alpha_list.index(letter))
-        encode_index.append(alpha_list.index(letter) + num)
+        # setting encoded index
+        ind = (alpha_list.index(letter) + num) % 26
+        encode_index.append(ind)
         
         encode_chr.append(alpha_list[encode_index[i]])
         encode_word = ''.join(encode_chr)
     
-    print(encode_word)
+    print(f"\nYour encoded word is {encode_word}\n")
 
 # cipher_encode("trust",2)
 
@@ -61,12 +63,13 @@ def cipher_decode(word, num):
         letter = word_list[i]
  
         # decode_index.append(alpha_list.index(letter))
-        decode_index.append(alpha_list.index(letter) - num)
+        ind = (alpha_list.index(letter) - num) % 26
+        decode_index.append(ind)
         
         decode_chr.append(alpha_list[decode_index[i]])
         decode_word = ''.join(decode_chr)
     
-    print(decode_word) 
+    print(f"\nYour decoded word is: {decode_word}\n") 
 
 # cipher_decode("vtwuv",2)
 
