@@ -26,8 +26,7 @@ alpha_list = list(string.ascii_lowercase)
 
 # Create function to take encoded word and cipher length and return decoded word
 def caeser(word, num, direction):
-    # Create list to store encode index and characters of word
-    caeser_index = []
+    # Create list to store new characters of input word
     caeser_chr = []
     word_list = list(word)
 
@@ -36,11 +35,10 @@ def caeser(word, num, direction):
 
     for i in range(0,len(word_list)):
         letter = word_list[i]
-        # setting decode index
+        # setting index
         ind = (alpha_list.index(letter) + num) % 26
-        caeser_index.append(ind)
         
-        caeser_chr.append(alpha_list[caeser_index[i]])
+        caeser_chr.append(alpha_list[ind])
         caeser_word = ''.join(caeser_chr)
     
     print(f"\nYour {direction}d word is: {caeser_word}\n") 
