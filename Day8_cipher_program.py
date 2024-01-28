@@ -35,11 +35,14 @@ def caeser(word, num, direction):
         if direction.lower() == "decode":
             num *= -1
         for i in range(0,len(word_list)):
-            letter = word_list[i]
-            # setting index
-            ind = (alpha_list.index(letter) + num) % 26
-            caeser_chr.append(alpha_list[ind])
-            caeser_word = ''.join(caeser_chr)
+            if word_list[i] not in alpha_list:
+                print(word_list[i])
+            else:
+                chr = word_list[i]
+                # setting index for alpha characters
+                ind = (alpha_list.index(chr) + num) % 26
+                caeser_chr.append(alpha_list[ind])
+                caeser_word = ''.join(caeser_chr)
         print(f"\nYour {direction}d word is: {caeser_word}\n") 
 
 ## User call
