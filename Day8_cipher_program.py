@@ -7,7 +7,7 @@ Author: Madeleine L.
 
 import string
 import math
-import operator
+# import operator
 
 # Greet function
 # def greet():
@@ -31,16 +31,13 @@ def caeser(word, num, direction):
     caeser_chr = []
     word_list = list(word)
 
-    if direction.lower() == "encode":
-        ops = operator.add
-    elif direction.lower() == "decode":
-        ops = operator.sub
-    else:
-        print("Please choose either encode or decode for your direction")
+    if direction.lower() == "decode":
+        num *= -1
+
     for i in range(0,len(word_list)):
         letter = word_list[i]
         # setting decode index
-        ind = ops(alpha_list.index(letter), num) % 26
+        ind = (alpha_list.index(letter) + num) % 26
         caeser_index.append(ind)
         
         caeser_chr.append(alpha_list[caeser_index[i]])
