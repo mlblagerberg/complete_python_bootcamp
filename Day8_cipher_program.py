@@ -6,6 +6,7 @@ Author: Madeleine L.
 """
 
 import string
+import math
 
 # Greet function
 def greet():
@@ -20,15 +21,7 @@ greet()
 alpha_list = list(string.ascii_lowercase)
 # print(alpha_list)
 
-# # Create list to store encode/decode indexes
-# encode_index = []
-# decode_index = []
-
-# # Create list to store encode/decode characters word
-# encode_chr = []
-# decode_chr = []
-
-# Create function to take any word and any cipher length and return the encoded word
+# Create function to take any word and cipher length and return an encoded word
 def cipher_encode(word, num):
     # Create list to store encode index and characters of word
     encode_index = []
@@ -71,9 +64,6 @@ def cipher_decode(word, num):
     
     print(f"\nYour decoded word is: {decode_word}\n") 
 
-# cipher_decode("vtwuv",2)
-
-
 ## User calls
 # Ask user whether they are encoding or decoding
 print("\nWelcome to Ceasar Cipher!")
@@ -103,4 +93,6 @@ else:
         cipher_encode(word, cipher_length)
     else:
         cipher_decode(word, cipher_length)
-# Call function and give result
+
+### Lesson notes
+print(math.ceil(7.3))
