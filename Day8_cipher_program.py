@@ -29,18 +29,14 @@ def caeser(word, num, direction):
     # Create list to store new characters of input word
     caeser_chr = []
     word_list = list(word)
-
     if direction.lower() == "decode":
         num *= -1
-
     for i in range(0,len(word_list)):
         letter = word_list[i]
         # setting index
         ind = (alpha_list.index(letter) + num) % 26
-        
         caeser_chr.append(alpha_list[ind])
         caeser_word = ''.join(caeser_chr)
-    
     print(f"\nYour {direction}d word is: {caeser_word}\n") 
 
 ## User calls
