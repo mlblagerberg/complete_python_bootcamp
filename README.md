@@ -8,4 +8,6 @@ Course location: https://www.udemy.com/course/100-days-of-code/learn
 * Day 3: Fun and basic choose your own adventure project. General conditional statement intro.
 * Day 4: Rock, paper, scissor game. Basic randomization and lists. Intro to indexing.
 * Day 5: Randomized password generator. Working with randomization, strings, and lists.
-* Day 7: Reeborg's World escape the maze problem. Working with while loops.
+* Day 6: Reeborg's World escape the maze problem. Working with while loops.
+* Day 7: Hangman game. Created seperate script for images and words, practice with functions and conditionals.
+* Day 8: Caeser cipher. Practice with conditionals.
