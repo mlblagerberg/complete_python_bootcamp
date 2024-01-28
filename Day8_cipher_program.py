@@ -28,7 +28,7 @@ alpha_list = list(string.ascii_lowercase)
 def caeser(word, num, direction):
     # Create list to store new characters of input word
     caeser_chr = []
-    word_list = list(word)
+    word_list = list(word.lower())
     if direction.lower() not in ["encode", "decode"]:
         print(f"{direction} is not a valid input for direction. Please choose encode or decode.")
     else:
