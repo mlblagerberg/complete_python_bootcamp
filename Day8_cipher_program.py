@@ -40,37 +40,45 @@ def caeser(word, num, direction):
         for i in range(0,len(word_list)):
             chr = word_list[i]
             if chr not in alpha_list:
-                print(chr)
-                print(word_list.index(chr))
                 non_alpha_index.append(int(word_list.index(chr)))
                 non_alpha_chr.append(chr)
+                print(non_alpha_index)
+                print(non_alpha_chr)
             else:
                 # setting index for alpha characters
                 ind = (alpha_list.index(chr) + num) % 26
                 caeser_chr.append(alpha_list[ind])
-                # caeser_word = ''.join(caeser_chr)
-        # print(f"\nYour {direction}d word is: {caeser_word}\n")
 
         for i in range(0,len(non_alpha_chr)):
-            print(type(non_alpha_chr[i]))
-            print(type(non_alpha_index[i]))
             caeser_chr.insert(non_alpha_index[i], non_alpha_chr[i])
 
         caeser_word = ''.join(caeser_chr)
         print(f"\nYour {direction}d word is: {caeser_word}\n")
+        
+
 ## User call
 # Ask user whether they are encoding or decoding
-print("\nWelcome to Ceasar Cipher!")
-in_out = input("\nDo you want to encode or decode a word? ")
+def caeser_user_call():
+    print("\nWelcome to Ceasar Cipher!")
+    in_out = input("\nDo you want to encode or decode a word? ")
 
-# Ask user for word to encode/decode
-word_in = input(f"\nPlease provide the word you would like {in_out}d. ")
+    # Ask user for word to encode/decode
+    word_in = input(f"\nPlease provide the word you would like {in_out}d. ")
 
-# Ask user for cipher length
-cipher_length = input("\nHow long is your cipher? ")
-cipher_length = int(cipher_length)
+    # Ask user for cipher length
+    cipher_length = input("\nHow long is your cipher? ")
+    cipher_length = int(cipher_length)
 
-caeser(word=word_in,num=cipher_length,direction=in_out)
+    caeser(word=word_in,num=cipher_length,direction=in_out)
+
+    rerun = input(f"\nWould you like to run the program again? ")
+
+    if rerun.lower() == "yes":
+        caeser_user_call()
+    else:
+        print("Goodbye!\n")
+
+caeser_user_call()
 
 ### Lesson notes
 # print(math.ceil(7.3))
