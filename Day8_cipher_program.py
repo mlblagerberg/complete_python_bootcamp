@@ -28,6 +28,9 @@ alpha_list = list(string.ascii_lowercase)
 def caeser(word, num, direction):
     # Create list to store new characters of input word
     caeser_chr = []
+    non_alpha_index = []
+    non_alpha_chr = []
+
     word_list = list(word.lower())
     if direction.lower() not in ["encode", "decode"]:
         print(f"{direction} is not a valid input for direction. Please choose encode or decode.")
@@ -35,16 +38,26 @@ def caeser(word, num, direction):
         if direction.lower() == "decode":
             num *= -1
         for i in range(0,len(word_list)):
-            if word_list[i] not in alpha_list:
-                print(word_list[i])
+            chr = word_list[i]
+            if chr not in alpha_list:
+                print(chr)
+                print(word_list.index(chr))
+                non_alpha_index.append(int(word_list.index(chr)))
+                non_alpha_chr.append(chr)
             else:
-                chr = word_list[i]
                 # setting index for alpha characters
                 ind = (alpha_list.index(chr) + num) % 26
                 caeser_chr.append(alpha_list[ind])
-                caeser_word = ''.join(caeser_chr)
-        print(f"\nYour {direction}d word is: {caeser_word}\n") 
+                # caeser_word = ''.join(caeser_chr)
+        # print(f"\nYour {direction}d word is: {caeser_word}\n")
 
+        for i in range(0,len(non_alpha_chr)):
+            print(type(non_alpha_chr[i]))
+            print(type(non_alpha_index[i]))
+            caeser_chr.insert(non_alpha_index[i], non_alpha_chr[i])
+
+        caeser_word = ''.join(caeser_chr)
+        print(f"\nYour {direction}d word is: {caeser_word}\n")
 ## User call
 # Ask user whether they are encoding or decoding
 print("\nWelcome to Ceasar Cipher!")
