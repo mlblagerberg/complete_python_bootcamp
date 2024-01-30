@@ -7,6 +7,7 @@ Author: Madeleine L.
 
 import string
 import math
+from caesar_cipher_image import logo
 # import operator
 
 # Greet function
@@ -25,9 +26,9 @@ alpha_list = list(string.ascii_lowercase)
 ## Create single function that can either encode or decode
 
 # Create function to take encoded word and cipher length and return decoded word
-def caeser(word, num, direction):
+def caesar(word, num, direction):
     # Create list to store new characters of input word
-    caeser_chr = []
+    caesar_chr = []
     non_alpha_index = []
     non_alpha_chr = []
 
@@ -48,19 +49,22 @@ def caeser(word, num, direction):
             else:
                 # setting index for alpha characters
                 ind = (alpha_list.index(chr) + num) % 26
-                caeser_chr.append(alpha_list[ind])
+                caesar_chr.append(alpha_list[ind])
 
         for i in range(0,len(non_alpha_chr)):
-            caeser_chr.insert(non_alpha_index[i], non_alpha_chr[i])
+            caesar_chr.insert(non_alpha_index[i], non_alpha_chr[i])
 
-        caeser_word = ''.join(caeser_chr)
-        print(f"\nYour {direction}d {input_type} is: {caeser_word}\n")
+        caesar_word = ''.join(caesar_chr)
+        print(f"\nYour {direction}d {input_type} is: {caesar_word}\n")
         
 
 ## User call
 # Ask user whether they are encoding or decoding
-def caeser_user_call():
-    print("\nWelcome to Ceasar Cipher!")
+def caesar_user_call(rerun=False):
+    #Check for rerun status 
+    if rerun is False:
+        print("\nWelcome to Ceasar Cipher!")
+        print(logo)
     in_out = input("\nDo you want to encode or decode a word? ")
 
     # Ask user for word to encode/decode
@@ -70,16 +74,15 @@ def caeser_user_call():
     cipher_length = input("\nHow long is your cipher? ")
     cipher_length = int(cipher_length)
 
-    caeser(word=word_in,num=cipher_length,direction=in_out)
+    caesar(word=word_in,num=cipher_length,direction=in_out)
 
     rerun = input(f"\nWould you like to run the program again? ")
-
     if rerun.lower() == "yes":
-        caeser_user_call()
+        caesar_user_call(rerun=True)
     else:
         print("Goodbye!\n")
 
-caeser_user_call()
+caesar_user_call()
 
 ### Lesson notes
 # print(math.ceil(7.3))
