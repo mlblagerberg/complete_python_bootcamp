@@ -32,6 +32,7 @@ def caeser(word, num, direction):
     non_alpha_chr = []
 
     word_list = list(word.lower())
+    input_type = "word"
     if direction.lower() not in ["encode", "decode"]:
         print(f"{direction} is not a valid input for direction. Please choose encode or decode.")
     else:
@@ -42,8 +43,8 @@ def caeser(word, num, direction):
             if chr not in alpha_list:
                 non_alpha_index.append(int(word_list.index(chr)))
                 non_alpha_chr.append(chr)
-                print(non_alpha_index)
-                print(non_alpha_chr)
+                word_list[int(word_list.index(chr))] = "X"
+                input_type = "statement"
             else:
                 # setting index for alpha characters
                 ind = (alpha_list.index(chr) + num) % 26
@@ -53,7 +54,7 @@ def caeser(word, num, direction):
             caeser_chr.insert(non_alpha_index[i], non_alpha_chr[i])
 
         caeser_word = ''.join(caeser_chr)
-        print(f"\nYour {direction}d word is: {caeser_word}\n")
+        print(f"\nYour {direction}d {input_type} is: {caeser_word}\n")
         
 
 ## User call
@@ -63,7 +64,7 @@ def caeser_user_call():
     in_out = input("\nDo you want to encode or decode a word? ")
 
     # Ask user for word to encode/decode
-    word_in = input(f"\nPlease provide the word you would like {in_out}d. ")
+    word_in = input(f"\nPlease provide the word or statement you would like {in_out}d. ")
 
     # Ask user for cipher length
     cipher_length = input("\nHow long is your cipher? ")
