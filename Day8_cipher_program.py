@@ -22,7 +22,7 @@ def caesar(word, num, direction):
     caesar_chr = []
     non_alpha_index = []
     non_alpha_chr = []
-    # Conver input word into list to itterate over.
+    # Conver input word/statement into list to itterate over.
     word_list = list(word.lower())
     # Assign input type as word as default
     input_type = "word"
@@ -33,7 +33,7 @@ def caesar(word, num, direction):
         # Check if this is a decode call and change sign of number to subract cipher length
         if direction.lower() == "decode":
             num *= -1
-        
+        # Loop over list characters in word/statement and 
         for i in range(0,len(word_list)):
             chr = word_list[i]
             if chr not in alpha_list:
