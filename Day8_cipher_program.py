@@ -1,24 +1,15 @@
 """
 Project: Cipher Program
 Start: January 26th, 2024
-Last touched: January 28th, 2024 
+Last touched: January 29th, 2024 
 Author: Madeleine L.
 """
 
 import string
 import math
 from caesar_cipher_image import logo
-# import operator
 
-# Greet function
-# def greet():
-#     print("This is a greet function.")
-#     print("It is meant to welcome a user to the program.")
-#     print("Welcome user!")
-
-# greet()
-
-### Cipher attempt before lesson
+### Final Caesar Cipher function
 # Get alphabet
 alpha_list = list(string.ascii_lowercase)
 # print(alpha_list)
@@ -27,18 +18,22 @@ alpha_list = list(string.ascii_lowercase)
 
 # Create function to take encoded word and cipher length and return decoded word
 def caesar(word, num, direction):
-    # Create list to store new characters of input word
+    # Create lists to store new characters of input word and keep track of non-alpha chatacters in statements.
     caesar_chr = []
     non_alpha_index = []
     non_alpha_chr = []
-
+    # Conver input word into list to itterate over.
     word_list = list(word.lower())
+    # Assign input type as word as default
     input_type = "word"
+    # Check for valid direction inputs and raise error if no valid input was given
     if direction.lower() not in ["encode", "decode"]:
         print(f"{direction} is not a valid input for direction. Please choose encode or decode.")
     else:
+        # Check if this is a decode call and change sign of number to subract cipher length
         if direction.lower() == "decode":
             num *= -1
+        
         for i in range(0,len(word_list)):
             chr = word_list[i]
             if chr not in alpha_list:
