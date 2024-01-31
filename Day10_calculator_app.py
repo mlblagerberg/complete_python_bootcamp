@@ -58,5 +58,14 @@ def format_name(first_name, last_name):
     full_name = print(f"{format_names[0]} {format_names[1]}")
     return full_name
 
-format_name("TesVDEWd", "nweEFme")
+# format_name("TesVDEWd", "nweEFme")
 
+# Lesson uses title case...
+def format_name(f_name, l_name):
+    replit.clear()
+    formatted_f_name = f_name.title()
+    formatted_l_name = l_name.title()
+
+    return f"{formatted_f_name} {formatted_l_name}"
+
+print(format_name("TesVDEWd", "nweEFme"))
