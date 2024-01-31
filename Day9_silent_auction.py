@@ -13,11 +13,21 @@ Author: Madeleine L.
 programming_dictionary = {
     "Bug": "An error in a program that prevents the program from running as expected.",
     "Function": "A piece of code that you can easily call over and over again.",
-    "Loop": "The action of doing something over and over again.",
+    #"Loop": "The action of doing something over and over again.",
                           }
 
 # Retrieve list syntax is list[index]
 # Dictionary elements are identified by their key versus index
 print(programming_dictionary["Bug"])
 
+# Dictionary common pitfalls
+# 1. Misspelling keys or attempting to retrieve incorrect key
+# 2. Data type - key must be provided in actual data type. E.g. key is int 123 so 123 is called not "123"
+
+# Adding new entry to dictionary
+programming_dictionary["Loop"] = "The action of doing something over and over again."
+print(programming_dictionary)
+
+# Create empty dictionary you can also wipe a dictionary with this as well (useful for restartign games and scores)
+empty_dict = {}
 
