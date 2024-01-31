@@ -66,3 +66,35 @@ for student in student_scores:
 print(student_grades)
 
 ## Nesting
+# {
+# key: [List]
+# key2: {dict}
+# }
+
+capitals = {
+    "France": "Paris",
+    "Germany": "Berlin"
+}
+
+travel_log = {
+    "France": ["Paris", "Normandy", "Bayeux"],
+    "England": ["London", "Gilford", "Basignstoke"],
+}
+
+# Nested lists are not as useful and nest lists in dictionaries or nested dictionaries in dictionaries
+# For travel log what if you'd like to store when you visited 
+# Create nested dictionary called cities visited
+travel_log = {
+    "France": {
+        "Paris": "2019-12",
+        "Normandy": "2020-01",
+        "Bayeux": "2020-01"},
+    "England": {
+        "Lomdon": ["2005-05", "2007-08"],
+        "Gilford": "2007-08",
+        "Basingstoke": ["2007-08", "2008-10"]
+    }
+}
+
+for country in travel_log:
+    print(travel_log[country])
