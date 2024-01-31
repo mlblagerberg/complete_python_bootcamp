@@ -136,6 +136,7 @@ travel_log = {
 # Ask for name and bid, then ask if there are more bidders. If yes, clear screen and rerun. If no, calculate max bid.
 all_bids = []
 
+# Define function to create dictionary for each bidder and their bid amount
 def bidders(user_name, bid_amount, more_bids):
     user_bids = {
         "user": user_name,
@@ -144,29 +145,41 @@ def bidders(user_name, bid_amount, more_bids):
 
     all_bids.append(user_bids)
 
+# Define auction function that initiates the program
 def auction(bidder_count = 0):
     if bidder_count == 0:
         print(f"{auction_logo.logo}\n")
         print(f"Welcome to the secret auction program.\n")
     else:
+        # Clear screen so next bidder doesn't see previous bidders bid
         replit.clear()
     
     user_name = input("What is your name? ")
-    bid = input("What's your bid? $")
+    bid = input("What's your bid? $") # why doesn't this throw error because I never change it to int
     more_bids = input("Are there other bidders? ")
+    # call bidders function to create dictionary
     bidders(user_name, bid, more_bids)
 
+    # recall auction function if there are more bidders
     if more_bids.lower() == "yes":
         bidder_count += 1
         auction(bidder_count)
     else:
-        for bidder in range(0,len(all_bids) - 1):
-            if all_bids[bidder]["bid"] > all_bids[bidder + 1]["bid"]:
-                max_bid = all_bids[bidder]["bid"]
-                max_bidder = all_bids[bidder]["user"]
-            else:
-                max_bid = all_bids[bidder + 1]["bid"]
-                max_bidder = all_bids[bidder + 1]["user"]
-        print(f"The winner is {max_bidder}!")
+        # if only one bidder than print winner
+        if len(all_bids) == 0:
+            max_bid = all_bids[bidder]["bid"]
+            max_bidder = all_bids[bidder]["user"] 
+        else:
+            # find highest bidder and print winner
+            for bidder in range(0,len(all_bids) - 1):
+                if all_bids[bidder]["bid"] > all_bids[bidder + 1]["bid"]:
+                    max_bid = all_bids[bidder]["bid"]
+                    max_bidder = all_bids[bidder]["user"]
+                else:
+                    max_bid = all_bids[bidder + 1]["bid"]
+                    max_bidder = all_bids[bidder + 1]["user"]
+        print(f"The winner is {max_bidder} with a bid of ${max_bid}!")
+
 
 auction()
+# print(all_bids)
