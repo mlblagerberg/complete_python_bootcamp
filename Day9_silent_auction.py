@@ -4,7 +4,7 @@ Start: January 30th, 2024
 Last touched: January 30th, 2024 
 Author: Madeleine L.
 """
-from replit import clear
+import replit
 import auction_logo
 ### Dictionaries and nestings review
 ## Dictionaries have two parts a key, and then an associated value or definition of the key.
@@ -134,15 +134,39 @@ travel_log = {
 
 ### Simple Blind Bidding Program
 # Ask for name and bid, then ask if there are more bidders. If yes, clear screen and rerun. If no, calculate max bid.
+all_bids = []
 
-def auction():
-    print(logo)
-    print("Welcome to the secret auction program.\n")
+def bidders(user_name, bid_amount, more_bids):
+    user_bids = {
+        "user": user_name,
+        "bid": bid_amount,
+    }
+
+    all_bids.append(user_bids)
+
+def auction(bidder_count = 0):
+    if bidder_count == 0:
+        print(f"{auction_logo.logo}\n")
+        print(f"Welcome to the secret auction program.\n")
+    else:
+        replit.clear()
+    
     user_name = input("What is your name? ")
-    bid = input("What's your bid? ")
+    bid = input("What's your bid? $")
     more_bids = input("Are there other bidders? ")
+    bidders(user_name, bid, more_bids)
 
-    user_bids = {}
+    if more_bids.lower() == "yes":
+        bidder_count += 1
+        auction(bidder_count)
+    else:
+        for bidder in range(0,len(all_bids) - 1):
+            if all_bids[bidder]["bid"] > all_bids[bidder + 1]["bid"]:
+                max_bid = all_bids[bidder]["bid"]
+                max_bidder = all_bids[bidder]["user"]
+            else:
+                max_bid = all_bids[bidder + 1]["bid"]
+                max_bidder = all_bids[bidder + 1]["user"]
+        print(f"The winner is {max_bidder}!")
 
-
-def bidders(user_name, bid):
+auction()
