@@ -4,7 +4,8 @@ Start: January 30th, 2024
 Last touched: January 30th, 2024 
 Author: Madeleine L.
 """
-
+from replit import clear
+import auction_logo
 ### Dictionaries and nestings review
 ## Dictionaries have two parts a key, and then an associated value or definition of the key.
 ## Example given is a table with two columns, key and value
@@ -36,9 +37,9 @@ programming_dictionary["Bug"] = "A moth in your computer."
 # print(programming_dictionary)
 
 # How to loop through dictionary
-for key in programming_dictionary:
-    print(key) # returns just the keys
-    print(programming_dictionary[key])
+# for key in programming_dictionary:
+    # print(key) # returns just the keys
+    # print(programming_dictionary[key])
 
 # Program to grade a students test score
 student_scores = {
@@ -102,28 +103,46 @@ travel_log = {
 
 ## Create function to add countries to travel log
 # Travel log
-travel_log = [
-    {
-        "country": "France",
-        "visits": 2,
-        "cities": ["Paris", "Normandy", "Bayeux"]
-    },
-    {
-        "country": "England",
-        "visits": 3,
-        "cities": ["London", "Gilford", "Basingstoke", "Tilford"]
-    },
-]
+# travel_log = [
+#     {
+#         "country": "France",
+#         "visits": 2,
+#         "cities": ["Paris", "Normandy", "Bayeux"]
+#     },
+#     {
+#         "country": "England",
+#         "visits": 3,
+#         "cities": ["London", "Gilford", "Basingstoke", "Tilford"]
+#     },
+# ]
 
 
-def add_new_country(country, visits, cities):
-    new_dictionary = {
-        "country": country,
-        "visits": visits,
-        "cities": cities
-    }
+# def add_new_country(country, visits, cities):
+#     new_dictionary = {
+#         "country": country,
+#         "visits": visits,
+#         "cities": cities
+#     }
 
-    travel_log.append(new_dictionary)
+#     travel_log.append(new_dictionary)
 
-add_new_country("Canada", 8, ["Victoria", "Vancouver"])
-print(travel_log)
+# add_new_country("Canada", 8, ["Victoria", "Vancouver"])
+# print(travel_log)
+
+# print(travel_log["England"]["London"][1])
+
+
+### Simple Blind Bidding Program
+# Ask for name and bid, then ask if there are more bidders. If yes, clear screen and rerun. If no, calculate max bid.
+
+def auction():
+    print(logo)
+    print("Welcome to the secret auction program.\n")
+    user_name = input("What is your name? ")
+    bid = input("What's your bid? ")
+    more_bids = input("Are there other bidders? ")
+
+    user_bids = {}
+
+
+def bidders(user_name, bid):
