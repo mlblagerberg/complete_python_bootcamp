@@ -5,6 +5,8 @@ Last touched: January 31st, 2024
 Author: Madeleine L.
 """
 
+import replit
+
 ### Attempt before lesson
 
 def calculator(val, op, val2):
@@ -25,22 +27,18 @@ def calculator(val, op, val2):
         print(f"{op} is not a valid operator. Please choose from the provided list.")
 
 def calc_app(start = 0):
-    if start == 0:
-        val = int(input("What's the first number? "))
-
-    op = input(f"+\n-\n*\n/\nPick an operation: ")
-    val2 = int(input("What's the next number? "))
-    calc = calculator(val, op, val2)
-    cont = input(f"Type 'y' to continue calculating with {calc}, or type 'n' to start a new calculation: ")
-    # print(cont)
-    # print(len(cont))
-    # print(start)
-    if cont.lower() == "y":
-        start += 1
+    val = float(input("What's the first number? "))
+    cont = "y"
+    while cont == "y":
+        op = input(f"+\n-\n*\n/\nPick an operation: ")
+        val2 = float(input("What's the next number? "))
+        calc = calculator(val, op, val2)
+        cont = input(f"Type 'y' to continue calculating with {calc}, or type 'n' to start a new calculation: ")
         val = calc
-        calc_app(start)
+        replit.clear()
+        # calc_app(start)
     if cont.lower() == "n":
         return calc
             
 # print(calculator(3, "+", 2))
-calc_app()
+print(calc_app())
