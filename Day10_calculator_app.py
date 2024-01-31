@@ -46,15 +46,17 @@ def calc_app():
 ## Lesson notes: Functions with outputs
 def format_name(first_name, last_name):
     replit.clear() # clearing annoying replit warning...
-    first_name = [*first_name]
-    first_name[0] = first_name[0].upper()
-    first_name = ''.join(first_name)
-    last_name = [*last_name]
-    last_name[0] = last_name[0].upper()
-    last_name = ''.join(last_name)
+    format_names = []
+    name_list = [first_name, last_name]
+    for name in name_list:
+        name = name.lower()
+        name = [*name]
+        name[0] = name[0].upper()
+        name = ''.join(name)
+        format_names.append(name)
 
-    full_name = print(f"{first_name} {last_name}")
+    full_name = print(f"{format_names[0]} {format_names[1]}")
     return full_name
 
-format_name("test", "name")
+format_name("TesVDEWd", "nweEFme")
 
