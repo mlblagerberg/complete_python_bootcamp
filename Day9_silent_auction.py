@@ -63,7 +63,7 @@ for student in student_scores:
     else:
         student_grades[student] = "Fail"
 
-print(student_grades)
+# print(student_grades)
 
 ## Nesting
 # {
@@ -88,13 +88,42 @@ travel_log = {
     "France": {
         "Paris": "2019-12",
         "Normandy": "2020-01",
-        "Bayeux": "2020-01"},
+        "Bayeux": "2020-01",
+        },
     "England": {
-        "Lomdon": ["2005-05", "2007-08"],
+        "London": ["2005-05", "2007-08"],
         "Gilford": "2007-08",
-        "Basingstoke": ["2007-08", "2008-10"]
-    }
+        "Basingstoke": ["2007-08", "2008-10"],
+    },
 }
 
-for country in travel_log:
-    print(travel_log[country])
+# for country in travel_log:
+#     print(travel_log[country])
+
+## Create function to add countries to travel log
+# Travel log
+travel_log = [
+    {
+        "country": "France",
+        "visits": 2,
+        "cities": ["Paris", "Normandy", "Bayeux"]
+    },
+    {
+        "country": "England",
+        "visits": 3,
+        "cities": ["London", "Gilford", "Basingstoke", "Tilford"]
+    },
+]
+
+
+def add_new_country(country, visits, cities):
+    new_dictionary = {
+        "country": country,
+        "visits": visits,
+        "cities": cities
+    }
+
+    travel_log.append(new_dictionary)
+
+add_new_country("Canada", 8, ["Victoria", "Vancouver"])
+print(travel_log)
