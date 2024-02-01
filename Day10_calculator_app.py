@@ -7,9 +7,12 @@ Author: Madeleine L.
 
 import replit
 
-### Attempt before lesson
+### Attempt before lesson - build calculator
 
 def calculator(val, op, val2):
+    """This function takes three inputs. Two values and one operator. 
+    Given those it performs the calculation between the values with 
+    the provided operator."""
     if op in ["+", "-"]:
         if op == "-":
             val2 *= -1
@@ -27,6 +30,9 @@ def calculator(val, op, val2):
         print(f"{op} is not a valid operator. Please choose from the provided list.")
 
 def calc_app():
+    """This function does not have any inputs.
+    It initiates the calculator app and managers the user calls using the 
+    calculator function."""
     val = float(input("What's the first number? "))
     cont = "y"
     while cont == "y":
@@ -69,3 +75,20 @@ def format_name(f_name, l_name):
     return f"{formatted_f_name} {formatted_l_name}"
 
 print(format_name("TesVDEWd", "nweEFme"))
+
+
+### Docstrings - creating documentation for when someone goes to use your function user understands how to use
+#### Leap year code
+year = input("Please provide a year in the format YYYY.")
+def is_leap(year)
+    """Takes a year and determines if the year is a leap year or not."""
+    if year % 400 == 0:
+        print("Leap year")
+    elif year % 100 == 0:
+        print("Not leap year")
+    elif year % 4 == 0:
+        print("Leap year")
+    else:
+        print("Not leap year")
+
+###
