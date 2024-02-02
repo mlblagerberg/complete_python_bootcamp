@@ -6,6 +6,7 @@ Author: Madeleine L.
 """
 
 import replit
+import time
 
 ### Attempt before lesson - build calculator
 
@@ -44,10 +45,15 @@ def calc_app():
         replit.clear()
         # calc_app(start)
     if cont.lower() == "n":
+        print(f"{val} {op} {val2} = {result}")
         return val
             
 # print(calculator(3, "+", 2))
-# print(calc_app())
+
+# start_time = time.time()
+# calc_app()
+# end_time = time.time()
+# elapsed_time = end_time - start_time
 
 # ## Lesson notes: Functions with outputs
 # # Attempt before lesson solution
@@ -94,7 +100,7 @@ def calc_app():
 
 # # is_leap(year)
 
-### Lesson solution for calculator
+### Lesson solution for calculator using seperate operator functions
 def add(num1, num2):
     return num1 + num2
 
@@ -121,7 +127,7 @@ def calc_app():
     """This function does not have any inputs.
     It initiates the calculator app and managers the user calls using the 
     calculator function."""
-    val = int(input("What's the first number? "))
+    val = float(input("What's the first number? "))
     cont = "y"
     while cont == "y":
         val1 = val
@@ -129,7 +135,7 @@ def calc_app():
             print(op)
         operation_symbol = input("Pick an operation from the list above: ")
         user_operation = operations[operation_symbol]
-        val2 = int(input("What's the next number? "))
+        val2 = float(input("What's the next number? "))
 
         result = user_operation(val,val2)
         cont = input(f"Type 'y' to continue calculating with {result}, or type 'n' to start a new calculation: ")
@@ -138,6 +144,11 @@ def calc_app():
         # calc_app(start)
     if cont.lower() == "n":
         print(f"{val1} {operation_symbol} {val2} = {result}")
+        # calc_app()
         return val
-    
+
+start_time = time.time() 
 calc_app()
+end_time = time.time()
+elapsed_time2 = end_time - start_time
+print(f"first function elapsed time: {elapsed_time} \nsecond function elapsed time: {elapsed_time2}")
