@@ -135,9 +135,10 @@ if play.lower() == "y":
 
     user_card_list = [first_card[0], second_card[0]]
     user_card_values = [first_card[2], second_card[2]]
+    user_total = sum(user_card_values)
+    ###### need to add checks for As here (mayber run through card list and if A found update card value to 11 so it doesn't force the comp to pull another ard if at >=17)
     comp_card_list = [computer_first_card[0], computer_second_card[0]]
     comp_card_values = [computer_first_card[2], computer_second_card[2]]
-    user_total = sum(user_card_values)
     comp_total = sum(comp_card_values)
 
 print(f"Your cards are: {user_card_list}")
