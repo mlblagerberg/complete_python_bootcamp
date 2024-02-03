@@ -135,24 +135,38 @@ if play.lower() == "y":
 
     user_card_list = [first_card[0], second_card[0]]
     user_card_values = [first_card[2], second_card[2]]
+    comp_card_list = [computer_first_card[0], computer_second_card[0]]
+    comp_card_values = [computer_first_card[2], computer_second_card[2]]
+    user_total = sum(user_card_values)
+    comp_total = sum(comp_card_values)
 
 print(f"Your cards are: {user_card_list}")
 print(f"Computer's first card: {computer_first_card[0]}")
 
 play = input("Do you want to draw another card? ")
 while play.lower() == "y":
+    # Pull the next user card and updates lists
     next_card = get_card()
     user_card_list.append(next_card[0])
     user_card_values.append(next_card[2])
+    if comp_total <= 16:
+        next_card = get_card()
+        comp_card_list.append(next_card[0])
+        comp_card_values.append(next_card[2])
     print(f"Your cards are: {user_card_list}")
-    if sum(user_card_values) > 21:
-        print("You loose.")
     play = input("Do you want another card? ")
 
-user_total = sum(user_card_values)
-comp_total = computer_first_card[2] + computer_second_card[2]
-comp_card_list = [computer_first_card[0], computer_second_card[0]]
-if user_total = comp_total:
+if play == "n":
+    comp_play = "y"
+    while comp_play == "y":
+        if comp_total <= 16:
+            next_card = get_card()
+            comp_card_list.append(next_card[0])
+            comp_card_values.append(next_card[2])
+        else:
+            comp_play = "n"
+
+if user_total == comp_total:
     print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
     print("It's a draw!")
 elif user_total > comp_total and user_total <= 21:
