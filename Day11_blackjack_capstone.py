@@ -43,6 +43,7 @@ cards = {
     "low": [2,3,4,5,6,7,8,9,10],
     },
 }
+full_deck = cards
 
 card_weights = {
     "clubs": {
@@ -89,19 +90,74 @@ that we want to repeat the card name based on its weight.
 # print(weighted_card_class)
 # print(len(weighted_list)) # check to make sure we have the number of cards we expect to have should be 52 + 4 since A's have two possible values.
 
-suit_options = ["clubs", "diamonds", "spades", "hearts"]
+## Create function to pull random card and then remove it from the card dictionary
+def get_card():
+    # Select a random card class, determine the suit and whether the card is a face or low card.
+    random_card_class = random.choice(weighted_card_class)
+    # Update weighted card class list so that probability of next card is accurate
+    weighted_card_class.remove(random_card_class)
+    # print(len(weighted_card_class))
 
-random_card_class = random.choice(weighted_card_class)
-print(random_card_class)
+    # Card suit is self-explanatory
+    card_suit = random_card_class[0]
+    # Card type tells you the face value options of the card
+    card_type = random_card_class[1]
+    card_type_options = cards[card_suit][card_type]
+    # Get's the random value of the card
+    random_card_value = random.choice(card_type_options)
 
-card_suit = cards[random_card_class[0]]
-card_type = cards[random_card_class[0]][random_card_class[1]]
+    # print(f"list of values card could be {card_type_options}")
+    # print(f"card suit: {card_suit}")
+    # print(f"card type: {card_type}")
+    # print(random_card_value)
+
+    # Now we need to remove the card itself from the set of possible cards to play next
+    if card_type in ["K", "Q", "J", "A"]:
+        del cards[card_suit][card_type]
+        # print(cards)
+        return [card_type, card_suit, random_card_value]
+    else:
+        cards[card_suit][card_type].remove(random_card_value)
+        # print(cards)
+        return [random_card_value, card_suit, random_card_value]
+
+    # Show user the cards they pulled and the cards the computer pulled
+    return 
 
 
-random_card_value = random.choice(card_type)
 
+play = input("Do you want to play a game of Blackjack? Type 'y' or 'n':")
+if play.lower() == "y":
+    first_card = get_card()
+    computer_first_card = get_card()
+    second_card = get_card()
+    computer_second_card = get_card()
 
-# print(card_suit)
-# print(card_type)
-print(random_card_value)
+    user_card_list = [first_card[0], second_card[0]]
+    user_card_values = [first_card[2], second_card[2]]
 
+print(f"Your cards are: {user_card_list}")
+print(f"Computer's first card: {computer_first_card[0]}")
+
+play = input("Do you want to draw another card? ")
+while play.lower() == "y":
+    next_card = get_card()
+    user_card_list.append(next_card[0])
+    user_card_values.append(next_card[2])
+    print(f"Your cards are: {user_card_list}")
+    if sum(user_card_values) > 21:
+        print("You loose.")
+    play = input("Do you want another card? ")
+
+user_total = sum(user_card_values)
+comp_total = computer_first_card[2] + computer_second_card[2]
+comp_card_list = [computer_first_card[0], computer_second_card[0]]
+if user_total = comp_total:
+    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print("It's a draw!")
+elif user_total > comp_total and user_total <= 21:
+    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print("You win!")
+else:
+    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print("You loose!")
