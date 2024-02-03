@@ -100,9 +100,12 @@ def get_card():
 
     # Card suit is self-explanatory
     card_suit = random_card_class[0]
+    # print(card_suit)
     # Card type tells you the face value options of the card
     card_type = random_card_class[1]
+    # print(card_type)
     card_type_options = cards[card_suit][card_type]
+    # print(card_type_options)
     # Get's the random value of the card
     random_card_value = random.choice(card_type_options)
 
@@ -114,11 +117,12 @@ def get_card():
     # Now we need to remove the card itself from the set of possible cards to play next
     if card_type in ["K", "Q", "J", "A"]:
         del cards[card_suit][card_type]
-        # print(cards)
+        print(f"{card_type} {card_suit} {random_card_value}")
         return [card_type, card_suit, random_card_value]
     else:
         cards[card_suit][card_type].remove(random_card_value)
-        # print(cards)
+        # print(f"{random_card_value} {card_suit} {random_card_value}")
+        print("loop")
         return [random_card_value, card_suit, random_card_value]
 
     # Show user the cards they pulled and the cards the computer pulled
@@ -142,6 +146,7 @@ if play.lower() == "y":
     comp_total = sum(comp_card_values)
 
 print(f"Your cards are: {user_card_list}")
+# print(f"Computer's cards for debugging: {comp_card_list}")
 print(f"Computer's first card: {computer_first_card[0]}")
 
 play = input("Do you want to draw another card? ")
@@ -154,6 +159,7 @@ while play.lower() == "y":
         next_card = get_card()
         comp_card_list.append(next_card[0])
         comp_card_values.append(next_card[2])
+        comp_total = sum(comp_card_values) # Update comp total
     print(f"Your cards are: {user_card_list}")
     play = input("Do you want another card? ")
 
@@ -164,6 +170,8 @@ if play == "n":
             next_card = get_card()
             comp_card_list.append(next_card[0])
             comp_card_values.append(next_card[2])
+            comp_total = sum(comp_card_values) # Update comp total
+            print(f"Computer's cards for debugging: {comp_card_list}")
         else:
             comp_play = "n"
 
