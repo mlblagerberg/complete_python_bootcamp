@@ -101,6 +101,13 @@ that we want to repeat the card name based on its weight.
 
 ## Create function to pull random card and then remove it from the card dictionary so that it cannot be pulled again
 def get_card():
+    """This function selects a random card from a standard 52 card deck. 
+    Using the weighted card class list, this function selects a card suit and type.
+    Where type is wehether it is a high or low card. It then assigns the actual card
+    value given the type. So if K, Q, or J it is assigned 10. A is 1 or 11, and all 
+    low cards randomly choosen from available suits low values, full set being [2, 3,
+    4, 5, 6, 7, 8, 9, 10]. \nThe output of this function is three values; card, suit,
+    and card value."""
     # Select a random card class, determine the suit and whether the card is a face or low card.
     random_card_class = random.choice(weighted_card_class)
     # Update weighted card class list so that probability of next card is accurate
@@ -142,6 +149,10 @@ def get_card():
 
 # Function to calculate total of dealt hand considering A's possible values of 1 or 11
 def hand_total(hand_values):
+    """This function calculates a dealt hands total given an input list of hand_values.
+    It considers both 1 and 11 for A values and selects the best possible hand given
+    the dealt cards. The output is an integer value that represents the total for the
+    current hand."""
     int_hand_values = [x for x in hand_values if not isinstance(x, list)]
     if len(int_hand_values) == len(hand_values):
         hand_total = sum(hand_values)
