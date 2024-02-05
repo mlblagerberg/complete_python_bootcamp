@@ -6,6 +6,7 @@ Author: Madeleine L.
 """
 
 import random
+from blackjack_image import logo
 
 # Do you want to play a game of Blackjack? Type 'y' or 'n':
 # y initiates game and shows ascii art. It gives you two cards in a list format and then the "Computer's first card:" 
@@ -168,8 +169,9 @@ def hand_total(hand_values):
                     return min(hand_total_1, hand_total_11)
             
 
-# Game initiation - prompt user and deal hand
-play = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
+# Game initiation - print logo, prompt user and deal hand
+print(logo)
+play = input(f"\nDo you want to play a game of Blackjack? Type 'y' or 'n': ")
 if play.lower() == "y":
     first_card = get_card()
     computer_first_card = get_card()
