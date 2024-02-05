@@ -1,7 +1,7 @@
 """
 Project: Blackjack Capstone
 Start: February 2nd, 2024
-Last touched: February 2nd, 2024 
+Last touched: February 4th, 2024 
 Author: Madeleine L.
 """
 
@@ -13,31 +13,36 @@ import random
 # with 'n' shows your final hand and the computers final hand as lists. then who won and asks if you want to play again or not
 
 ### Attempt before lesson 
+# Unicode IDs for suits
+# spade = print("\u2660")
+# heart = print("\u2665")
+# diamond = print("\u2666")
+# club = print("\u2663")
 
 # Create dictionary of all cards to keep track of cards used as well as their face value
 cards = {
-    "clubs": {
+    "\u2663": {
     "J": [10],
     "Q": [10],
     "K": [10],
     "A": [1, 11],
     "low": [2,3,4,5,6,7,8,9,10]
     },
-    "diamonds": {
+    "\u2666": {
     "J": [10],
     "Q": [10],
     "K": [10],
     "A": [1, 11],
     "low": [2,3,4,5,6,7,8,9,10]
     },
-    "spades": {
+    "\u2660": {
     "J": [10],
     "Q": [10],
     "K": [10],
     "A": [1, 11],
     "low": [2,3,4,5,6,7,8,9,10]
     },
-    "hearts": {
+    "\u2665": {
     "J": [10],
     "Q": [10],
     "K": [10],
@@ -50,28 +55,28 @@ cards = {
 
 # List of card type and their weights for how often they occur in the deck
 card_weights = {
-    "clubs": {
+    "\u2663": {
     "J": 1,
     "Q": 1,
     "K": 1,
     "A": 2,
     "low": 9,
     },
-    "diamonds": {
+    "\u2666": {
     "J": 1,
     "Q": 1,
     "K": 1,
     "A": 2,
     "low": 9,
     },
-    "spades": {
+    "\u2660": {
     "J": 1,
     "Q": 1,
     "K": 1,
     "A": 2,
     "low": 9,
     },
-    "hearts": {
+    "\u2665": {
     "J": 1,
     "Q": 1,
     "K": 1,
@@ -171,32 +176,32 @@ if play.lower() == "y":
     second_card = get_card()
     computer_second_card = get_card()
 
-    user_card_list = [first_card[0], second_card[0]]
+    user_card_list = [first_card[1] + str(first_card[0]), second_card[1] + str(second_card[0])]
     user_card_values = [first_card[2], second_card[2]]
     user_total = hand_total(user_card_values)
     
-    comp_card_list = [computer_first_card[0], computer_second_card[0]]
+    comp_card_list = [computer_first_card[1] + str(computer_first_card[0]), computer_second_card[1] + str(computer_second_card[0])]
     comp_card_values = [computer_first_card[2], computer_second_card[2]]
     comp_total = hand_total(comp_card_values)
 
-print(f"Your cards are: {user_card_list}")
+print(f"\nYour cards are: {user_card_list}")
 # print(f"Computer's cards for debugging: {comp_card_list}\n")
-print(f"Computer's first card: {computer_first_card[0]}")
+print(f"\nComputer's first card: {computer_first_card[1] + str(computer_first_card[0])}")
 
-play = input("Do you want to draw another card? ")
+play = input("\nDo you want to draw another card? ")
 while play.lower() == "y":
     # Pull the next user card and updates lists
     next_card = get_card()
-    user_card_list.append(next_card[0])
+    user_card_list.append(next_card[1] + str(next_card[0]))
     user_card_values.append(next_card[2])
     user_total = hand_total(user_card_values)
     # Give computer chance to pull card 
     if comp_total <= 16:
         next_card = get_card()
-        comp_card_list.append(next_card[0])
+        comp_card_list.append(next_card[1] + str(next_card[0]))
         comp_card_values.append(next_card[2])
         comp_total = hand_total(comp_card_values) # Update comp total
-    print(f"Your cards are: {user_card_list}")
+    print(f"\nYour cards are: {user_card_list}")
     play = input("Do you want another card? ")
 
 # If user has stood, then allow computer to hit
@@ -208,7 +213,7 @@ if play == "n":
             comp_card_list.append(next_card[0])
             comp_card_values.append(next_card[2])
             comp_total = hand_total(comp_card_values) # Update comp total
-            print(f"Computer's cards for debugging: {comp_card_list}")
+            # print(f"Computer's cards for debugging: {comp_card_list}")
         else:
             comp_play = "n"
 
@@ -218,18 +223,17 @@ if play == "n":
 
 # Given hand totals determine who, if anyone, won.
 if user_total == comp_total:
-    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print(f"\nYour cards {user_card_list} and the computers cards {comp_card_list}")
     print("It's a draw!")
 elif user_total > 21 and comp_total > 21:
-    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print(f"\nYour cards {user_card_list} and the computers cards {comp_card_list}")
     print("It's a draw!")
 elif comp_total > 21 and user_total <= 21:
-    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print(f"\nYour cards {user_card_list} and the computers cards {comp_card_list}")
     print("You win!")
 elif user_total > comp_total and user_total <= 21:
-    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print(f"\nYour cards {user_card_list} and the computers cards {comp_card_list}")
     print("You win!")
 else:
-    print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
+    print(f"\nYour cards {user_card_list} and the computers cards {comp_card_list}")
     print("You loose!")
-
