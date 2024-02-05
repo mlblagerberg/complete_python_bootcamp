@@ -80,7 +80,6 @@ card_weights = {
     },
 }
 
-# print(card_weights.items())
 # Create a list of (suit, card) to capture all possible cards. See below doc string for explanation.
 weighted_card_class = [(suit, card) 
                  for suit, card_options in card_weights.items() 
@@ -94,7 +93,7 @@ that we want to repeat the card name based on its weight.
 # print(weighted_card_class)
 # print(len(weighted_list)) # check to make sure we have the number of cards we expect to have should be 52 + 4 since A's have two possible values.
 
-## Create function to pull random card and then remove it from the card dictionary
+## Create function to pull random card and then remove it from the card dictionary so that it cannot be pulled again
 def get_card():
     # Select a random card class, determine the suit and whether the card is a face or low card.
     random_card_class = random.choice(weighted_card_class)
@@ -113,9 +112,11 @@ def get_card():
     # Get's the random value of the card
     random_card_value = random.choice(card_type_options)
 
+    # Reasign As value as list
     if card_type == "A":
         random_card_value = [1, 11]
 
+    # These are print statements to check functionality in preliminary testing
     # print(f"list of values card could be {card_type_options}")
     # print(f"card suit: {card_suit}")
     # print(f"card type: {card_type}")
@@ -131,8 +132,6 @@ def get_card():
         # print(f"{random_card_value} {card_suit} {random_card_value}")
         # print("loop")
         return [random_card_value, card_suit, random_card_value]
-
-    # Show user the cards they pulled and the cards the computer pulled
     return                  
 
 # Function to calculate total of dealt hand considering A's possible values of 1 or 11
@@ -145,12 +144,10 @@ def hand_total(hand_values):
         int_total = sum(int_hand_values)
         A_value_lists = [x for x in hand_values if isinstance(x, list)]
 
-
-        print(f"This should be list of hand values: {hand_values}")
-
+        # Print statements for preliminary testing
+        # print(f"This should be list of hand values: {hand_values}")
         # print(f"This should be list of integer values in hand: {int_hand_values}")
-        print(f"This should be int total: {int_total}")
-
+        # print(f"This should be int total: {int_total}")
         # print(f"This should be list of lists if there are any A's in hand{A_value_lists}")
         for i in range(0, len(A_value_lists)):
             # print(f"This should be list of possible As values: {A_value_lists[i]}")
@@ -166,7 +163,7 @@ def hand_total(hand_values):
                     return min(hand_total_1, hand_total_11)
             
 
-
+# Game initiation - prompt user and deal hand
 play = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
 if play.lower() == "y":
     first_card = get_card()
@@ -183,7 +180,7 @@ if play.lower() == "y":
     comp_total = hand_total(comp_card_values)
 
 print(f"Your cards are: {user_card_list}")
-print(f"Computer's cards for debugging: {comp_card_list}\n")
+# print(f"Computer's cards for debugging: {comp_card_list}\n")
 print(f"Computer's first card: {computer_first_card[0]}")
 
 play = input("Do you want to draw another card? ")
@@ -193,6 +190,7 @@ while play.lower() == "y":
     user_card_list.append(next_card[0])
     user_card_values.append(next_card[2])
     user_total = hand_total(user_card_values)
+    # Give computer chance to pull card 
     if comp_total <= 16:
         next_card = get_card()
         comp_card_list.append(next_card[0])
@@ -201,6 +199,7 @@ while play.lower() == "y":
     print(f"Your cards are: {user_card_list}")
     play = input("Do you want another card? ")
 
+# If user has stood, then allow computer to hit
 if play == "n":
     comp_play = "y"
     while comp_play == "y":
@@ -213,9 +212,11 @@ if play == "n":
         else:
             comp_play = "n"
 
-print(user_total)
-print(comp_total)
+# Print statements used in preliminary testing
+# print(user_total)
+# print(comp_total)
 
+# Given hand totals determine who, if anyone, won.
 if user_total == comp_total:
     print(f"Your cards {user_card_list} and the computers cards {comp_card_list}")
     print("It's a draw!")
