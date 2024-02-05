@@ -13,6 +13,8 @@ import random
 # with 'n' shows your final hand and the computers final hand as lists. then who won and asks if you want to play again or not
 
 ### Attempt before lesson 
+
+# Create dictionary of all cards to keep track of cards used as well as their face value
 cards = {
     "clubs": {
     "J": [10],
@@ -43,8 +45,10 @@ cards = {
     "low": [2,3,4,5,6,7,8,9,10],
     },
 }
-full_deck = cards
 
+# full_deck = cards
+
+# List of card type and their weights for how often they occur in the deck
 card_weights = {
     "clubs": {
     "J": 1,
@@ -77,7 +81,7 @@ card_weights = {
 }
 
 # print(card_weights.items())
-
+# Create a list of (suit, card) to capture all possible cards. See below doc string for explanation.
 weighted_card_class = [(suit, card) 
                  for suit, card_options in card_weights.items() 
                     for card, weight in card_options.items() 
