@@ -12,6 +12,9 @@ enemies = 1
 def increase_enemies():
     enemies = 2
     print(f"enemies inside function: {enemies}")
+    return 
 
 increase_enemies()
 print(f"enemies outside function {enemies}")
+
+## Local scope - exists within functions. E.g. variables
