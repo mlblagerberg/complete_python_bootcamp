@@ -6,6 +6,7 @@ Author: Madeleine L.
 """
 
 import random
+from ascii_logos import ngg_logo
 ### Scope review
 # enemies = 1
 
@@ -35,6 +36,7 @@ def check_guess(num_guess, lives, rand_num):
     else:
         print(f"You have {lives} attempt(s) to guess the number.")
 
+print(ngg_logo)
 print("Welcome to the Number Guessing Game!\nI'm thinging of a number between 1 and 100.")
 difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
 random_number = random.randint(1,100)
