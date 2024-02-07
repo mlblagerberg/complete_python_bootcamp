@@ -7,7 +7,7 @@ Author: Madeleine L.
 
 import string
 import math
-from caesar_cipher_image import logo
+from complete_python_bootcamp.ascii_logos import caesar_logo
 
 ### Final Caesar Cipher function
 # Get alphabet

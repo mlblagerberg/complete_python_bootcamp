@@ -6,7 +6,7 @@ Author: Madeleine L.
 """
 
 import random
-from ascii_art import blackjack_logo
+from complete_python_bootcamp.ascii_logos import blackjack_logo
 
 # Do you want to play a game of Blackjack? Type 'y' or 'n':
 # y initiates game and shows ascii art. It gives you two cards in a list format and then the "Computer's first card:" 

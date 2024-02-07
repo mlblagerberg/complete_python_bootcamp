@@ -5,7 +5,7 @@ Last touched: February 7th, 2024
 Author: Madeleine L.
 """
 import replit
-from ascii_art import auction_logo
+from complete_python_bootcamp.ascii_logos import auction_logo
 ### Dictionaries and nestings review
 ## Dictionaries have two parts a key, and then an associated value or definition of the key.
 ## Example given is a table with two columns, key and value
