@@ -30,7 +30,7 @@ import random
 def check_guess(num_guess, lives, rand_num):
     if lives == 0 and num_guess == rand_num:
         print(f"You win! The number was {rand_num}.")
-    elif remaining_lives == 0 and guess != random_number:
+    elif lives == 0 and guess != random_number:
         print(f"You loose. The number was {rand_num}")
     else:
         print(f"You have {lives} attempt(s) to guess the number.")
@@ -41,12 +41,14 @@ random_number = random.randint(1,100)
 guess = int(input("Make a guess: "))
 
 # Conditional to assign lives dependening on difficulty selected. Print error handling if not given valid input.
+remaining_lives = 0
 if difficulty.lower() == "easy":
     remaining_lives = 10
-elif difficulty.lower == "hard":
+elif difficulty.lower() == "hard":
     remaining_lives = 5
 else:
     print(f"{difficulty} is not a valid input. Please try again.")
+    exit()
 
 # Loop to check remaining lives before checking accuracy of guess.
 while remaining_lives > 0:
