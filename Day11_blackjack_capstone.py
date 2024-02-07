@@ -1,12 +1,12 @@
 """
 Project: Blackjack Capstone
 Start: February 2nd, 2024
-Last touched: February 4th, 2024 
+Last touched: February 7th, 2024 
 Author: Madeleine L.
 """
 
 import random
-from blackjack_image import logo
+from ascii_art import blackjack_logo
 
 # Do you want to play a game of Blackjack? Type 'y' or 'n':
 # y initiates game and shows ascii art. It gives you two cards in a list format and then the "Computer's first card:" 
@@ -181,7 +181,7 @@ def hand_total(hand_values):
             
 
 # Game initiation - print logo, prompt user and deal hand
-print(logo)
+print(blackjack_logo)
 play = input(f"\nDo you want to play a game of Blackjack? Type 'y' or 'n': ")
 if play.lower() == "y":
     first_card = get_card()

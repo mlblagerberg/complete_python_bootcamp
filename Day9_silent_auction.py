@@ -1,11 +1,11 @@
 """
 Project: Silent Auction
 Start: January 30th, 2024
-Last touched: January 31th, 2024 
+Last touched: February 7th, 2024 
 Author: Madeleine L.
 """
 import replit
-import auction_logo
+from ascii_art import auction_logo
 ### Dictionaries and nestings review
 ## Dictionaries have two parts a key, and then an associated value or definition of the key.
 ## Example given is a table with two columns, key and value
@@ -148,7 +148,7 @@ def bidders(user_name, bid_amount, more_bids):
 # Define auction function that initiates the program
 def auction(bidder_count = 0):
     if bidder_count == 0:
-        print(f"{auction_logo.logo}\n")
+        print(f"{auction_logo}\n")
         print(f"Welcome to the secret auction program.\n")
     else:
         # Clear screen so next bidder doesn't see previous bidders bid
