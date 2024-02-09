@@ -99,6 +99,7 @@ that we want to repeat the card name based on its weight.
 # print(weighted_card_class)
 # print(len(weighted_list)) # check to make sure we have the number of cards we expect to have should be 52 + 4 since A's have two possible values.
 
+
 ## Create function to pull random card and then remove it from the card dictionary so that it cannot be pulled again
 def get_card():
     """This function selects a random card from a standard 52 card deck. 
@@ -112,29 +113,16 @@ def get_card():
     random_card_class = random.choice(weighted_card_class)
     # Update weighted card class list so that probability of next card is accurate
     weighted_card_class.remove(random_card_class)
-    # print(len(weighted_card_class))
-
     # Card suit is self-explanatory
     card_suit = random_card_class[0]
-    # print(card_suit)
     # Card type tells you the face value options of the card
     card_type = random_card_class[1]
-    # print(card_type)
     card_type_options = cards[card_suit][card_type]
-    # print(card_type_options)
     # Get's the random value of the card
     random_card_value = random.choice(card_type_options)
-
     # Reasign As value as list
     if card_type == "A":
         random_card_value = [1, 11]
-
-    # These are print statements to check functionality in preliminary testing
-    # print(f"list of values card could be {card_type_options}")
-    # print(f"card suit: {card_suit}")
-    # print(f"card type: {card_type}")
-    # print(random_card_value)
-
     # Now we need to remove the card itself from the set of possible cards to play next
     if card_type in ["K", "Q", "J", "A"]:
         del cards[card_suit][card_type]
@@ -146,6 +134,7 @@ def get_card():
         # print("loop")
         return [random_card_value, card_suit, random_card_value]
     return                  
+
 
 # Function to calculate total of dealt hand considering A's possible values of 1 or 11
 def hand_total(hand_values):

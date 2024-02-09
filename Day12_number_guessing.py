@@ -27,6 +27,8 @@ from ascii_logos import ngg_logo
 ## with all caps, (e.g. PI, URL, etc).
 
 ### Number guessing game
+
+
 # Function to determine if user has won, lost, or can continue playing.
 def check_guess(num_guess, lives, rand_num):
     if lives == 0 and num_guess == rand_num:
@@ -35,6 +37,7 @@ def check_guess(num_guess, lives, rand_num):
         print(f"You loose. The number was {rand_num}")
     else:
         print(f"You have {lives} attempt(s) to guess the number.")
+
 
 print(ngg_logo)
 print("Welcome to the Number Guessing Game!\nI'm thinging of a number between 1 and 100.")

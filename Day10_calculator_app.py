@@ -10,6 +10,7 @@ import time
 
 ### Attempt before lesson - build calculator
 
+
 def calculator(val, op, val2):
     """This function takes three inputs. Two values and one operator. 
     Given those it performs the calculation between the values with 
@@ -30,6 +31,7 @@ def calculator(val, op, val2):
     else:
         print(f"{op} is not a valid operator. Please choose from the provided list.")
 
+
 def calc_app():
     """This function does not have any inputs.
     It initiates the calculator app and managers the user calls using the 
@@ -47,8 +49,7 @@ def calc_app():
     if cont.lower() == "n":
         print(f"{val} {op} {val2} = {result}")
         return val
-            
-# print(calculator(3, "+", 2))
+
 
 # start_time = time.time()
 # calc_app()

@@ -136,6 +136,7 @@ travel_log = {
 # Ask for name and bid, then ask if there are more bidders. If yes, clear screen and rerun. If no, calculate max bid.
 all_bids = []
 
+
 # Define function to create dictionary for each bidder and their bid amount
 def bidders(user_name, bid_amount, more_bids):
     user_bids = {
@@ -145,6 +146,7 @@ def bidders(user_name, bid_amount, more_bids):
 
     all_bids.append(user_bids)
 
+
 # Define auction function that initiates the program
 def auction(bidder_count = 0):
     if bidder_count == 0:
@@ -152,14 +154,12 @@ def auction(bidder_count = 0):
         print(f"Welcome to the secret auction program.\n")
     else:
         # Clear screen so next bidder doesn't see previous bidders bid
-        replit.clear()
-    
+        replit.clear()  
     user_name = input("What is your name? ")
     bid = input("What's your bid? $") # why doesn't this throw error because I never change it to int
     more_bids = input("Are there other bidders? ")
     # call bidders function to create dictionary
     bidders(user_name, bid, more_bids)
-
     # recall auction function if there are more bidders
     if more_bids.lower() == "yes":
         bidder_count += 1

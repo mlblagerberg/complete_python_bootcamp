@@ -16,6 +16,7 @@ alpha_list = list(string.ascii_lowercase)
 
 ## Create single function that can either encode or decode
 
+
 # Create function to take encoded word and cipher length and return decoded word
 def caesar(word, num, direction):
     # Create lists to store new characters of input word and keep track of non-alpha chatacters in statements.
@@ -76,6 +77,7 @@ def caesar_user_call(rerun=False):
         caesar_user_call(rerun=True)
     else:
         print("Goodbye!\n")
+
 
 caesar_user_call()
 

@@ -8,12 +8,14 @@ Author: Madeleine L.
 ### Functions & While loops
 ## Using Reeborg's World
 
+
 ## Hurdle 1 needs turn right and jump
 # Function for turning right
 def turn_right():
     turn_left()
     turn_left()
     turn_left()
+
 
 # Define jump hurdle function
 def jump():
@@ -29,6 +31,7 @@ def jump():
     move()
     turn_left()
 
+
 ## Hurdle 2 needs to jump six times
 # Define function to jump 6 hurdles exactly
 def jump_stop():
@@ -38,6 +41,7 @@ def jump_stop():
         else:
             jump()
 
+
 ## Hurdle 3 nees to recognize when we've reached the goal and stop
 def course():
     while at_goal() is False:
@@ -46,12 +50,13 @@ def course():
         else:
             jump()
         
-## Hurdle 4 needs to check for wall height
-            
+
+## Hurdle 4 needs to check for wall height 
 # Define new jump hurdle function
 def jump():
     move()
     turn_right()
+
 
 # Define run any hurdle course            
 def course():
@@ -72,10 +77,12 @@ def course():
                     steps -= 1
                 turn_left()
 
+
 ## Maze
 def start_north():
     while is_facing_north() is False:
         turn_left()
+
 
 # Define maze function
 def maze():
@@ -103,6 +110,7 @@ def start_north():
     while is_facing_north() is False:
         turn_left()
 
+
 # Define maze function
 def maze():
     start_north()
@@ -115,3 +123,4 @@ def maze():
             move()
         else:
             turn_left()
+

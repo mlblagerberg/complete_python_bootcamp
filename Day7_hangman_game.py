@@ -14,11 +14,13 @@ import hangman_words
 
 ### Hangman attempt before lesson
 
+
 # Define function to ask the user to guess a letter
 def user_guess():
     letter_guess = input("\n>>> Guess a letter: ")
     return(letter_guess)
     #replit.clear() # clear screen after every guess to make it easier to read 
+
 
 # define hangman as function to call
 def hangman_game():
