@@ -30,7 +30,7 @@ def get_entry(data=high_low_data):
 
 def check_guess(guess, followers_A, followers_B):
     # Checks if A has more followers than B and if so returns whether or not the 
-    # guess was A as boolean else returns whether or not guess was B
+    # guess was A as boolean else returns whether or not guess was B as boolean.
     if followers_A > followers_B:
         return guess == "A"
     else:
