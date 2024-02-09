@@ -8,6 +8,7 @@ Author: Madeleine L.
 # if __name__ == "__main__":
 #     split_bill(150,4,10)
 
+
 ### Tip Calculator work prior to lesson
 # Define function to calculate total with tip
 def split_bill(pretax_total, count_people, tip_percent):

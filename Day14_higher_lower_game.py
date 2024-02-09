@@ -9,14 +9,7 @@ from random import randint
 from replit import clear
 from high_low_game_data import high_low_data
 import ascii_logos
-# print(ascii_logos.vs_logo2)
-# data format
-    # {
-    #     'name': 'Instagram',
-    #     'follower_count': 346,
-    #     'description': 'Social media platform',
-    #     'country': 'United States'
-    # },
+
 
 def get_entry(data=high_low_data):
     '''Takes a list of dictionaries with specific item names and outputs dictionary elements for a random list item. Returns list of dictionary element items.'''
@@ -28,13 +21,15 @@ def get_entry(data=high_low_data):
     entry_country = rand_entry['country']
     return [entry_name, entry_score, entry_description, entry_country]
 
+
 def check_guess(guess, followers_A, followers_B):
-    # Checks if A has more followers than B and if so returns whether or not the 
-    # guess was A as boolean else returns whether or not guess was B as boolean.
+    '''Checks if A has more followers than B and if so returns whether or not the 
+    guess was A as boolean else returns whether or not guess was B as boolean.'''
     if followers_A > followers_B:
         return guess == "A"
     else:
         return guess == "B"
+
 
 
 compare_A = []
