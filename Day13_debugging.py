@@ -1,7 +1,7 @@
 """
 Project: Debugging
 Start: February 8th, 2024
-Last touched: February 8th, 2024 
+Last touched: February 9th, 2024 
 Author: Madeleine L.
 """
 # Code was copied from: https://replit.com/@appbrewery/day-13-start#main.py
