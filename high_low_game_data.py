@@ -1,4 +1,4 @@
-data = [
+high_low_data = [
     {
         'name': 'Instagram',
         'follower_count': 346,
