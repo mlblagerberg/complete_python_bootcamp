@@ -35,26 +35,29 @@ play = True
 score = 0
 while play:
     clear()
+    print(ascii_logos.high_low_logo)
     if len(compare_A) == 0:
-        print(ascii_logos.high_low_logo)
         compare_A = get_entry()
     else:
         compare_A = compare_B
+        print(f"You're right! Current score: {score}")
     
     print(f"Compare A: {compare_A[0]}, {compare_A[2]}, from {compare_A[3]}")
     print(ascii_logos.vs_logo2)
     compare_B = get_entry()
     print(f"Against B: {compare_B[0]}, {compare_B[2]}, from {compare_B[3]}")
     
-    user_guess = input("Who has more followers? Type 'A' or 'B' ")
+    user_guess = input("Who has more followers? Type 'A' or 'B': ")
 
     if user_guess == 'A' and compare_A[1] >= compare_B[1]:
         score += 1
+        print(f"You're right! Current score: {score}")
     elif user_guess == 'A' and compare_A[1] < compare_B[1]:
         play = False
         print(f"Sorry, that's wrong. Final score: {score}")
     elif user_guess == 'B' and compare_B[1] >= compare_A[1]:
         score += 1
+        print(f"You're right! Current score: {score}")
     else:
         play = False
         print(f"Sorry, that's wrong. Final score: {score}")
