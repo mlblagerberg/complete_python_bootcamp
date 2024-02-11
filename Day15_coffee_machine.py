@@ -1,7 +1,7 @@
 """
 Project: Coffee Machine
 Start: February 9th, 2024
-Last touched: February 9th, 2024 
+Last touched: February 11th, 2024
 Author: Madeleine L.
 """
 MENU = {
@@ -96,7 +96,6 @@ def coffee_maker():
     responds off. The options are to select a coffee to make, espresso/latte/cappuccino, ask for a report, or turn off.
     """
     coffee_input = input("What would you like? (espresso/latte/cappuccino) ").strip().lower()
-
     if coffee_input == "off":
         print("Goodbye!")
         exit()
@@ -118,6 +117,7 @@ def coffee_maker():
     coffee_maker()
 
 
-coffee_maker()
+if __name__ == "__main__":
+    coffee_maker()
 
 
