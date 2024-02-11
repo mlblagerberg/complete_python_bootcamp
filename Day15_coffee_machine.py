@@ -31,7 +31,7 @@ MENU = {
     }
 }
 
-change = 0
+money = 0
 resources = {
     "water": [300, "ml"],
     "milk": [200, "ml"],
@@ -50,9 +50,9 @@ coffee = '''
 '''
 
 
-# TODO: 4. When user asks for drink check resources before making drink and accepting money. E.g. print "Sorry there is
-#  not enough water.
 def resource_check(coffee_drink):
+    """This functions takes a coffee drink input espresso/latte/cappuccino and outputs boolean for whether the coffee
+    machine has enough resources to make the drink."""
     for j in resources:
         if resources[j][0] < MENU[coffee_drink]["ingredients"][j]:
             print(f"Sorry, there is not enough {resources[j][0]}.")
@@ -61,11 +61,19 @@ def resource_check(coffee_drink):
             return True
 
 
-# TODO: 5. If there are enough resources to make the drink, prompt user for coins. Calculate the total inserted
-# TODO: 6. Check that user has inserted enough. If not, say "Sorry, that is not enough money. Money refunded." If they
-#  have inserted enough add the drink cost to the machine total.
-#  If user has given too much money then give change, "Here is $XX.XX change."
+def update_resources(coffee_drink):
+    """Takes a coffee drink espresso/latte/cappuccino as input and returns the available resources and money that the
+    coffee machine currently has"""
+    global resources, money
+    for k in resources:
+        resources[k][0] -= MENU[coffee_drink]["ingredients"][k]
+    money += MENU[coffee_drink]["cost"]
+    return resources, money
+
+
 def payment():
+    """This function has no inputs but initiates the user calls to insert payment in coins for the coffee drink they've
+    selected. It returns the total amount the user has inserted."""
     print("Please insert coins.")
     quarters = int(input("How many quarters?: "))
     dimes = int(input("How many dimes?: "))
@@ -76,37 +84,40 @@ def payment():
     return total
 
 
-# TODO: 7. If enough resources and money, then make the coffee. Update the resources. Tell user here is your XXXX.
-#  Enjoy! Print ascii art of coffee product
 def make_coffee(coffee_drink):
-    '''This function takes a single coffee drink request input, updates resources and outputs a coffee drink'''
-    for k in resources:
-        resources[k][0] = resources[k][0] - MENU[coffee_drink]["ingredients"][k]
+    """This function takes a single coffee drink request input, updates resources and outputs a coffee drink"""
+    update_resources(coffee_drink)
     print(f"\nHere is your {coffee_drink}. Enjoy!")
     print(coffee)
 
-# TODO: 1. Ask user what kind of coffee they want. (espresso/latte/cappuccino).
-#  If they enter off, turn machine off. If they enter report, report resources, else proceed with making coffee
-#  Report should show values, units and capitalize titles: water: 100ml, milk: 50ml, coffee: 76g, and money: $2.5
-coffee_input = input("What would you like? (espresso/latte/cappuccino) ").strip().lower()
 
-if coffee_input == "off":
-    print("Goodbye!")
-    exit()
-elif coffee_input == "report":
-    for i in resources:
-        print(f"{i.title()}: {resources[i][0]}{resources[i][1]}")
-    print(f"Money: ${change}")# water = resources["water"]
-elif coffee_input in ["espresso", "latte", "cappuccino"]:
-    if resource_check(coffee_drink=coffee_input):
-        total = payment()
-        if total == MENU[coffee_input]["cost"]:
-            make_coffee(coffee_drink=coffee_input)
-        elif total < MENU[coffee_input]["cost"]:
-            print(f"\nSorry, that is not enough money. ${total} refunded.")
-        else:
-            change = round(total - MENU[coffee_input]["cost"], 2)
-            print(f"Your change is ${change}.")
-            make_coffee(coffee_drink=coffee_input)
+def coffee_maker():
+    """This function initiates the coffee maker program. It is recursive and will continue to run until the user
+    responds off. The options are to select a coffee to make, espresso/latte/cappuccino, ask for a report, or turn off.
+    """
+    coffee_input = input("What would you like? (espresso/latte/cappuccino) ").strip().lower()
+
+    if coffee_input == "off":
+        print("Goodbye!")
+        exit()
+    elif coffee_input == "report":
+        for i in resources:
+            print(f"{i.title()}: {resources[i][0]}{resources[i][1]}")
+        print(f"Money: ${money}")
+    elif coffee_input in ["espresso", "latte", "cappuccino"]:
+        if resource_check(coffee_drink=coffee_input):
+            total = payment()
+            if total == MENU[coffee_input]["cost"]:
+                make_coffee(coffee_drink=coffee_input)
+            elif total < MENU[coffee_input]["cost"]:
+                print(f"\nSorry, that is not enough money. ${total} refunded.")
+            else:
+                change = round(total - MENU[coffee_input]["cost"], 2)
+                print(f"Your change is ${change}.")
+                make_coffee(coffee_drink=coffee_input)
+    coffee_maker()
+
+
+coffee_maker()
 
 
