@@ -38,6 +38,17 @@ resources = {
     "coffee": [100, "g"],
 }
 
+coffee = '''
+      )  (
+     (   ) )
+      ) ( (
+    _______)_
+ .-'---------|  
+( C|+++++++++| 
+ `-'_________'
+    '-------'
+'''
+
 
 # TODO: 4. When user asks for drink check resources before making drink and accepting money. E.g. print "Sorry there is
 #  not enough water.
@@ -71,7 +82,8 @@ def make_coffee(coffee_drink):
     '''This function takes a single coffee drink request input, updates resources and outputs a coffee drink'''
     for k in resources:
         resources[k][0] = resources[k][0] - MENU[coffee_drink]["ingredients"][k]
-    print(f"Here is your {coffee_drink}")
+    print(f"\nHere is your {coffee_drink}. Enjoy!")
+    print(coffee)
 
 # TODO: 1. Ask user what kind of coffee they want. (espresso/latte/cappuccino).
 #  If they enter off, turn machine off. If they enter report, report resources, else proceed with making coffee
@@ -91,8 +103,10 @@ elif coffee_input in ["espresso", "latte", "cappuccino"]:
         if total == MENU[coffee_input]["cost"]:
             make_coffee(coffee_drink=coffee_input)
         elif total < MENU[coffee_input]["cost"]:
-            print(f"Sorry, that is not enough money. ${total} refunded.")
+            print(f"\nSorry, that is not enough money. ${total} refunded.")
         else:
+            change = round(total - MENU[coffee_input]["cost"], 2)
+            print(f"Your change is ${change}.")
             make_coffee(coffee_drink=coffee_input)
 
 
