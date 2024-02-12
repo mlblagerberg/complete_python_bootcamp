@@ -1,9 +1,11 @@
 """
 Project: Coffee Machine
 Start: February 9th, 2024
-Last touched: February 11th, 2024
+Last touched: February 12th, 2024
 Author: Madeleine L.
 """
+from ascii_logos import coffee
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -37,17 +39,6 @@ resources = {
     "milk": [200, "ml"],
     "coffee": [100, "g"],
 }
-
-coffee = '''
-      )  (
-     (   ) )
-      ) ( (
-    _______)_
- .-'---------|  
-( C|+++++++++| 
- `-'_________'
-    '-------'
-'''
 
 
 def resource_check(coffee_drink):
