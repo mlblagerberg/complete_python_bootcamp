@@ -53,9 +53,9 @@ coffee = '''
 def resource_check(coffee_drink):
     """This functions takes a coffee drink input espresso/latte/cappuccino and outputs boolean for whether the coffee
     machine has enough resources to make the drink."""
-    for j in resources:
-        if resources[j][0] < MENU[coffee_drink]["ingredients"][j]:
-            print(f"Sorry, there is not enough {resources[j][0]}.")
+    for item in resources:
+        if resources[item][0] < MENU[coffee_drink]["ingredients"][item]:
+            print(f"Sorry, there is not enough {resources[item][0]}.")
             return False
         else:
             return True
@@ -65,8 +65,8 @@ def update_resources(coffee_drink):
     """Takes a coffee drink espresso/latte/cappuccino as input and returns the available resources and money that the
     coffee machine currently has"""
     global resources, money
-    for k in resources:
-        resources[k][0] -= MENU[coffee_drink]["ingredients"][k]
+    for item in resources:
+        resources[item][0] -= MENU[coffee_drink]["ingredients"][item]
     money += MENU[coffee_drink]["cost"]
     return resources, money
 
@@ -100,8 +100,8 @@ def coffee_maker():
         print("Goodbye!")
         exit()
     elif coffee_input == "report":
-        for i in resources:
-            print(f"{i.title()}: {resources[i][0]}{resources[i][1]}")
+        for item in resources:
+            print(f"{item.title()}: {resources[item][0]}{resources[item][1]}")
         print(f"Money: ${money}")
     elif coffee_input in ["espresso", "latte", "cappuccino"]:
         if resource_check(coffee_drink=coffee_input):
