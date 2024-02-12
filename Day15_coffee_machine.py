@@ -55,7 +55,7 @@ def resource_check(coffee_drink):
     machine has enough resources to make the drink."""
     for item in resources:
         if resources[item][0] < MENU[coffee_drink]["ingredients"][item]:
-            print(f"Sorry, there is not enough {resources[item][0]}.")
+            print(f"Sorry, there is not enough {item}.")
             return False
         else:
             return True
@@ -87,7 +87,7 @@ def payment():
 def make_coffee(coffee_drink):
     """This function takes a single coffee drink request input, updates resources and outputs a coffee drink"""
     update_resources(coffee_drink)
-    print(f"\nHere is your {coffee_drink}. Enjoy!")
+    print(f"\nHere is your {coffee_drink} ☕️. Enjoy!")
     print(coffee)
 
 
