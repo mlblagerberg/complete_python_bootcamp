@@ -15,6 +15,9 @@ timmy.width(3)
 
 
 def concentric_triangles(count_tri, initial_size):
+    """This function takes triangle count and initial size as inputs and draws out concentric triangles.
+    count_tri : number of concentric triangles
+    initial_size : initial triangle side length"""
     previous_median = x = 0
     previous_size = y = 0
     for i in range(0, count_tri):
