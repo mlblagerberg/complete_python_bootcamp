@@ -53,5 +53,8 @@ def concentric_triangles(count_tri, initial_size, offsetX=1, offsetY=1):
 # my_screen.exitonclick()
 
 table = PrettyTable()
+
+table.add_column("Pokemon_Name", ["Pikachu", "Squirtle", "Charmander"])
+table.add_column("Type", ["Electric", "Water", "Fire"])
 print(table)
 
