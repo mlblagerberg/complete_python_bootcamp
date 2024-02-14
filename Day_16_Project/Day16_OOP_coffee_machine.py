@@ -4,18 +4,22 @@ Start: February 13th, 2024
 Last touched: February 13th, 2024
 Author: Madeleine L.
 """
+## Using packages from https://pypi.org/
 
 from turtle import Turtle, Screen
+from prettytable import PrettyTable
 
 timmy = Turtle()
-print(timmy)
+# print(timmy)
 timmy.shape("turtle")
 timmy.color("DeepPink3")
 timmy.width(3)
 
 
-def concentric_triangles(count_tri, initial_size):
-    """This function takes triangle count and initial size as inputs and draws out concentric triangles.
+def concentric_triangles(count_tri, initial_size, offsetX=1, offsetY=1):
+    """This function takes triangle count, initial size, and offset for X and Y coordinates as inputs and draws out
+    triangles.
+    offset X and Y : both default to 1 to draw concentric circles
     count_tri : number of concentric triangles
     initial_size : initial triangle side length"""
     previous_median = x = 0
@@ -26,9 +30,11 @@ def concentric_triangles(count_tri, initial_size):
         if i == 0:
             timmy.setpos(0, 0)
         else:
-            x -= (initial_size/2 - previous_size/2)
-            y -= (median/3 - previous_median/3)
+            timmy.up()
+            x -= (initial_size/2 - previous_size/2)*offsetX
+            y -= (median/3 - previous_median/3)*offsetY
             timmy.setpos(x, y)
+            timmy.down()
         # print(timmy.pos())
         turns = 3
         while turns > 0:
@@ -41,10 +47,11 @@ def concentric_triangles(count_tri, initial_size):
         initial_size *= 2
 
 
+# concentric_triangles(6, 20)
+# my_screen = Screen()
+# print(my_screen.canvheight)
+# my_screen.exitonclick()
 
-concentric_triangles(5,25)
-my_screen = Screen()
-print(my_screen.canvheight)
-
-my_screen.exitonclick()
+table = PrettyTable()
+print(table)
 
