@@ -9,21 +9,43 @@ import coffee_maker as cm
 import money_machine as mm
 import menu
 
-
-coffee_input = input("What would you like? (espresso/latte/cappuccino) ").lower()
-
 # Create object instances from classes
 coffee_machine = cm.CoffeeMaker()
 money = mm.MoneyMachine()
-# menu_items = menu.MenuItem()
 drink_menu = menu.Menu()
 
-if coffee_input == "off":
-    print("Goodbye!")
-    exit()
-elif coffee_input == "report":
-    # Call report methods from coffee maker and money machine classes
-    coffee_machine.report()
-    money.report()
-else:
+machine_on = True
+while machine_on:
+    request = input("What would you like? (espresso/latte/cappuccino) ").lower()
+    if request == "off":
+        print("Goodbye!")
+        machine_on = False
+        exit()
+    elif request == "report":
+        # Call report methods from coffee maker and money machine classes
+        coffee_machine.report()
+        money.report()
+    else:
+
+
+
+
+
+
+
+
+
+
+        #
+        # # Checks if request is a drink offering
+        # drink_menu.find_drink(request)
+        # drink_ingredients = drink_menu.menu
+        # # print(drink_ingredients[0])
+        # check_resources = coffee_machine.is_resource_sufficient(drink_ingredients)
+        # # print(f"\n{drink_menu.menu}\n")
+        # if money.make_payment(drink_ingredients):
+        #     coffee_machine.make_coffee(drink_ingredients)
+        #
+        #
+        #
 
