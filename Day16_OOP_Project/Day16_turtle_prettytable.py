@@ -1,7 +1,7 @@
 """
-Project: OOP Coffee Machine
+Project: Turtle and prettytable modules
 Start: February 13th, 2024
-Last touched: February 13th, 2024
+Last touched: February 16th, 2024
 Author: Madeleine L.
 """
 ## Using packages from https://pypi.org/
