@@ -26,6 +26,15 @@ while machine_on:
         coffee_machine.report()
         money.report()
     else:
+        # Get ingredients for requested drink
+        drink_ingredients = drink_menu.find_drink(request)
+        # Check resources against required ingredients
+        if coffee_machine.is_resource_sufficient(drink_ingredients):
+            # initiate payment request
+            print(drink_ingredients.cost)
+            if money.make_payment(drink_ingredients.cost):
+                money.profit += drink_ingredients.cost
+                coffee_machine.make_coffee(drink_ingredients)
 
 
 
