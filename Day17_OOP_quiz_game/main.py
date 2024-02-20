@@ -4,16 +4,27 @@ Last touched: February 20th, 2024
 Author: Madeleine L.
 """
 
+from data import question_data
+from question_model import Question
 from quiz_brain import Quiz
 
 # If we have a question object what objects would it have?
 # - Would have text and answer
 # - Methods would be to take a guess and check it against an answer
 
-int_quiz = Quiz()
-int_quiz.start_quiz()
+# int_quiz = Quiz()
+# int_quiz.start_quiz()
 
-# print(question_data[1]["text"])
+# create question bank as lecture asks
+
+question_bank = []
+for i in range(0, len(question_data)):
+    text = question_data[i]["text"]
+    answer = question_data[i]["answer"]
+    question = Question(text, answer)
+    question_bank.append(question)
+
+print(question_bank)
 
 # my_q = Question("2+3=5", True)
 # print(my_q.text)
