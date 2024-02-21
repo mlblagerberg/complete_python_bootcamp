@@ -32,6 +32,15 @@ class QuizBrain:
             play = input(f"Would you like another question? 'Y' or 'N' ")
         return play.upper()
 
+    def check_answer(self, answers):
+        if answers[0] == answers[1]:
+            self.score += 1
+            print(f"You're right! \nThe correct answer was {answers[1]}.\nYour score is "
+                  f"{self.score}/{self.question_number}.")
+        else:
+            print(f"You were wrong. \nThe correct answer was {answers[1]}.\nYour score is "
+                  f"{self.score}/{self.question_number}.")
+
     def quiz_time(self):
         # check start
         play = self.quiz_prompt()
@@ -39,20 +48,8 @@ class QuizBrain:
             answers = self.get_question()
             # Increase question value
             self.next_question()
-            # print(self.next_question())
-            # while question_value[0]:
-            if answers[0] == answers[1]:
-                # if question_answer == user_answer:
-                self.score += 1
-                # print(question_answer)
-                print(f"You're right! \nThe correct answer was {answers[1]}.\nYour score is "
-                      f"{self.score}/{self.question_number}.")
-                self.quiz_time()
-            else:
-                # print(question_answer)
-                print(f"You were wrong. \nThe correct answer was {answers[1]}.\nYour score is "
-                      f"{self.score}/{self.question_number}.")
-                self.quiz_time()
+            self.check_answer(answers)
+            self.quiz_time()
         else:
             print(f"Your final score is {self.score}/{self.question_number}. Thanks for playing! \nGoodbye!")
 
