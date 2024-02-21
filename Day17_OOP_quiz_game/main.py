@@ -28,7 +28,7 @@ for i in range(0, len(question_data)):
 
 quiz = QuizBrain(question_bank)
 
-quiz.get_question()
+# quiz.get_question()
 quiz.quiz_time()
 
 # my_q = Question("2+3=5", True)

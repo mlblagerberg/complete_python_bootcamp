@@ -15,21 +15,25 @@ class QuizBrain:
     def get_question(self):
         text = self.question_list[self.question_number].text
         answer = self.question_list[self.question_number].answer
-        return text, answer
+        user_answer = input(f"Q{self.question_number}: {text} (True/False)? ")
+        return user_answer.lower(), answer.lower()
+
+    def quiz_prompt(self):
+        if self.question_number == 0:
+            play = input("Would you like to play quiz game? 'Y' or 'N' ")
+        else:
+            play = input(f"Would you like another question? 'Y' or 'N' ")
+        return play.upper()
 
     def quiz_time(self):
         # check start
-        if self.question_number == 0:
-            start = input("Would you like to play quiz game? 'Y' or 'N' ")
-        else:
-            start = input(f"Would you like another question? 'Y' or 'N' ")
-        if start == 'Y':
-            question = self.get_question()
-            question_text = question[0]
-            question_answer = question[1]
-            user_answer = input(f"Q{self.question_number}: {question_text} (True/False)? ")
+        play = self.quiz_prompt()
+        if play == 'Y':
+            answers = self.get_question()
             self.next_question()
-            if user_answer == question_answer:
+            # print(self.next_question())
+            if answers[0] == answers[1]:
+                # if question_answer == user_answer:
                 self.score += 1
                 # print(question_answer)
                 print(f"You're right! Your score is {self.score}.")
@@ -39,7 +43,7 @@ class QuizBrain:
                 print(f"You were wrong. Your score is {self.score}.")
                 self.quiz_time()
         else:
-            print("Goodbye!")
+            print(f"Your final score is {score}. Thanks for playing! \nGoodbye!")
 
 
 
