@@ -11,16 +11,23 @@ class QuizBrain:
     def next_question(self):
         self.question_number += 1
         return self.question_number
+        # self.question_number += 1
+        # if self.question_number > len(self.question_list):
+        #     return False, self.question_number
+        # else:
+        #     return True, self.question_number
 
     def get_question(self):
         text = self.question_list[self.question_number].text
         answer = self.question_list[self.question_number].answer
-        user_answer = input(f"Q{self.question_number}: {text} (True/False)? ")
+        user_answer = input(f"Q{self.question_number + 1}: {text} (True/False)? ")
         return user_answer.lower(), answer.lower()
 
     def quiz_prompt(self):
         if self.question_number == 0:
             play = input("Would you like to play quiz game? 'Y' or 'N' ")
+        elif self.question_number >= len(self.question_list):
+            play = "N"
         else:
             play = input(f"Would you like another question? 'Y' or 'N' ")
         return play.upper()
@@ -28,22 +35,26 @@ class QuizBrain:
     def quiz_time(self):
         # check start
         play = self.quiz_prompt()
-        if play == 'Y':
+        if play == 'Y' and self.question_number < len(self.question_list):
             answers = self.get_question()
+            # Increase question value
             self.next_question()
             # print(self.next_question())
+            # while question_value[0]:
             if answers[0] == answers[1]:
                 # if question_answer == user_answer:
                 self.score += 1
                 # print(question_answer)
-                print(f"You're right! Your score is {self.score}.")
+                print(f"You're right! \nThe correct answer was {answers[1]}.\nYour score is "
+                      f"{self.score}/{self.question_number}.")
                 self.quiz_time()
             else:
                 # print(question_answer)
-                print(f"You were wrong. Your score is {self.score}.")
+                print(f"You were wrong. \nThe correct answer was {answers[1]}.\nYour score is "
+                      f"{self.score}/{self.question_number}.")
                 self.quiz_time()
         else:
-            print(f"Your final score is {score}. Thanks for playing! \nGoodbye!")
+            print(f"Your final score is {self.score}/{self.question_number}. Thanks for playing! \nGoodbye!")
 
 
 
