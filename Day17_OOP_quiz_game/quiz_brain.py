@@ -16,8 +16,8 @@ class QuizBrain:
         return self.question_number
 
     def get_question(self):
-        text = self.question_list[self.question_number].text
-        answer = self.question_list[self.question_number].answer
+        text = self.question_list[self.question_number].question
+        answer = self.question_list[self.question_number].correct_answer
         user_answer = input(f"Q{self.question_number + 1}: {text} (True/False)? ")
         return user_answer.lower(), answer.lower()
 
