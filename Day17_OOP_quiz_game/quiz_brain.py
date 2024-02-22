@@ -11,11 +11,6 @@ class QuizBrain:
     def next_question(self):
         self.question_number += 1
         return self.question_number
-        # self.question_number += 1
-        # if self.question_number > len(self.question_list):
-        #     return False, self.question_number
-        # else:
-        #     return True, self.question_number
 
     def get_question(self):
         text = self.question_list[self.question_number].text
