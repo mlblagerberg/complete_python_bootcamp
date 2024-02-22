@@ -1,5 +1,8 @@
-# from data import question_data
-# from question_model import Question
+"""Project: QuizBrain for Quiz Game
+Start: February 18th, 2024
+Last touched: February 22nd, 2024
+Author: Madeleine L.
+"""
 
 
 class QuizBrain:
@@ -30,11 +33,10 @@ class QuizBrain:
     def check_answer(self, answers):
         if answers[0] == answers[1]:
             self.score += 1
-            print(f"You're right! \nThe correct answer was {answers[1]}.\nYour score is "
-                  f"{self.score}/{self.question_number}.")
+            print(f"You're right!")
         else:
-            print(f"You were wrong. \nThe correct answer was {answers[1]}.\nYour score is "
-                  f"{self.score}/{self.question_number}.")
+            print(f"You were wrong.")
+        print(f"\nThe correct answer was {answers[1]}.\nYour score is {self.score}/{self.question_number}.")
 
     def quiz_time(self):
         # check start
