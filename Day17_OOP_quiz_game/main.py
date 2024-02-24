@@ -1,6 +1,6 @@
 """Project: Quiz Game
 Start: February 18th, 2024
-Last touched: February 20th, 2024
+Last touched: February 22nd, 2024
 Author: Madeleine L.
 """
 

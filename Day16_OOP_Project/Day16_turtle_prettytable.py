@@ -47,15 +47,15 @@ def concentric_triangles(count_tri, initial_size, offsetX=1, offsetY=1):
         initial_size *= 2
 
 
-# concentric_triangles(6, 20)
-# my_screen = Screen()
-# print(my_screen.canvheight)
-# my_screen.exitonclick()
+concentric_triangles(6, 20)
+my_screen = Screen()
+print(my_screen.canvheight)
+my_screen.exitonclick()
 
-table = PrettyTable()
-
-table.add_column("Pokemon_Name", ["Pikachu", "Squirtle", "Charmander"])
-table.add_column("Type", ["Electric", "Water", "Fire"])
-table.align = "l"
-print(table)
+# table = PrettyTable()
+#
+# table.add_column("Pokemon_Name", ["Pikachu", "Squirtle", "Charmander"])
+# table.add_column("Type", ["Electric", "Water", "Fire"])
+# table.align = "l"
+# print(table)
 
