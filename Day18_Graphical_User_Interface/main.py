@@ -6,9 +6,22 @@ Author: Madeleine L.
 
 from turtle import Turtle, Screen
 
-timmy_the_turtle = Turtle()
-timmy_the_turtle.shape("circle")
-timmy_the_turtle.color("light green")
+tim = Turtle()
+tim.shape("arrow")
+tim.color("light green")
+
+
+# Draw square
+n = 4
+while n > 0:
+    tim.forward(100)
+    tim.right(90)
+    n -= 1
+
+tim.color("dark cyan")
+for _ in range(4):
+    tim.forward(100)
+    tim.right(90)
 
 screen = Screen()
 screen.exitonclick()
