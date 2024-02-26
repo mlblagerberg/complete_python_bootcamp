@@ -11,7 +11,7 @@ tim.shape("arrow")
 # tim.color("light green")
 tim.color("dark cyan")
 tim.up()
-tim.setposition(x=(-100), y=0)
+tim.setposition(x=(-250), y=0)
 
 
 # Draw square
