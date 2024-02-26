@@ -52,18 +52,32 @@ def change_color():
 
 
 # Illustrate a random walk
-def random_walk(steps):
-    tim.pensize(10)
-    tim.speed(8)
-    direction = [0, 90, 180, 270]
-    for i in range(0,steps + 1):
+# def random_walk(steps):
+#     tim.pensize(15)
+#     tim.speed(10)
+#     direction = [0, 90, 180, 270]
+#     for i in range(0,steps + 1):
+#         change_color()
+#         turn = choice(direction)
+#         tim.setheading(turn)
+#         tim.forward(25)
+
+
+# random_walk(500)
+
+def spiro(circle_count):
+    tim.pensize(2)
+    tim.speed("fastest")
+    degrees = 360 / circle_count
+    for i in range(0, circle_count + 1):
         change_color()
-        turn = choice(direction)
-        tim.right(turn)
-        tim.forward(50)
+        tim.circle(100)
+        tim.left(degrees)
 
 
-random_walk(100)
+spiro(30)
+
+
 
 screen = Screen()
 screen.exitonclick()
