@@ -5,7 +5,7 @@ Author: Madeleine L.
 """
 
 from turtle import Turtle, Screen
-from random import random
+from random import random, choice
 
 tim = Turtle()
 tim.shape("turtle")
@@ -41,16 +41,29 @@ def change_color():
     tim.color(r, b, g)
 
 
-for i in range(0, 10):
-    change_color()
-    side = 3 + i
-    for j in range(0, side):
-        tim.forward(100)
-        angle = 360 / side
-        tim.right(angle)
-        # tim.forward(50)
+# for i in range(0, 10):
+#     change_color()
+#     side = 3 + i
+#     for j in range(0, side):
+#         tim.forward(100)
+#         angle = 360 / side
+#         tim.right(angle)
+#         # tim.forward(50)
 
+
+# Illustrate a random walk
+def random_walk(steps):
+    tim.pensize(10)
+    tim.speed(8)
+    direction = [0, 90, 180, 270]
+    for i in range(0,steps + 1):
+        change_color()
+        turn = choice(direction)
+        tim.right(turn)
+        tim.forward(50)
+
+
+random_walk(100)
 
 screen = Screen()
-# screen.colormode(255)
 screen.exitonclick()
