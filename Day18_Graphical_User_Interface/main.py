@@ -6,11 +6,16 @@ Author: Madeleine L.
 
 from turtle import Turtle, Screen
 from random import random, choice
+from colorgram import extract
+
+screen = Screen()
+screen.colormode(255)
 
 tim = Turtle()
 tim.shape("turtle")
 # tim.color("light green")
 # tim.color("deep pink")
+
 # Draw square
 # n = 4
 # while n > 0:
@@ -65,19 +70,57 @@ def change_color():
 
 # random_walk(500)
 
-def spiro(circle_count):
-    tim.pensize(2)
+# def spiro(circle_count):
+#     tim.pensize(2)
+#     tim.speed("fastest")
+#     degrees = 360 / circle_count
+#     for i in range(0, circle_count + 1):
+#         change_color()
+#         tim.circle(100)
+#         tim.left(degrees)
+#
+#
+# spiro(12)
+
+# colors = extract("Damien_Hirst_Dumb_Painting.jpg", 10)
+# rgb_colors = []
+# for color in colors:
+#     r = color.rgb.r
+#     g = color.rgb.g
+#     b = color.rgb.b
+#     new_color = (r, g, b)
+#     rgb_colors.append(new_color)
+#
+# print(rgb_colors)
+color_list = [(69, 78, 213), (234, 229, 232), (236, 35, 108), (221, 231, 238), (145, 28, 66), (230, 237, 232),
+              (239, 75, 36), (7, 148, 95), (222, 170, 45), (183, 158, 47)]
+# print(color_list[0][0])
+
+
+# random_color = choice(color_list)
+# tim.color(random_color)
+# tim.dot(20)
+# tim.up()
+# tim.setpos((-350, -250))
+# tim.forward(50)
+# tim.down()
+# tim.dot(20)
+
+for i in range(0, 10):
     tim.speed("fastest")
-    degrees = 360 / circle_count
-    for i in range(0, circle_count + 1):
-        change_color()
-        tim.circle(100)
-        tim.left(degrees)
+    y = 50 * i
+    x = -230
+    y += -210
+    tim.up()
+    tim.setpos((x, y))
+    for _ in range(10):
+        random_color = choice(color_list)
+        tim.color(random_color)
+        tim.down()
+        tim.dot(20)
+        tim.up()
+        tim.forward(50)
 
 
-spiro(30)
 
-
-
-screen = Screen()
 screen.exitonclick()
