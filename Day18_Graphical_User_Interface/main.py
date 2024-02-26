@@ -112,13 +112,12 @@ for i in range(0, 10):
     x = -230
     y += -210
     tim.up()
+    tim.hideturtle()
     tim.setpos((x, y))
     for _ in range(10):
         random_color = choice(color_list)
         tim.color(random_color)
-        tim.down()
         tim.dot(20)
-        tim.up()
         tim.forward(50)
 
 
