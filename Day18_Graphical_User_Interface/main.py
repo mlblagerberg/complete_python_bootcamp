@@ -1,12 +1,12 @@
 """Project: Turtle and GUI
 Start: February 22nd, 2024
-Last touched: February 22nd, 2024
+Last touched: February 27th, 2024
 Author: Madeleine L.
 """
 
 from turtle import Turtle, Screen
 from random import random, choice
-from colorgram import extract
+# from colorgram import extract
 
 screen = Screen()
 screen.colormode(255)
