@@ -14,7 +14,9 @@ def move_forwards():
     tim.forward(10)
 
 
-# Event listener
+# Event listeners
+# Higher order functions: when you pass a function as an input you only use name not () at en because () at end executes
+# function immediately
 screen.listen()
 screen.onkey(key="space", fun=move_forwards)
 
