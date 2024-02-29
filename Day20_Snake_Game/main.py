@@ -5,6 +5,7 @@ Author: Madeleine L.
 """
 
 from turtle import Turtle, Screen
+import time
 
 screen = Screen()
 screen.setup(600, 600)
@@ -32,11 +33,12 @@ def continuous_move_forward():
     move_forward = True
     while move_forward:
         screen.update()
+        time.sleep(0.1)
         for turtle in range(len(turtles)-1, 0, -1):
             new_x = turtles[turtle - 1].xcor()
             new_y = turtles[turtle - 1].ycor()
             turtles[turtle].goto(new_x, new_y)
-        turtles[0].forward(1)
+        turtles[0].forward(20)
         if abs(turtles[0].pos()[0] + 10) >= 300 or abs(turtles[0].pos()[1] + 10) >= 300:
             move_forward = False
 
