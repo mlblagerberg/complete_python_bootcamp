@@ -8,7 +8,7 @@ from turtle import Turtle, Screen
 from random import randint
 screen = Screen()
 screen.setup(700, 600)
-screen.listen()
+# screen.listen()
 race_is_on = False
 user_guess = screen.textinput("Make your guess", "Guess which turtle will win: ")
 
@@ -42,13 +42,13 @@ if user_guess:
                 race_is_on = False
 
 
-def turtle_reset():
-    y = 200
-    for turdley in turtles:
-        turdley.setposition(-300, y)
-        y -= 75
+# def turtle_reset():
+#     y = 200
+#     for turdley in turtles:
+#         turdley.setposition(-300, y)
+#         y -= 75
 
 
 # screen.onkey(key="s", fun=turtle_race)
-screen.onkey(key="r", fun=turtle_reset)
+# screen.onkey(key="r", fun=turtle_reset)
 screen.exitonclick()
