@@ -10,13 +10,13 @@ screen = Screen()
 screen.colormode(255)
 screen.listen()
 
-
-def random_color(t):
-    r = randint(0, 255)
-    g = randint(0, 255)
-    b = randint(0, 255)
-
-    t.color(r, g, b)
+# # Function to get random colors
+# def random_color(t):
+#     r = randint(0, 255)
+#     g = randint(0, 255)
+#     b = randint(0, 255)
+#
+#     t.color(r, g, b)
 
 
 tim1 = Turtle()
@@ -32,23 +32,28 @@ finish = Turtle()
 finish.hideturtle()
 finish.up()
 
-# Draw start and finish lines
-start.setposition(-300, -200)
-start.setheading(90)
-start.down()
-start.forward(500)
-
-finish.setposition(300, -200)
-finish.setheading(90)
-finish.down()
-finish.forward(500)
+# # Draw start and finish lines
+# start.setposition(-300, -200)
+# start.setheading(90)
+# start.down()
+# start.forward(500)
+#
+# finish.setposition(300, -200)
+# finish.setheading(90)
+# finish.down()
+# finish.forward(500)
 
 turtles = [tim1, tim2, tim3, tim4, tim5]
+tim1.color("red")
+tim2.color("orange")
+tim3.color("yellow")
+tim4.color("green")
+tim5.color("blue")
 
 y = 150
 for t in turtles:
     t.up()
-    random_color(t)
+    # random_color(t)
     t.shapesize(3)
     t.shape("turtle")
     t.setposition(-300, y)
@@ -62,10 +67,6 @@ def turtle_race():
         else:
             step = randint(1, 15)
             turd.forward(step)
-
-        #     exit()
-        # else:
-        #     turtle_race()
 
 
 def turtle_reset():
