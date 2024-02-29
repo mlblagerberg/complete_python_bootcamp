@@ -59,10 +59,12 @@ def turtle_race():
                 turtle_race()
             else:
                 print("Thanks for playing!")
+                screen.bye()
 
 
-screen.onkey(key="r", fun=turtle_race)
-# screen.onkey(key="space", fun=race_reset)
 screen.listen()
+screen.onkey(key="r", fun=turtle_race)
+# screen.onkey(key="s", fun=race_reset) # won't work and can't figure out why
+# screen.listen()
 # screen.getcanvas().bind("<space>", lambda event: race_reset())
 screen.exitonclick()
