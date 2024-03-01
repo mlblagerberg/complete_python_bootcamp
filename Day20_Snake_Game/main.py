@@ -15,6 +15,11 @@ screen.title("Snake Game")
 screen.tracer(0)
 
 snake = Snake()
+screen.listen()
+screen.onkey(key="Up", fun=snake.north)
+screen.onkey(key="Down", fun=snake.south)
+screen.onkey(key="Left", fun=snake.west)
+screen.onkey(key="Right", fun=snake.east)
 
 move_forward = True
 while move_forward:
@@ -23,8 +28,6 @@ while move_forward:
 
     snake.move()
 
-screen.listen()
-screen.onkey(key="space", fun=snake.move())
 # Todo 3: create snake food
 # Todo 4: control snake
 # screen.onkey(key="Up", fun=face_north)
