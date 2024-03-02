@@ -6,12 +6,17 @@ Author: Madeleine L.
 
 from turtle import Turtle, Screen
 MOVE_DISTANCE = 20
+EAST = 0
+NORTH = 90
+WEST = 180
+SOUTH = 270
 
 class Snake:
     def __init__(self):
         self.length = 3
         self.turtles = []
         self.create_snake()
+        self.head = self.turtles[0]
 
     def create_snake(self):
         for turtle_index in range(0, self.length):
@@ -32,13 +37,17 @@ class Snake:
             exit()
 
     def east(self):
-        self.turtles[0].setheading(0)
+        if self.head.heading() != WEST:
+            self.head.setheading(EAST)
 
     def north(self):
-        self.turtles[0].setheading(90)
+        if self.head.heading() != SOUTH:
+            self.head.setheading(NORTH)
 
     def west(self):
-        self.turtles[0].setheading(180)
+        if self.head.heading() != EAST:
+            self.head.setheading(WEST)
 
     def south(self):
-        self.turtles[0].setheading(270)
+        if self.head.heading() != NORTH:
+            self.head.setheading(SOUTH)
