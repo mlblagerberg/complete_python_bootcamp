@@ -3,6 +3,8 @@ Start: March 2nd, 2024
 Last touched: March 2nd, 2024
 Author: Madeleine L.
 """
+ALIGNMENT = "center"
+FONT = ("Courier", 20, "normal")
 
 from turtle import Turtle
 
@@ -14,9 +16,13 @@ class Score(Turtle):
         self.score = 0
         self.color("white")
         self.hideturtle()
-        self.write(f"Score: {self.score}", move=False, align="center", font=("Arial", 20, "bold"))
+        self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT)
 
     def update_score(self):
-        self.score += 10
+        self.score += 1
         self.clear()
-        self.write(f"Score: {self.score}", move=False, align="center", font=("Arial", 20, "bold"))
+        self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT)
+
+    def game_over(self):
+        self.goto(0, 0)
+        self.write("Game Over", align=ALIGNMENT, font=FONT)

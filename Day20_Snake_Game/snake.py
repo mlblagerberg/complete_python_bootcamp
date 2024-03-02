@@ -1,10 +1,11 @@
 """Project: Snake Class for Snake Game
 Start: February 29th, 2024
-Last touched: March 1st, 2024
+Last touched: March 2nd, 2024
 Author: Madeleine L.
 """
 
-from turtle import Turtle, Screen
+from turtle import Turtle
+
 MOVE_DISTANCE = 20
 EAST = 0
 NORTH = 90
@@ -33,8 +34,8 @@ class Snake:
             new_y = self.turtles[turtle - 1].ycor()
             self.turtles[turtle].goto(new_x, new_y)
         self.turtles[0].forward(MOVE_DISTANCE)
-        if abs(self.turtles[0].pos()[0] + 10) >= 300 or abs(self.turtles[0].pos()[1] + 10) >= 300:
-            exit()
+        # if abs(self.head.pos()[0] + 10) >= 300 or abs(self.head.pos()[1] + 10) >= 300:
+        #     exit()
 
     def east(self):
         if self.head.heading() != WEST:

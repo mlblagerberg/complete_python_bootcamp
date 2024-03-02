@@ -37,9 +37,11 @@ while move_forward:
         score.update_score()
         food = Food()
 
+    if abs(snake.head.pos()[0] + 8) >= 300 or abs(snake.head.pos()[1] + 8) >= 300:
+        move_forward = False
+        score.game_over()
 
 
-# Todo 6: create scoreboard
 # Todo 7: Increase snake tail length when collides with food
 # Todo 8: detect collision with wall or tail and end game
 
