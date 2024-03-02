@@ -7,6 +7,7 @@ Author: Madeleine L.
 from turtle import Turtle, Screen
 from snake import Snake
 from food import Food
+from scoreboard import Score
 import time
 
 screen = Screen()
@@ -17,6 +18,7 @@ screen.tracer(0)
 
 snake = Snake()
 food = Food()
+score = Score()
 screen.listen()
 screen.onkey(key="Up", fun=snake.north)
 screen.onkey(key="Down", fun=snake.south)
@@ -32,16 +34,14 @@ while move_forward:
 
     if abs(snake.head.distance(food)) < 15:
         food.reset()
+        score.update_score()
         food = Food()
 
 
 
-# # Todo 5: detect collision with food
-# if snake.head.pos() == food.pos():
-#     food = Food()
-
 # Todo 6: create scoreboard
-# Todo 7: detect collision with wall or tail and end game
+# Todo 7: Increase snake tail length when collides with food
+# Todo 8: detect collision with wall or tail and end game
 
 
 
