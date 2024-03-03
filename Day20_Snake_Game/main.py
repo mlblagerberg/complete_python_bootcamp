@@ -35,17 +35,19 @@ while move_forward:
     if abs(snake.head.distance(food)) < 15:
         food.reset()
         score.update_score()
+        snake.extend_snake()
         food = Food()
 
+    # Detect collision with wall
     if abs(snake.head.pos()[0] + 8) >= 300 or abs(snake.head.pos()[1] + 8) >= 300:
         move_forward = False
         score.game_over()
 
-
-# Todo 7: Increase snake tail length when collides with food
-# Todo 8: detect collision with wall or tail and end game
-
-
+    # Detect collision with tail
+    for i in range(1, len(snake.turtles) - 1):
+        if snake.head.distance(snake.turtles[i]) < 10:
+            move_forward = False
+            score.game_over()
 
 
 screen.exitonclick()
