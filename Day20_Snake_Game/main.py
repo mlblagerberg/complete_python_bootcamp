@@ -44,8 +44,8 @@ while move_forward:
         score.game_over()
 
     # Detect collision with tail
-    for i in range(1, len(snake.turtles) - 1):
-        if snake.head.distance(snake.turtles[i]) < 10:
+    for turtle in snake.turtles[1:]:  # i in range(1, len(snake.turtles) - 1): Using slicing instead, easier to read
+        if snake.head.distance(turtle) < 10:
             move_forward = False
             score.game_over()
 
