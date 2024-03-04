@@ -1,6 +1,6 @@
 """Project: Snake Game
 Start: February 29th, 2024
-Last touched: March 2nd, 2024
+Last touched: March 3rd, 2024
 Author: Madeleine L.
 """
 
