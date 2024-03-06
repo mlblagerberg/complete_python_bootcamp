@@ -15,15 +15,16 @@ screen.title("Pong")
 screen.tracer(0)
 
 # TODO 2: Create class for pong paddles
-right_paddle = Paddle().create_paddle()
-left_paddle = Paddle().create_paddle(right_side=False)
+paddles = Paddle()
+right_paddle = paddles.right_paddle
+left_paddle = paddles.left_paddle
 screen.update()
 
 
 # TODO 3: Control paddles with keys
 screen.listen()
-screen.onkey(key="q", fun=right_paddle.move_up)
-screen.onkey(key="a", fun=right_paddle.move_down)
+screen.onkey(key="q", fun=right_paddle.right_move_up)
+screen.onkey(key="a", fun=right_paddle.right_move_down)
 # TODO 4: Create class for pong ball and get ball to move back and forth depending on paddle hits
 # TODO 5: Create class for scoreboard and score tracking method
 # TODO 6: If pong ball hits paddle then bounce, if paddle misses update score
