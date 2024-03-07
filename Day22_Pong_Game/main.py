@@ -4,7 +4,7 @@ Last touched: March 5th, 2024
 Author: Madeleine L.
 """
 
-from turtle import Turtle, Screen
+from turtle import Screen
 from paddle import Paddle
 
 # TODO 1: Create screen with correct color and boundary line
@@ -15,16 +15,33 @@ screen.title("Pong")
 screen.tracer(0)
 
 # TODO 2: Create class for pong paddles
-paddles = Paddle()
-right_paddle = paddles.right_paddle
-left_paddle = paddles.left_paddle
-screen.update()
+right_paddle = Paddle(x_cor=350, y_cor=0)
+left_paddle = Paddle(x_cor=-350, y_cor=0)
 
+screen.tracer(1)
 
-# TODO 3: Control paddles with keys
 screen.listen()
-screen.onkey(key="q", fun=right_paddle.right_move_up)
-screen.onkey(key="a", fun=right_paddle.right_move_down)
+screen.onkey(key="Up", fun=right_paddle.move_up)
+screen.onkey(key="Down", fun=right_paddle.move_down)
+screen.onkey(key="w", fun=left_paddle.move_up)
+screen.onkey(key="s", fun=left_paddle.move_down)
+
+# game_is_on = True
+# if game_is_on:
+#     screen.update()
+
+# print(right_paddle)
+# def go_up():
+#     # right_paddle.setheading(90)
+#     new_y = right_paddle.ycor() + 20
+#     # right_paddle.forward(20)
+#     right_paddle.goto(right_paddle.xcor(), new_y)
+
+
+# # TODO 3: Control paddles with keys
+# screen.listen()
+# screen.onkey(key="space", fun=right_paddle.move_up)
+# screen.onkey(key="Up", fun=go_up)
 # TODO 4: Create class for pong ball and get ball to move back and forth depending on paddle hits
 # TODO 5: Create class for scoreboard and score tracking method
 # TODO 6: If pong ball hits paddle then bounce, if paddle misses update score
