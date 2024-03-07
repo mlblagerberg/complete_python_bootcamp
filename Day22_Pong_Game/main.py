@@ -26,17 +26,6 @@ screen.onkey(key="Down", fun=right_paddle.move_down)
 screen.onkey(key="w", fun=left_paddle.move_up)
 screen.onkey(key="s", fun=left_paddle.move_down)
 
-# game_is_on = True
-# if game_is_on:
-#     screen.update()
-
-# print(right_paddle)
-# def go_up():
-#     # right_paddle.setheading(90)
-#     new_y = right_paddle.ycor() + 20
-#     # right_paddle.forward(20)
-#     right_paddle.goto(right_paddle.xcor(), new_y)
-
 
 # # TODO 3: Control paddles with keys
 # screen.listen()
