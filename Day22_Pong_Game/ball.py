@@ -7,8 +7,6 @@ Author: Madeleine L.
 from turtle import Turtle
 from random import randint
 
-X = 380
-Y = 280
 
 class Ball(Turtle):
 
@@ -19,8 +17,17 @@ class Ball(Turtle):
         self.shapesize(1)
         self.goto(0, 0)
         self.color("white")
+        self.x_move = 10
+        self.y_move = 10
 
     def move(self):
-        # x = randint(-350, 350)
-        # y = x
-        self.goto(X, Y)
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
+        self.goto(new_x, new_y)
+
+    def bounce(self):
+        self.y_move *= -1
+
+    def paddle_bounce(self):
+        self.x_move *= -1
+
