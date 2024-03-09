@@ -1,6 +1,6 @@
 """Project: Paddle Class for Pong Game
 Start: March 5th, 2024
-Last touched: March 5th, 2024
+Last touched: March 8th, 2024
 Author: Madeleine L.
 """
 

@@ -1,6 +1,6 @@
 """Project: Ball class for Pong Game
 Start: March 7th, 2024
-Last touched: March 7th, 2024
+Last touched: March 8th, 2024
 Author: Madeleine L.
 """
 
@@ -30,4 +30,8 @@ class Ball(Turtle):
 
     def paddle_bounce(self):
         self.x_move *= -1
+
+    def ball_reset(self):
+        self.goto(0, 0)
+        self.paddle_bounce()
 
