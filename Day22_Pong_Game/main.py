@@ -34,11 +34,13 @@ screen.onkey(key="s", fun=left_paddle.move_down)
 #  paddles to move back and forth depending on paddle hits
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    # time.sleep(0.1)
     ball.move()
     if abs(ball.ycor()) > 295:
         ball.bounce()
     if abs(ball.xcor() - right_paddle.xcor()) < 15 and abs(ball.ycor() - right_paddle.ycor()) < 100:
+        ball.paddle_bounce()
+    if abs(ball.xcor() - left_paddle.xcor()) < 15 and abs(ball.ycor() - left_paddle.ycor()) < 100:
         ball.paddle_bounce()
     if abs(ball.xcor()) > 390:
         game_is_on = False

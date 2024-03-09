@@ -7,7 +7,7 @@ Author: Madeleine L.
 from turtle import Turtle
 NORTH = 90
 SOUTH = 180
-MOVE_DISTANCE = 20
+MOVE_DISTANCE = 50
 
 
 class Paddle(Turtle):
@@ -21,17 +21,20 @@ class Paddle(Turtle):
         self.penup()
         self.setposition(x_cor, y_cor)
         self.color("white")
+        self.speed("fastest")
 
     def move_up(self):
-        # self.right_paddle.setheading(NORTH)
-        new_y = self.ycor() + MOVE_DISTANCE
-        # self.right_paddle.forward(MOVE_DISTANCE)
+        if self.ycor() + MOVE_DISTANCE > 290:
+            new_y = self.ycor()
+        else:
+            new_y = self.ycor() + MOVE_DISTANCE
         self.goto(self.xcor(), new_y)
 
     def move_down(self):
-        # self.right_paddle.setheading(NORTH)
-        new_y = self.ycor() - MOVE_DISTANCE
-        # self.right_paddle.forward(MOVE_DISTANCE)
+        if self.ycor() - MOVE_DISTANCE < - 290:
+            new_y = self.ycor()
+        else:
+            new_y = self.ycor() - MOVE_DISTANCE
         self.goto(self.xcor(), new_y)
 
 
