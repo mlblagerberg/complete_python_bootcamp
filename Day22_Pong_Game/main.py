@@ -38,10 +38,12 @@ while game_is_on:
     ball.move()
     if abs(ball.ycor()) > 295:
         ball.bounce()
+    # Detect paddle collisions
     if abs(ball.xcor() - right_paddle.xcor()) < 15 and abs(ball.ycor() - right_paddle.ycor()) < 100:
         ball.paddle_bounce()
     if abs(ball.xcor() - left_paddle.xcor()) < 15 and abs(ball.ycor() - left_paddle.ycor()) < 100:
         ball.paddle_bounce()
+    # Stop game if ball hits wall
     if abs(ball.xcor()) > 390:
         game_is_on = False
 
