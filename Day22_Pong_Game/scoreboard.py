@@ -6,20 +6,20 @@ Author: Madeleine L.
 
 from turtle import Turtle
 
+
 class Scoreboard(Turtle):
 
-    def __init__(self):
+    def __init__(self) #, x_cord, y_cord):
         super().__init__()
         self.color("white")
         self.penup()
         self.hideturtle()
-        self.score = 0
-
-    def create_score(self, x_cord, y_cord):
-        self.setposition(x_cord, y_cord)
+        # self.goto(x_cord, y_cord)
+        # self.score = 0
+        # self.write(f"{self.score}", align="center", font=("Courier", 80, "normal"))
 
     def update_score(self):
         self.score += 1
         self.clear()
-        self.write(f"{self.score}")
+        self.write(f"{self.score}", align="center", font=("Courier", 80, "normal"))
 

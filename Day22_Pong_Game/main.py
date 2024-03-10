@@ -7,6 +7,7 @@ Author: Madeleine L.
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 # TODO 1: Create screen with correct color and boundary line
@@ -32,10 +33,13 @@ screen.onkey(key="s", fun=left_paddle.move_down)
 
 # TODO 4: Create class for pong ball and get ball and get it to bounce, end game if it hits walls and bounces off
 #  paddles to move back and forth depending on paddle hits
+# screen.tracer(0)
 game_is_on = True
 while game_is_on:
-    # time.sleep(0.1)
+    time.sleep(0.1)
     ball.move()
+    right_score = Scoreboard(100, 250)
+    left_score = Scoreboard(-100, 250)
     if abs(ball.ycor()) > 295:
         ball.bounce()
     # Detect paddle collisions
@@ -48,6 +52,7 @@ while game_is_on:
         game_is_on = False
 
 # TODO 5: Create class for scoreboard and score tracking method
+
 # TODO 6: If pong ball hits paddle then bounce, if paddle misses update score
 
 screen.exitonclick()
