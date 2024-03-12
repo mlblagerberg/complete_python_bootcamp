@@ -16,7 +16,6 @@ screen.setup(800, 600)
 screen.bgcolor("black")
 screen.title("Pong")
 screen.tracer(0)
-BALL_SPEED = 0.1
 
 # TODO 2: Create class for pong paddles
 right_paddle = Paddle(x_cor=350, y_cor=0)
@@ -40,9 +39,9 @@ left_score = Scoreboard(-100, 220)
 game_is_on = True
 
 while game_is_on:
-    if BALL_SPEED < 0:
-        BALL_SPEED = 0.001
-    time.sleep(BALL_SPEED)
+    # if BALL_SPEED < 0:
+    #     BALL_SPEED = 0.001
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
     if abs(ball.ycor()) > 280:
@@ -50,25 +49,16 @@ while game_is_on:
     # Detect paddle collisions
     if abs(ball.xcor() - right_paddle.xcor()) < 20 and abs(ball.ycor() - right_paddle.ycor()) < 50:
         ball.paddle_bounce()
-        BALL_SPEED -= 0.01
     if abs(ball.xcor() - left_paddle.xcor()) < 20 and abs(ball.ycor() - left_paddle.ycor()) < 50:
         ball.paddle_bounce()
-        BALL_SPEED -= 0.01
     # Stop game if ball hits wall
     if ball.xcor() > 390:
         ball.ball_reset()
         ball.bounce()
         left_score.update_score()
-        if BALL_SPEED < 0.001:
-            BALL_SPEED *= 2
     if ball.xcor() < -390:
         ball.ball_reset()
         ball.bounce()
         right_score.update_score()
-        if BALL_SPEED < 0.001:
-            BALL_SPEED *= 2
-# TODO 5: Create class for scoreboard and score tracking method
-
-# TODO 6: If pong ball hits paddle then bounce, if paddle misses update score
 
 screen.exitonclick()
