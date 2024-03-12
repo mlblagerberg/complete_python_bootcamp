@@ -15,7 +15,8 @@ screen.setup(width=800, height=600)
 # TODO: Use random module to create cars to drive across with random speeds in random lanes
 # TODO: Create scoreboard to score how far the turtle has traveled without getting hit
 # TODO: Create coins for game that add to the score and obstacles that cannot be walked over by the turtle
-
+# TODO: Create game levels so when turtle reaches te top of the screen increase car speed and move turtle back down to
+#  bottom of the screen
 
 
 
