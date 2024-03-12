@@ -34,26 +34,30 @@ screen.onkey(key="s", fun=left_paddle.move_down)
 # TODO 4: Create class for pong ball and get ball and get it to bounce, end game if it hits walls and bounces off
 #  paddles to move back and forth depending on paddle hits
 screen.tracer(0)
+right_score = Scoreboard(100, 220)
+left_score = Scoreboard(-100, 220)
 game_is_on = True
 while game_is_on:
     time.sleep(0.05)
     screen.update()
     ball.move()
-    right_score = Scoreboard(100, 220)
-    left_score = Scoreboard(-100, 220)
     if abs(ball.ycor()) > 280:
         ball.bounce()
     # Detect paddle collisions
     if abs(ball.xcor() - right_paddle.xcor()) < 20 and abs(ball.ycor() - right_paddle.ycor()) < 100:
         ball.paddle_bounce()
-        right_score.update_score()
     if abs(ball.xcor() - left_paddle.xcor()) < 20 and abs(ball.ycor() - left_paddle.ycor()) < 100:
         ball.paddle_bounce()
-        left_score.update_score()
     # Stop game if ball hits wall
-    if abs(ball.xcor()) > 390:
-        game_is_on = False
-
+    if ball.xcor() > 390:
+        # game_is_on = False
+        ball.ball_reset()
+        ball.bounce()
+        left_score.update_score()
+    if ball.xcor() < -390:
+        ball.ball_reset()
+        ball.bounce()
+        right_score.update_score()
 # TODO 5: Create class for scoreboard and score tracking method
 
 # TODO 6: If pong ball hits paddle then bounce, if paddle misses update score

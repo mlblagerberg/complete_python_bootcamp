@@ -16,10 +16,12 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.goto(x_cord, y_cord)
         self.score = 0
-        # self.write(f"{self.score}", align="center", font=("Courier", 70, "normal"))
+        # self.write(f"{self.score}", align="center", font=("Courier", 60, "normal"))
 
     def update_score(self):
-        self.clear()
         self.score += 1
-        self.write(f"{self.score}", align="center", font=("Courier", 70, "normal"))
+        self.clear()
+        self.write(f"{self.score}", align="center", font=("Courier", 60, "normal"))
+
+        return self.score
 
