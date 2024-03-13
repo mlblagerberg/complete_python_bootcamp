@@ -1,11 +1,12 @@
 """Project: Lane Class for Turtle Crossing Capstone
 Start: March 12th, 2024
-Last touched: March 12th, 2024
+Last touched: March 13th, 2024
 Author: Madeleine L.
 """
 
 from turtle import Turtle
-STEP = 10
+DASH_STEP = 10
+
 
 class Lane(Turtle):
 
@@ -20,7 +21,7 @@ class Lane(Turtle):
         self.screen_height = screen_height
         self.lane_count = 15
         self.lane_step = round(screen_height / 15)
-        self.dash_count = round(screen_width / STEP)
+        self.dash_count = round(screen_width / DASH_STEP)
 
     def create_lanes(self):
         for i in range(self.lane_count):
@@ -30,9 +31,9 @@ class Lane(Turtle):
             # line_dashes = self.dash_count
             for _ in range(self.dash_count):
                 self.setheading(180)
-                self.forward(STEP)
+                self.forward(DASH_STEP)
                 self.pendown()
-                self.forward(STEP)
+                self.forward(DASH_STEP)
                 self.penup()
 
 

@@ -1,6 +1,6 @@
 """Project: Main File for Turtle Crossing Capstone
 Start: March 11th, 2024
-Last touched: March 12th, 2024
+Last touched: March 13th, 2024
 Author: Madeleine L.
 """
 
@@ -8,6 +8,8 @@ import time
 from turtle import Turtle, Screen
 from player import Player
 from lanes import Lane
+from car_manager import Car, CarManager
+from random import random, randint
 
 WIDTH = 1000
 HEIGHT = 1000
@@ -20,6 +22,10 @@ screen.tracer(0)
 player = Player(screen_width=WIDTH, screen_height=HEIGHT)
 lane = Lane(screen_width=WIDTH, screen_height=HEIGHT)
 lane.create_lanes()
+# car = Car(screen_width=WIDTH, screen_height=HEIGHT)
+# car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
+# car_manager.create_cars()
+# car_manager.move_cars()
 
 screen.listen()
 screen.onkey(key="Up", fun=player.move_forward)
@@ -27,11 +33,25 @@ screen.onkey(key="Left", fun=player.move_left)
 screen.onkey(key="Down", fun=player.move_backward)
 screen.onkey(key="Right", fun=player.move_right)
 
+car_count = randint(10, 30)
+car_list = []
+for _ in range(car_count):
+    rand_time = random()
+    time.sleep(rand_time)
+    car = Car(screen_width=WIDTH, screen_height=HEIGHT)
+    # car.car_move()
+    car_list.append(car)
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+    for i in car_list:
+        i.car_move()
+
+
+
+
 
 # TODO: Place Turtle at the bottom of the screen and make it move forward by a jump amount with arrow keys
 # TODO: Use random module to create cars to drive across with random speeds in random lanes
