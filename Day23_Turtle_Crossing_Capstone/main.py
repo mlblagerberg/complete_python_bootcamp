@@ -9,8 +9,8 @@ from turtle import Turtle, Screen
 from player import Player
 from lanes import Lane
 
-WIDTH = 600
-HEIGHT = 600
+WIDTH = 1000
+HEIGHT = 1000
 
 # TODO: Create grey background screen with dotted lines for lanes
 screen = Screen()

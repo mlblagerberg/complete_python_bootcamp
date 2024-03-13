@@ -18,13 +18,14 @@ class Lane(Turtle):
         self.setheading(180)
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.lane_count = round(screen_height / 40)
+        self.lane_count = 15
+        self.lane_step = round(screen_height / 15)
         self.dash_count = round(screen_width / STEP)
 
     def create_lanes(self):
         for i in range(self.lane_count):
             x_cord = self.screen_width / 2
-            y_cord = -(self.screen_height / 2) + 40 * i
+            y_cord = -(self.screen_height / 2) + self.lane_step * i
             self.setposition(x_cord, y_cord)
             # line_dashes = self.dash_count
             for _ in range(self.dash_count):
