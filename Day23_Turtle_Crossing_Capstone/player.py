@@ -10,32 +10,33 @@ WEST = 180
 SOUTH = 270
 EAST = 0
 
-STEP = 30
-
 
 class Player(Turtle):
 
-    def __init__(self):
+    def __init__(self, screen_width, screen_height):
         super().__init__()
         self.penup()
         self.color("green")
         self.shape("turtle")
         self.setheading(NORTH)
-        self.shapesize(1.5)
-        self.setposition(0, -270)
+        self.step = 45
+        self.x_cord = 0
+        self.y_cord = -(screen_height - self.step) / 2
+        self.shapesize(stretch_wid=1.5, stretch_len=1.5)
+        self.setposition(0, self.y_cord)
 
     def move_forward(self):
         self.setheading(NORTH)
-        self.forward(STEP)
+        self.forward(self.step)
 
     def move_left(self):
         self.setheading(WEST)
-        self.forward(STEP)
+        self.forward(self.step)
 
     def move_backward(self):
         self.setheading(SOUTH)
-        self.forward(STEP)
+        self.forward(self.step)
 
     def move_right(self):
         self.setheading(EAST)
-        self.forward(STEP)
+        self.forward(self.step)

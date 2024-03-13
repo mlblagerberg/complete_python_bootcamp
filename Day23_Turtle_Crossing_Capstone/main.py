@@ -7,14 +7,19 @@ Author: Madeleine L.
 import time
 from turtle import Turtle, Screen
 from player import Player
+from lanes import Lane
+
+WIDTH = 600
+HEIGHT = 600
 
 # TODO: Create grey background screen with dotted lines for lanes
 screen = Screen()
 screen.bgcolor("grey")
-screen.setup(width=600, height=600)
+screen.setup(width=WIDTH, height=HEIGHT)
 screen.tracer(0)
-player = Player()
-
+player = Player(screen_width=WIDTH, screen_height=HEIGHT)
+lane = Lane(screen_width=WIDTH, screen_height=HEIGHT)
+lane.create_lanes()
 
 screen.listen()
 screen.onkey(key="Up", fun=player.move_forward)
