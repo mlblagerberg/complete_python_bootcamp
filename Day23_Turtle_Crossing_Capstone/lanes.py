@@ -14,7 +14,7 @@ class Lane(Turtle):
         self.hideturtle()
         self.penup()
         self.color("gold")
-        self.width(4)
+        self.width(2)
         self.setheading(180)
         self.screen_width = screen_width
         self.screen_height = screen_height

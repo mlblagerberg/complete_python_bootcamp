@@ -19,9 +19,9 @@ class Player(Turtle):
         self.color("green")
         self.shape("turtle")
         self.setheading(NORTH)
-        self.step = 45
+        self.step = 40
         self.x_cord = 0
-        self.y_cord = -(screen_height - self.step) / 2
+        self.y_cord = -(screen_height / 2) + 20
         self.shapesize(stretch_wid=1.5, stretch_len=1.5)
         self.setposition(0, self.y_cord)
 
