@@ -1,11 +1,11 @@
 """Project: Car Class for Turtle Crossing Capstone
 Start: March 12th, 2024
-Last touched: March 13th, 2024
+Last touched: March 14th, 2024
 Author: Madeleine L.
 """
 
 from turtle import Turtle
-from random import choice, randint, random
+from random import choice, randint, betavariate
 import time
 
 COLORS = ["red", "blue", "green", "yellow", "orange", "purple", "deep pink", "black", "white", "gold"]
@@ -55,7 +55,8 @@ class CarManager:
     def move_cars(self):
         for i in self.car_list:
             i.car_move()
-            rand_time = random()
+            rand_time = randint(0, 5) / 10
+            print(rand_time)
             time.sleep(rand_time)
 
 

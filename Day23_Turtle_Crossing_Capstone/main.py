@@ -1,6 +1,6 @@
 """Project: Main File for Turtle Crossing Capstone
 Start: March 11th, 2024
-Last touched: March 13th, 2024
+Last touched: March 14th, 2024
 Author: Madeleine L.
 """
 
@@ -42,8 +42,8 @@ screen.onkey(key="Right", fun=player.move_right)
 #     # car.car_move()
 #     car_list.append(car)
 
-rand_time = random()
 for _ in range(1, 11):
+    rand_time = randint(0, 20) / 10
     time.sleep(rand_time)
     car = Car(screen_width=WIDTH, screen_height=HEIGHT)
     car.car_move()
