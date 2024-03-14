@@ -33,21 +33,27 @@ screen.onkey(key="Left", fun=player.move_left)
 screen.onkey(key="Down", fun=player.move_backward)
 screen.onkey(key="Right", fun=player.move_right)
 
-car_count = randint(10, 30)
-car_list = []
-for _ in range(car_count):
-    rand_time = random()
+# car_count = randint(10, 30)
+# car_list = []
+# for _ in range(car_count):
+#     rand_time = random()
+#     time.sleep(rand_time)
+#     car = Car(screen_width=WIDTH, screen_height=HEIGHT)
+#     # car.car_move()
+#     car_list.append(car)
+
+rand_time = random()
+for _ in range(1, 11):
     time.sleep(rand_time)
     car = Car(screen_width=WIDTH, screen_height=HEIGHT)
-    # car.car_move()
-    car_list.append(car)
+    car.car_move()
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    for i in car_list:
-        i.car_move()
+
+
 
 
 

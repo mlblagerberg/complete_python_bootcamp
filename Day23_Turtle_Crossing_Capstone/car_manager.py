@@ -24,13 +24,12 @@ class Car(Turtle):
         self.screen_height = screen_height
         self.lane_step = round(screen_height / 15)
         self.lane_details = self.car_lane()
-        self.setx(self.lane_details[0]) #= self.lane_details[0]
+        self.setx(self.lane_details[0])
         self.sety(self.lane_details[1])
-        # self.goto(self.lane_details[0], self.lane_details[1])
         self.x_move = randint(10, 20)
 
     def car_lane(self):
-        lane = randint(1, 15)
+        lane = randint(1, 30)
         x_cord = self.screen_width / 2
         y_cord = -(self.screen_height / 2) + (self.lane_step / 2) * lane
         return x_cord, y_cord
