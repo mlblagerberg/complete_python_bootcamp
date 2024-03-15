@@ -22,10 +22,11 @@ screen.tracer(0)
 player = Player(screen_width=WIDTH, screen_height=HEIGHT)
 lane = Lane(screen_width=WIDTH, screen_height=HEIGHT)
 lane.create_lanes()
-# car = Car(screen_width=WIDTH, screen_height=HEIGHT)
-# car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
-# car_manager.create_cars()
-# car_manager.move_cars()
+car_sets = []
+for _ in range(10):
+    car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
+    car_manager.create_cars()
+    car_sets.append(car_manager)
 
 screen.listen()
 screen.onkey(key="Up", fun=player.move_forward)
@@ -33,25 +34,19 @@ screen.onkey(key="Left", fun=player.move_left)
 screen.onkey(key="Down", fun=player.move_backward)
 screen.onkey(key="Right", fun=player.move_right)
 
-# car_count = randint(10, 30)
-# car_list = []
-# for _ in range(car_count):
-#     rand_time = random()
-#     time.sleep(rand_time)
-#     car = Car(screen_width=WIDTH, screen_height=HEIGHT)
-#     # car.car_move()
-#     car_list.append(car)
-
-for _ in range(1, 11):
-    rand_time = randint(0, 20) / 10
-    time.sleep(rand_time)
-    car = Car(screen_width=WIDTH, screen_height=HEIGHT)
-    car.car_move()
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+    for i in car_sets:
+        i.move_cars()
+    if player.ycor() >= HEIGHT / 2 - 20:
+        game_is_on = False
+    # rand_time = randint(0, 15)
+    # time.sleep(rand_time)
+    # car_manager.create_cars()
+
 
 
 

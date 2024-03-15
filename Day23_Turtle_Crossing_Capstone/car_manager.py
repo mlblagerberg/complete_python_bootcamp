@@ -29,9 +29,9 @@ class Car(Turtle):
         self.x_move = randint(10, 20)
 
     def car_lane(self):
-        lane = randint(1, 30)
+        lane = randint(1, 15)
         x_cord = self.screen_width / 2
-        y_cord = -(self.screen_height / 2) + (self.lane_step / 2) * lane
+        y_cord = -(self.screen_height + self.lane_step) / 2 + self.lane_step * lane
         return x_cord, y_cord
 
     def car_move(self):
@@ -42,7 +42,7 @@ class Car(Turtle):
 class CarManager:
 
     def __init__(self, screen_width, screen_height):
-        self.car_count = randint(10, 30)
+        self.car_count = randint(0, 30)
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.car_list = []
@@ -55,9 +55,9 @@ class CarManager:
     def move_cars(self):
         for i in self.car_list:
             i.car_move()
-            rand_time = randint(0, 5) / 10
-            print(rand_time)
-            time.sleep(rand_time)
+            # rand_time = randint(0, 5) / 10
+            # print(rand_time)
+            # time.sleep(rand_time)
 
 
 
