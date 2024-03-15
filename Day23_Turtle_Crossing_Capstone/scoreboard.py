@@ -20,4 +20,9 @@ class Scoreboard(Turtle):
         self.y_cord = screen_height / 2 - 40
         self.x_cord = -(screen_width / 2) + 40
         self.setposition(self.x_cord, self.y_cord)
-        self.write(f"Level {level}", align="left", font=FONT)
+        self.write(f"Level {self.level}", align="left", font=FONT)
+
+    def increase_level(self):
+        self.level += 1
+        self.clear()
+        self.write(f"Level {self.level}", align="left", font=FONT)

@@ -45,6 +45,7 @@ while game_is_on:
     car_manager.move_cars()
     if player.ycor() >= HEIGHT / 2 - 20:
         player.next_level()
+        scoreboard.increase_level()
     for car in car_list:
         # Add one car to the list every time a car crosse half way point.
         if car.xcor() == 0:
