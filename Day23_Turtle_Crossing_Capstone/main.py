@@ -52,7 +52,13 @@ while game_is_on:
             car_list.append(Car(screen_width=WIDTH, screen_height=HEIGHT))
         if abs(player.xcor() - car.xcor()) < 20:  # and player.xcor() < car.xcor():
             if abs(player.ycor() - car.ycor()) < 20:  # Add proces here to restart game
-                game_is_on = False
+                scoreboard.game_over()
+                player.next_level()
+                player.setheading(90)
+                # car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
+                # car_manager.create_cars()
+                # car_list = car_manager.car_list
+                # game_is_on = False
     if len(car_list) < 10:
         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
         next_car_manager.create_cars()
