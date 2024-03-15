@@ -9,6 +9,7 @@ from turtle import Turtle, Screen
 from player import Player
 from lanes import Lane, Grass
 from car_manager import Car, CarManager
+from scoreboard import Scoreboard
 from random import random, randint
 
 WIDTH = 1000
@@ -27,6 +28,7 @@ grass.draw_grass()
 car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
 car_manager.create_cars()
 car_list = car_manager.car_list
+scoreboard = Scoreboard(screen_width=WIDTH, screen_height=HEIGHT)
 # car_sets.append(car_manager)
 
 screen.listen()
@@ -47,10 +49,9 @@ while game_is_on:
         # Add one car to the list every time a car crosse half way point.
         if car.xcor() == 0:
             car_list.append(Car(screen_width=WIDTH, screen_height=HEIGHT))
-        if abs(player.xcor() - car.xcor()) < 20: #and player.xcor() < car.xcor():
-            if abs(player.ycor() - car.ycor()) < 20:
-                # Add proces here to restart game
-                # game_is_on = False
+        if abs(player.xcor() - car.xcor()) < 20:  # and player.xcor() < car.xcor():
+            if abs(player.ycor() - car.ycor()) < 20:  # Add proces here to restart game
+                game_is_on = False
     if len(car_list) < 10:
         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
         next_car_manager.create_cars()
