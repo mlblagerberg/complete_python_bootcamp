@@ -40,43 +40,30 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    # for i in cars:
-    #     i.move_cars()
     car_manager.move_cars()
     if player.ycor() >= HEIGHT / 2 - 20:
         player.next_level()
+    for car in car_list:
+        # Add one car to the list every time a car crosse half way point.
+        if car.xcor() == 0:
+            car_list.append(Car(screen_width=WIDTH, screen_height=HEIGHT))
+        if abs(player.xcor() - car.xcor()) < 20: #and player.xcor() < car.xcor():
+            if abs(player.ycor() - car.ycor()) < 20:
+                # Add proces here to restart game
+                # game_is_on = False
     if len(car_list) < 10:
         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
         next_car_manager.create_cars()
         for new_car in next_car_manager.car_list:
             car_list.append(new_car)
-    for car in car_list:
-        # Add one car to the list every time a car crosse half way point.
-        if car.xcor() == 0:
-            car_list.append(Car(screen_width=WIDTH, screen_height=HEIGHT))
-    # for car in car_list:
-    #     if car.xcor() <= -WIDTH / 2 + 20:
-    #         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
-    #         next_car_manager.create_cars()
-    #         for new_car in next_car_manager.car_list:
-    #             car_list.append(new_car)
-    # rand_time = randint(0, 15)
-    # time.sleep(rand_time)
-    # car_manager.create_cars()
 
-
-
-
-
-
-
-
-# TODO: Place Turtle at the bottom of the screen and make it move forward by a jump amount with arrow keys
-# TODO: Use random module to create cars to drive across with random speeds in random lanes
+# TODO: Define collisions in game with cars and go back to level 1
 # TODO: Create scoreboard to score how far the turtle has traveled without getting hit
 # TODO: Create coins for game that add to the score and obstacles that cannot be walked over by the turtle
 # TODO: Create game levels so when turtle reaches te top of the screen increase car speed and move turtle back down to
 #  bottom of the screen
+# TODO: Increase number of single cars that spawn depending on the level the player is on.
+
 
 
 
