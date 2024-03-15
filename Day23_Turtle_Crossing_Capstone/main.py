@@ -42,7 +42,7 @@ while game_is_on:
     #     i.move_cars()
     car_manager.move_cars()
     if player.ycor() >= HEIGHT / 2 - 20:
-        game_is_on = False
+        player.next_level()
     if len(car_list) < 10:
         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
         next_car_manager.create_cars()
