@@ -1,6 +1,6 @@
 """Project: Car Class for Turtle Crossing Capstone
 Start: March 12th, 2024
-Last touched: March 14th, 2024
+Last touched: March 15th, 2024
 Author: Madeleine L.
 """
 
@@ -42,7 +42,7 @@ class Car(Turtle):
 class CarManager:
 
     def __init__(self, screen_width, screen_height):
-        self.car_count = randint(0, 30)
+        self.car_count = randint(1, 30)
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.car_list = []
@@ -55,6 +55,10 @@ class CarManager:
     def move_cars(self):
         for i in self.car_list:
             i.car_move()
+            if i.xcor() < -self.screen_width / 2:
+                i.hideturtle()
+                self.car_list.remove(i)
+
             # rand_time = randint(0, 5) / 10
             # print(rand_time)
             # time.sleep(rand_time)

@@ -1,6 +1,6 @@
 """Project: Main File for Turtle Crossing Capstone
 Start: March 11th, 2024
-Last touched: March 14th, 2024
+Last touched: March 15th, 2024
 Author: Madeleine L.
 """
 
@@ -22,11 +22,10 @@ screen.tracer(0)
 player = Player(screen_width=WIDTH, screen_height=HEIGHT)
 lane = Lane(screen_width=WIDTH, screen_height=HEIGHT)
 lane.create_lanes()
-car_sets = []
-for _ in range(10):
-    car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
-    car_manager.create_cars()
-    car_sets.append(car_manager)
+car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
+car_manager.create_cars()
+car_list = car_manager.car_list
+# car_sets.append(car_manager)
 
 screen.listen()
 screen.onkey(key="Up", fun=player.move_forward)
@@ -39,10 +38,22 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    for i in car_sets:
-        i.move_cars()
+    # for i in cars:
+    #     i.move_cars()
+    car_manager.move_cars()
     if player.ycor() >= HEIGHT / 2 - 20:
         game_is_on = False
+    if len(car_list) < 10:
+        next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
+        next_car_manager.create_cars()
+        for new_car in next_car_manager.car_list:
+            car_list.append(new_car)
+    # for car in car_list:
+    #     if car.xcor() <= -WIDTH / 2 + 20:
+    #         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
+    #         next_car_manager.create_cars()
+    #         for new_car in next_car_manager.car_list:
+    #             car_list.append(new_car)
     # rand_time = randint(0, 15)
     # time.sleep(rand_time)
     # car_manager.create_cars()
