@@ -29,7 +29,7 @@ class Car(Turtle):
         self.x_move = randint(10, 20)
 
     def car_lane(self):
-        lane = randint(1, 15)
+        lane = randint(2, 15)
         x_cord = self.screen_width / 2
         y_cord = -(self.screen_height + self.lane_step) / 2 + self.lane_step * lane
         return x_cord, y_cord

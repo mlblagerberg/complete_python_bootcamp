@@ -8,6 +8,27 @@ from turtle import Turtle
 DASH_STEP = 10
 
 
+class Grass(Turtle):
+
+    def __init__(self, screen_width, screen_height):
+        super().__init__()
+        self.hideturtle()
+        self.shape("square")
+        self.color("light green")
+        self.lane_step = round(screen_height / 15)
+        self.width(self.lane_step)
+        self.screen_width = screen_width
+        self.penup()
+        self.x_cord = screen_width / 2
+        self.y_cord = (-screen_height + self.lane_step) / 2
+        self.setposition(self.x_cord, self.y_cord)
+        self.setheading(180)
+
+    def draw_grass(self):
+        self.pendown()
+        self.forward(self.screen_width)
+
+
 class Lane(Turtle):
 
     def __init__(self, screen_width, screen_height):
@@ -35,5 +56,3 @@ class Lane(Turtle):
                 self.pendown()
                 self.forward(DASH_STEP)
                 self.penup()
-
-

@@ -7,7 +7,7 @@ Author: Madeleine L.
 import time
 from turtle import Turtle, Screen
 from player import Player
-from lanes import Lane
+from lanes import Lane, Grass
 from car_manager import Car, CarManager
 from random import random, randint
 
@@ -22,6 +22,8 @@ screen.tracer(0)
 player = Player(screen_width=WIDTH, screen_height=HEIGHT)
 lane = Lane(screen_width=WIDTH, screen_height=HEIGHT)
 lane.create_lanes()
+grass = Grass(screen_width=WIDTH, screen_height=HEIGHT)
+grass.draw_grass()
 car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
 car_manager.create_cars()
 car_list = car_manager.car_list
@@ -48,6 +50,10 @@ while game_is_on:
         next_car_manager.create_cars()
         for new_car in next_car_manager.car_list:
             car_list.append(new_car)
+    for car in car_list:
+        # Add one car to the list every time a car crosse half way point.
+        if car.xcor() == 0:
+            car_list.append(Car(screen_width=WIDTH, screen_height=HEIGHT))
     # for car in car_list:
     #     if car.xcor() <= -WIDTH / 2 + 20:
     #         next_car_manager = CarManager(screen_width=WIDTH, screen_height=HEIGHT)
