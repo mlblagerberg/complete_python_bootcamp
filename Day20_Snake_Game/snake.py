@@ -1,6 +1,6 @@
 """Project: Snake Class for Snake Game
 Start: February 29th, 2024
-Last touched: March 2nd, 2024
+Last touched: March 19th, 2024
 Author: Madeleine L.
 """
 
@@ -63,3 +63,11 @@ class Snake:
     def south(self):
         if self.head.heading() != NORTH:
             self.head.setheading(SOUTH)
+
+    def reset(self):
+        for turtle in self.turtles:
+            turtle.goto(1000, 1000)
+        self.turtles.clear()
+        self.create_snake()
+        self.head = self.turtles[0]
+        self.tail = self.turtles[-1]

@@ -11,6 +11,7 @@ import time
 COLORS = ["red", "blue", "green", "yellow", "orange", "purple", "deep pink", "black", "white", "gold"]
 SPEED_INCREMENT = 5
 
+
 class Car(Turtle):
 
     def __init__(self, screen_width, screen_height):

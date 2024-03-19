@@ -1,9 +1,8 @@
 """Project: Snake Game
 Start: February 29th, 2024
-Last touched: March 3rd, 2024
+Last touched: March 19th, 2024
 Author: Madeleine L.
 """
-
 from turtle import Turtle, Screen
 from snake import Snake
 from food import Food
@@ -40,14 +39,16 @@ while move_forward:
 
     # Detect collision with wall
     if abs(snake.head.pos()[0] + 8) >= 300 or abs(snake.head.pos()[1] + 8) >= 300:
-        move_forward = False
-        score.game_over()
+        # move_forward = False
+        score.reset()
+        snake.reset()
 
     # Detect collision with tail
     for turtle in snake.turtles[1:]:  # i in range(1, len(snake.turtles) - 1): Using slicing instead, easier to read
         if snake.head.distance(turtle) < 10:
-            move_forward = False
-            score.game_over()
+            # move_forward = False
+            score.reset()
+            snake.reset()
 
 
 screen.exitonclick()
