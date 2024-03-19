@@ -1,6 +1,6 @@
 """Project: Car Class for Turtle Crossing Capstone
 Start: March 12th, 2024
-Last touched: March 15th, 2024
+Last touched: March 19th, 2024
 Author: Madeleine L.
 """
 
@@ -9,7 +9,7 @@ from random import choice, randint, betavariate
 import time
 
 COLORS = ["red", "blue", "green", "yellow", "orange", "purple", "deep pink", "black", "white", "gold"]
-
+SPEED_INCREMENT = 5
 
 class Car(Turtle):
 
@@ -26,7 +26,7 @@ class Car(Turtle):
         self.lane_details = self.car_lane()
         self.setx(self.lane_details[0])
         self.sety(self.lane_details[1])
-        self.x_move = randint(10, 20)
+        self.car_speed = randint(10, 20)
 
     def car_lane(self):
         lane = randint(2, 15)
@@ -35,8 +35,11 @@ class Car(Turtle):
         return x_cord, y_cord
 
     def car_move(self):
-        new_x = self.xcor() - self.x_move
+        new_x = self.xcor() - self.car_speed
         self.goto(new_x, self.lane_details[1])
+
+    def level_up(self):
+        self.car_speed += SPEED_INCREMENT
 
 
 class CarManager:

@@ -10,7 +10,6 @@ from player import Player
 from lanes import Lane, Grass
 from car_manager import Car, CarManager
 from scoreboard import Level, Score
-from random import random, randint
 
 WIDTH = 1000
 HEIGHT = 1000
@@ -46,6 +45,9 @@ while game_is_on:
     if player.ycor() >= HEIGHT / 2 - 20:
         player.next_level()
         level.increase_level()
+        # Increase car speed as level increases
+        for car in car_list:
+            car.level_up()
     score.score = player.steps_taken
     score.update_score()
     for car in car_list:
