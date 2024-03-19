@@ -1,6 +1,6 @@
 """Project: Player Class for Turtle Crossing Capstone
 Start: March 12th, 2024
-Last touched: March 15th, 2024
+Last touched: March 19th, 2024
 Author: Madeleine L.
 """
 
@@ -23,6 +23,7 @@ class Player(Turtle):
         self.step = round(screen_height / 15)
         self.x_cord = 0
         self.y_cord = -(screen_height / 2) + 20
+        self.steps_taken = 0
         self.width_stretch_factor = (1.5 / 600) * screen_width
         self.height_stretch_factor = (1.5 / 600) * screen_height
         self.shapesize(stretch_wid=self.width_stretch_factor, stretch_len=self.height_stretch_factor)
@@ -31,6 +32,7 @@ class Player(Turtle):
     def move_forward(self):
         self.setheading(NORTH)
         self.forward(self.step)
+        self.steps_taken += 1
 
     def move_left(self):
         self.setheading(WEST)
@@ -39,6 +41,7 @@ class Player(Turtle):
     def move_backward(self):
         self.setheading(SOUTH)
         self.forward(self.step)
+        self.steps_taken -= 1
 
     def move_right(self):
         self.setheading(EAST)
