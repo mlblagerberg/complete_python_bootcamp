@@ -25,12 +25,12 @@ class Level(Turtle):
     def increase_level(self):
         self.level += 1
         self.clear()
-        self.write(f"Level {self.level}", align="left", font=FONT)
+        self.write(f"Level: {self.level}", align="left", font=FONT)
 
     def game_over(self):
         self.level = 1
         self.clear()
-        self.write(f"Level {self.level}", align="left", font=FONT)
+        self.write(f"Level: {self.level}", align="left", font=FONT)
 
 
 class Score(Turtle):
@@ -45,8 +45,8 @@ class Score(Turtle):
         self.y_cord = screen_height / 2 - 40
         self.x_cord = (screen_width / 2) - 200
         self.setposition(self.x_cord, self.y_cord)
-        self.write(f"Score {self.score}", align="left", font=FONT)
+        self.write(f"Score: {self.score}", align="left", font=FONT)
 
     def update_score(self):
         self.clear()
-        self.write(f"Score {self.score}", align="left", font=FONT)
+        self.write(f"Score: {self.score}", align="left", font=FONT)
