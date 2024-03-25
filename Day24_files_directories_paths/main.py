@@ -28,8 +28,8 @@ with open(os.path.expanduser(
 # Store letter as string and then replace [name] with names. Saving strings to unique objects
 with open(os.path.expanduser(
         "~/GitHub/complete_python_bootcamp/Day24_files_directories_paths/Input/Letters/starting_letter.txt"), mode="r"
-) as letter:
-    input_letter = letter.read()
+) as input_letter:
+    input_content = input_letter.read()
     for name in names_list:
         separated_name = name.split()
         file_name = ""
@@ -37,8 +37,10 @@ with open(os.path.expanduser(
             file_name += f"{i}_"
         file_name += f"final_letter.txt"
 
-        output_letter = input_letter.replace("[name]", f"{name}")
-
-        # print(output_letter)
+        output_content = input_content.replace("[name]", f"{name}")
+        with open(os.path.expanduser(f"~/GitHub/complete_python_bootcamp/Day24_files_directories_paths/Output/"
+                                     f"{file_name}"), mode="w") as output_letter:
+            output_letter.write(output_content)
+        # print(file_name)
 
 
