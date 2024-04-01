@@ -5,6 +5,7 @@ Author: Madeleine L.
 """
 
 import csv
+import pandas as pd
 
 weather_data_clean = []
 with open("weather_data.csv") as data:
@@ -19,7 +20,9 @@ with open("weather_data.csv") as data:
     print(weather_data)
     temps = []
     for row in weather_data:
-        temp = row[1]
-        temps.append(temp)
+        if row[1] != "temp":
+            temps.append(int(row[1]))
     print(temps)
-    # print(type(weather_data))
+
+weather_data = pd.read_csv("weather_data.csv")
+print(weather_data)
