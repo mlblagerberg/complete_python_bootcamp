@@ -1,4 +1,4 @@
-"""Project: Working with files
+"""Project: Working with text files
 Start: March 20th, 2024
 Last touched: March 26th, 2024
 Author: Madeleine L.
