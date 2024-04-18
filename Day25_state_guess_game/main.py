@@ -53,23 +53,48 @@ data = pd.read_csv("weather_data.csv")
 # Get data in a row given some constraint
 # print(data[data.day == "Wednesday"])
 # get row where the temperature was at its maximum
-print(data[data.temp == data.temp.max()])
+# print(data[data.temp == data.temp.max()])
+#
+# # Get Mondays temp in fehrenheit
+# monday = data[data.day == "Monday"]
+# temp_f = (monday.temp * 9/5) + 32
+# print(temp_f)
+#
+# # Create dataframe from scratch
+# data_dict = {
+#     "students": ["Amy", "James", "Angela"],
+#     "scores": [76, 56, 65]
+# }
+#
+# df = pd.DataFrame(data_dict)
+# print(df)
+# # Save to new csv
+# df.to_csv("new_data.csv")
+# # print(data_dict)
 
-# Get Mondays temp in fehrenheit
-monday = data[data.day == "Monday"]
-temp_f = (monday.temp * 9/5) + 32
-print(temp_f)
+# Squirrel Data!
+data = pd.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+cleaned_data = data[data["Primary Fur Color"].notna()]
+fur_colors = cleaned_data["Primary Fur Color"].unique().tolist()
+# print(fur_colors)
+counts = []
+for color in fur_colors:
+    color_rows = cleaned_data[cleaned_data["Primary Fur Color"] == color]
+    color_list = color_rows["Primary Fur Color"]
+    count = color_list.count()
+    counts.append(count)
+# print(counts)
 
-# Create dataframe from scratch
-data_dict = {
-    "students": ["Amy", "James", "Angela"],
-    "scores": [76, 56, 65]
+# Create dictionary out of lists
+color_dict = {
+    "color": fur_colors,
+    "count": counts
 }
 
-df = pd.DataFrame(data_dict)
-print(df)
-# Save to new csv
-df.to_csv("new_data.csv")
-# print(data_dict)
+color_df = pd.DataFrame(color_dict)
+color_df.to_csv("squirrel_colors.csv")
+
+
+
 
 
