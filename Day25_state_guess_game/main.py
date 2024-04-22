@@ -1,6 +1,6 @@
 """Project: States Game
 Start: April 18th, 2024
-Last touched: April 18th, 2024
+Last touched: April 22th, 2024
 Author: Madeleine L.
 """
 
@@ -30,7 +30,7 @@ states_guessed = 0
 answers = []
 while play_game:
     input_state = screen.textinput(f"{states_guessed}/50 States Correct", "What is a state name?").title()
-    # print(input_state)
+
 # Use length to determine if no rows are returned (e.g. not a state)
     answer_data = state_locations[state_locations["state"] == input_state]
     if len(answer_data) != 0:
@@ -45,10 +45,13 @@ while play_game:
         print("You win!")
     elif input_state == "Exit":
         states = state_locations["state"].tolist()
-        for state in answers:
-            states.remove(state)
-            state_df = pd.DataFrame(states, columns=['state'])
-            state_df.to_csv("states_missed.csv")
+        missing_states = [state for state in states if state not in answers]
+        state_df = pd.DataFrame(missing_states, columns=['state'])
+        state_df.to_csv("states_missed.csv")
+        # for state in answers:
+        #     states.remove(state)
+        #     state_df = pd.DataFrame(states, columns=['state'])
+        #     state_df.to_csv("states_missed.csv")
         play_game = False
 
 

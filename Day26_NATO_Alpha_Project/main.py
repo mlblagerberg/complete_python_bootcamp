@@ -16,5 +16,5 @@ names = ["Alex", "Beth", "Johnny", "Travis", "Steph"]
 short_names = [name for name in names if len(name) < 5]
 print(short_names)
 
-cap_names = [name.upper() for name in names if len(name) > 5]
+cap_names = [name.upper() for name in names if len(name) >= 5]
 print(cap_names)
