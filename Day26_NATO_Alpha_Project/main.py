@@ -9,7 +9,6 @@ import pandas as pd
 # {"A": "Alfa", "B": "Bravo", ... etc}
 nato_alpha = pd.read_csv("nato_phonetic_alphabet.csv")
 # print(nato_alpha.head())
-
 nato_dict = {row.letter: row.code for (index, row) in nato_alpha.iterrows()}
 print(nato_dict)
 
