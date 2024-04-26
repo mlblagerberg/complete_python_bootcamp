@@ -29,16 +29,36 @@ my_label.pack(side="top")
 
 # In the documentation you can see optional arguments as 'ARG = ...'
 
+
 # Unlimited arguments (also known as unlimited positional arguments)
 def add(*args):
-    total = 0
+    total_sum = 0
     for n in args:
         # print(n)
-        total += n
-    return total
+        total_sum += n
+    return total_sum
 
 
-print(add(3, 5, 6, 3))
+# print(add(3, 5, 6, 3))
+
+
+def multiply(*args):
+    product = 1
+    for n in args:
+        product *= n
+    return product
+
+
+# Key Word Arguments kwargs
+def calculate(n, **kwargs):
+    # print(kwargs)
+    n += kwargs["add"]
+    n *= kwargs["multiply"]
+    print(n)
+
+
+calculate(2, add=3, multiply=5)  # This shows a dictionary if calculate is print(kwargs)
+
 
 # to keep window on screen
 window.mainloop()
