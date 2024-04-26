@@ -12,7 +12,7 @@ FONT_SIZE = 15
 
 window = Tk()
 window.title("Miles to Km Converter")
-window.minsize(width=300, height=300)
+window.minsize(width=300, height=150)
 window.config(padx=20, pady=20)
 
 # Create labels
@@ -28,7 +28,7 @@ km_label.grid(column=2, row=1)
 result_label.grid(column=1, row=1)
 
 # User entry
-entry = Entry(width=10)
+entry = Entry(width=8)
 # entry.pack()
 entry.grid(column=1, row=0)
 
