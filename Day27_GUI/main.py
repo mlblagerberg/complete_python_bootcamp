@@ -1,6 +1,6 @@
 """Project: GUI/Tkinter Practice
 Start: April 25th, 2024
-Last touched: April 25th, 2024
+Last touched: April 26th, 2024
 Author: Madeleine L.
 """
 
@@ -28,36 +28,10 @@ my_label.pack(side="top")
 #     # Last this with c
 
 # In the documentation you can see optional arguments as 'ARG = ...'
+# Playground file has arg and kwarg examples
 
 
-# Unlimited arguments (also known as unlimited positional arguments)
-def add(*args):
-    total_sum = 0
-    for n in args:
-        # print(n)
-        total_sum += n
-    return total_sum
 
-
-# print(add(3, 5, 6, 3))
-
-
-def multiply(*args):
-    product = 1
-    for n in args:
-        product *= n
-    return product
-
-
-# Key Word Arguments kwargs
-def calculate(n, **kwargs):
-    # print(kwargs)
-    n += kwargs["add"]
-    n *= kwargs["multiply"]
-    print(n)
-
-
-calculate(2, add=3, multiply=5)  # This shows a dictionary if calculate is print(kwargs)
 
 
 # to keep window on screen
