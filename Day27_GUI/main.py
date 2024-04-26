@@ -35,7 +35,7 @@ entry.grid(column=1, row=0)
 
 # Button function to calculate conversion and update result label
 def button_clicked():
-    mile_input = int(entry.get())
+    mile_input = float(entry.get())
     km = mile_input * 1.609344
     result_label.config(text=f"{km}")
 
