@@ -20,27 +20,29 @@ miles_label = Label(text="Miles", font=(FONT, FONT_SIZE))
 equal_label = Label(text="is equal to",  font=(FONT, FONT_SIZE))
 km_label = Label(text="Km", font=(FONT, FONT_SIZE))
 result_label = Label(text=0, font=(FONT, FONT_SIZE))
+
+# Set grid
 miles_label.grid(column=2, row=0)
 equal_label.grid(column=0, row=1)
 km_label.grid(column=2, row=1)
 result_label.grid(column=1, row=1)
 
-# Entry
+# User entry
 entry = Entry(width=10)
 # entry.pack()
 entry.grid(column=1, row=0)
 
 
-# Button
+# Button function to calculate conversion and update result label
 def button_clicked():
     mile_input = int(entry.get())
     km = mile_input * 1.609344
     result_label.config(text=f"{km}")
 
 
+# Create button and add to grid
 button = Button(text="Calculate", command=button_clicked)
 button.grid(column=1, row=2)
-
 
 # to keep window on screen
 window.mainloop()
