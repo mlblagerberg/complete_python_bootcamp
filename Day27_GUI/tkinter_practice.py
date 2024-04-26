@@ -15,6 +15,13 @@ my_label = Label(text="Test label", font=("Arial", 24, "bold"))
 # place formatted label on screen
 my_label.pack(side="top")
 
+# Use place instead of pack to use coordinate system to place items on screen
+# Downside is that this is very specific to manage precise coordinates of every widget you create
+# my_label.place(x=100, y=0)
+
+# Use grid as preferred method for widget placement
+# my_label.grid(column=0, row=0)
+
 my_label["text"] = "New Test Label"
 my_label.config(text="Newest Test Label")
 
