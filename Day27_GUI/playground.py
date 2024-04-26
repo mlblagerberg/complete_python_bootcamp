@@ -61,3 +61,7 @@ class Car:
 my_car = Car(make="Nissan", seats=4)
 print(vars(my_car))
 
+def all_aboard(a, *args, **kwargs):
+    print(a, args, kwargs)
+
+all_aboard(5, 1, 2, 7, x=92, y=30, z=0)
