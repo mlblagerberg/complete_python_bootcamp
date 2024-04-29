@@ -3,6 +3,8 @@ Start: April 29th, 2024
 Last touched: April 29th, 2024
 Author: Madeleine L.
 """
+
+from tkinter import *
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -20,3 +22,22 @@ LONG_BREAK_MIN = 20
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
 # ---------------------------- UI SETUP ------------------------------- #
+window = Tk()
+window.title("Pomodoro")
+window.config(padx=100, pady=50, bg=YELLOW)
+
+canvas = Canvas(width=210, height=224, bg=YELLOW, highlightthickness=0)
+tomato_pic = PhotoImage(file="tomato.png")
+canvas.create_image(105, 112, image=tomato_pic)
+canvas.create_text(105, 135, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+canvas.pack()
+
+
+
+
+
+
+
+
+
+window.mainloop()
