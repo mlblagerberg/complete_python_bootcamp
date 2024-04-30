@@ -26,9 +26,7 @@ def reset_timer():
     timer_label.config(text="Timer")
     check.config(text="")
     window.after_cancel(timer)
-    timer_time = "00:00"
-    canvas.itemconfig(timer_text, text=timer_time)
-    return reps
+    canvas.itemconfig(timer_text, text="00:00")
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
@@ -44,7 +42,6 @@ def start_timer():
     else:
         count_down(WORK_MIN * 1)  # 25 seconds
         timer_label.config(text="Work", fg=GREEN)
-    return reps
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
