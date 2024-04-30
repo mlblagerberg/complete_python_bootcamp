@@ -66,18 +66,17 @@ window = Tk()
 window.title("Pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW)
 
-# TODO: Timer Title above tomato
+
 timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 50))
 timer_label.grid(column=1, row=0)
-# TODO: Start and Reset Buttons
+
 start_button = Button(text="Start", bg=YELLOW, highlightbackground=YELLOW, command=start_timer)
 reset_button = Button(text="Reset", bg=YELLOW, highlightbackground=YELLOW, command=reset_timer)
 start_button.grid(column=0, row=2)
 reset_button.grid(column=2, row=2)
-# TODO: Check mark icons for each completed Pomodoro
+
 check = Label(fg=GREEN, bg=YELLOW, font=(FONT_NAME, 30))
 check.grid(column=1, row=3)
-# TODO: Update 00:00 with countdown
 
 
 canvas = Canvas(width=210, height=224, bg=YELLOW, highlightthickness=0)
@@ -86,13 +85,5 @@ canvas.create_image(105, 112, image=tomato_pic)
 timer_text = canvas.create_text(105, 135, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 # count_down(5)
-
-
-
-
-
-
-
-
 
 window.mainloop()
