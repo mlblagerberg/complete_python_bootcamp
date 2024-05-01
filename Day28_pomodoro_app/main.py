@@ -1,6 +1,6 @@
 """Project: Pomodoro App
 Start: April 29th, 2024
-Last touched: April 29th, 2024
+Last touched: April 30th, 2024
 Author: Madeleine L.
 """
 
@@ -84,6 +84,5 @@ tomato_pic = PhotoImage(file="tomato.png")
 canvas.create_image(105, 112, image=tomato_pic)
 timer_text = canvas.create_text(105, 135, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
-# count_down(5)
 
 window.mainloop()
