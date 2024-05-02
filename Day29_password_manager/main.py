@@ -24,11 +24,11 @@ def change_color(canvas, item_id, new_color):
 
 window = Tk()
 window.title("My Password Manager")
-window.config(padx=100, pady=50, bg=CREAM)
+window.config(padx=20, pady=20, bg=CREAM)
 
-canvas = Canvas(height=300, width=300, bg=CREAM, highlightthickness=0)
+canvas = Canvas(height=200, width=200, bg=CREAM, highlightthickness=0)
 lock_pic = PhotoImage(file="logo.png")
-canvas.create_image(145, 125, image=lock_pic)
+canvas.create_image(100, 105, image=lock_pic)
 # logo = Image.open("logo.png")
 # lock_bitmap = ImageTk.BitmapImage(logo)
 # bitmap_item_id = canvas.create_bitmap(145, 125, bitmap=lock_bitmap)  # anchor=CENTER)
