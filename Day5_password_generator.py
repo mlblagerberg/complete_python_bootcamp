@@ -1,7 +1,7 @@
 """
 Project: Password Generator
 Start: January 20th, 2024
-Last touched: January 22th, 2024 
+Last touched: May 3rd, 2024
 Author: Madeleine L.
 """
 
@@ -189,7 +189,7 @@ else:
 
             # print(num_list)
             
-            # Now radom symbols
+            # Now random symbols
             sym_master = ["@","!","$","%","^","&","*","(",")","<",">"]
             sym_list = []
             for i in range(0,sym_count):

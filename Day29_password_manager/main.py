@@ -5,8 +5,7 @@ Author: Madeleine L.
 """
 # Resource: https://colorhunt.co/
 from tkinter import *
-import os
-from PIL import Image, ImageTk
+import password_generator as pg
 YELLOW = "#ffaf45"
 ORANGE = "#fb6d48"
 PINK = "#d74b76"
@@ -16,8 +15,7 @@ CREAM = "#fff2d7"
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
-
-def generate_password():
+def password_window():
     # ------------------------ PWD GEN UI --------------------------------------- #
     pwd_window = Toplevel(window)
     pwd_window.title("Password Generator")
@@ -45,22 +43,24 @@ def generate_password():
     pwd_length = Scale(pwd_window, from_=5, to=30, bg=CREAM, fg=BLUE, length=300, orient=HORIZONTAL
                        , variable=pwd_int)
     pwd_length.grid(column=1, row=2, columnspan=3)
-    # pwd_length.pack(side="left")
 
-    def create_password():
+    def get_password():
         sym = symbols.get()
         num = numbers.get()
         let = letters.get()
         pwd = pwd_int.get()
 
-        pwd_text.delete(0, END)
-        pwd_text.insert(0, f"password")
+        pwd_instance = pg.Password(letters_bol=let, numbers_bol=num, symbols_bol=sym, pwd_length=pwd)
+        password = pwd_instance.generate_password()
 
+        pwd_text.delete(0, END)
+        pwd_text.insert(0, f"{password}")
+        return password
 
     pwd_button = Button(pwd_window, text="Create Password", bg=CREAM, fg=BLUE, highlightbackground=CREAM, width=60
-                        , command=create_password)
+                        , command=get_password)
     pwd_button.grid(column=0, row=4, columnspan=4)
-    # pwd_button.pack()
+
 
 
 # ---------------------------- SAVE CREDENTIALS --------------------------------- #
@@ -105,7 +105,7 @@ pwd_text = Entry(highlightbackground=CREAM, width=35)
 pwd_label.grid(row=3, column=0)
 pwd_text.grid(row=3, column=1, columnspan=2)
 
-gen_pwd = Button(text="Generate Password", highlightbackground=CREAM, fg=BLUE, width=11, command=generate_password)
+gen_pwd = Button(text="Generate Password", highlightbackground=CREAM, fg=BLUE, width=11, command=password_window)
 gen_pwd.grid(row=3, column=2)
 
 add_pwd = Button(text="Add Password", highlightbackground=CREAM, fg=BLUE, width=33, command=store_credentials)
