@@ -1,6 +1,6 @@
 """Project: Tkinter Practice
 Start: April 25th, 2024
-Last touched: April 26th, 2024
+Last touched: May 3rd, 2024
 Author: Madeleine L.
 """
 # Reference: https://tcl.tk/man/tcl8.6/TkCmd/entry.htm
@@ -83,7 +83,7 @@ def check_used():
     print(checked_state.get())
 
 
-# Variable to hold onm to checked state, 0 for no check and 1 for box is checked
+# Variable to hold on to checked state, 0 for no check and 1 for box is checked
 checked_state = IntVar()
 checkbutton = Checkbutton(text="Yes?", variable=checked_state, command=check_used)
 checked_state.get()

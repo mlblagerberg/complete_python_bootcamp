@@ -19,13 +19,48 @@ CREAM = "#fff2d7"
 
 def generate_password():
     # ------------------------ PWD GEN UI --------------------------------------- #
-    pwd_window = Tk()
+    pwd_window = Toplevel(window)
     pwd_window.title("Password Generator")
     pwd_window.config(padx=20, pady=20, bg=CREAM)
 
-    # pwd_canvas = Canvas(height=100, width=100, bg=CREAM, highlightthickness=0)
-    # TODO Check boxes for symbols, letters, numbers
-    # TODO Choose password length
+    char_label = Label(pwd_window,text="Please select the characters you want to use:", bg=CREAM, fg=BLUE)
+    char_label.grid(column=0, row=1)
+
+    symbols = IntVar(value=1)
+    numbers = IntVar(value=1)
+    letters = IntVar(value=1)
+    pwd_int = IntVar()
+
+    sym_check = Checkbutton(pwd_window, text="Symbols", bg=CREAM, fg=BLUE, highlightbackground=CREAM
+                            , variable=symbols)
+    num_check = Checkbutton(pwd_window, text="Letters", bg=CREAM, fg=BLUE, highlightbackground=CREAM, variable=letters)
+    let_check = Checkbutton(pwd_window, text="Numbers", bg=CREAM, fg=BLUE, highlightbackground=CREAM, variable=numbers)
+    sym_check.grid(column=1, row=1)
+    num_check.grid(column=2, row=1)
+    let_check.grid(column=3, row=1)
+
+    length_label = Label(pwd_window,text="Please select a password length:", bg=CREAM, fg=BLUE)
+    length_label.grid(column=0, row=2)
+
+    pwd_length = Scale(pwd_window, from_=5, to=30, bg=CREAM, fg=BLUE, length=300, orient=HORIZONTAL
+                       , variable=pwd_int)
+    pwd_length.grid(column=1, row=2, columnspan=3)
+    # pwd_length.pack(side="left")
+
+    def create_password():
+        sym = symbols.get()
+        num = numbers.get()
+        let = letters.get()
+        pwd = pwd_int.get()
+
+        pwd_text.delete(0, END)
+        pwd_text.insert(0, f"password")
+
+
+    pwd_button = Button(pwd_window, text="Create Password", bg=CREAM, fg=BLUE, highlightbackground=CREAM, width=60
+                        , command=create_password)
+    pwd_button.grid(column=0, row=4, columnspan=4)
+    # pwd_button.pack()
 
 
 # ---------------------------- SAVE CREDENTIALS --------------------------------- #
@@ -65,12 +100,12 @@ user.grid(row=2, column=0)
 user_text.grid(row=2, column=1, columnspan=2)
 
 
-pwd = Label(text="Password:", bg=CREAM, fg=BLUE, font=("Ariel", 15))
+pwd_label = Label(text="Password:", bg=CREAM, fg=BLUE, font=("Ariel", 15))
 pwd_text = Entry(highlightbackground=CREAM, width=35)
-pwd.grid(row=3, column=0)
+pwd_label.grid(row=3, column=0)
 pwd_text.grid(row=3, column=1, columnspan=2)
 
-gen_pwd = Button(text="Generate Password", highlightbackground=CREAM, fg=BLUE, width=11)
+gen_pwd = Button(text="Generate Password", highlightbackground=CREAM, fg=BLUE, width=11, command=generate_password)
 gen_pwd.grid(row=3, column=2)
 
 add_pwd = Button(text="Add Password", highlightbackground=CREAM, fg=BLUE, width=33, command=store_credentials)
