@@ -5,6 +5,7 @@ Author: Madeleine L.
 """
 # Resource: https://colorhunt.co/
 from tkinter import *
+import os
 from PIL import Image, ImageTk
 YELLOW = "#ffaf45"
 ORANGE = "#fb6d48"
@@ -18,11 +19,6 @@ CREAM = "#fff2d7"
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 # ---------------------------- UI SETUP ------------------------------- #
-
-def change_color(canvas, item_id, new_color):
-    canvas.itemconfig(item_id, fill=new_color)
-
-
 window = Tk()
 window.title("My Password Manager")
 window.config(padx=50, pady=50, bg=CREAM)
@@ -39,9 +35,14 @@ website.grid(row=1, column=0)
 web_text.grid(row=1, column=1, columnspan=2)
 
 creds = Label(text="Email/Username:", bg=CREAM, fg=BLUE, font=("Ariel", 15))
+with open("/Users/Shared/email.txt") as default_txt:
+    email = default_txt.readlines()[0].strip()
+print(email)
 creds_text = Entry(highlightbackground=CREAM, width=35)
+creds_text.insert(END, string=f"{email}")
 creds.grid(row=2, column=0)
 creds_text.grid(row=2, column=1, columnspan=2)
+
 
 pwd = Label(text="Password:", bg=CREAM, fg=BLUE, font=("Ariel", 15))
 pwd_text = Entry(highlightbackground=CREAM, width=35)
