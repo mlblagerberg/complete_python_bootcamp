@@ -20,20 +20,13 @@ class Password:
         password_length = self.length
         char_lengths = []
 
-        # Set count for each character type
+        # Set random count for each character type
         char_lengths = [random.random() for n in range(sum(self.char_list))]
         total_length = sum(char_lengths)
         char_lengths = [int((m / total_length) * self.length) for m in char_lengths]
         char_lengths[-1] += self.length - sum(char_lengths)
-            # char_lengths.append(random.randint(1, password_length))
-            # random.shuffle(char_lengths)
-            # if n:
-            #     n_length = random.randint(1, password_length - sum(char_lengths))
-            #     char_lengths.append(n_length)
-            # else:
-            #     char_lengths.append(0)
-        print(char_lengths)
 
+        # print(char_lengths)
 
         # set of all possible letters
         alpha_list = []

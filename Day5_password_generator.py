@@ -192,16 +192,14 @@ else:
             # Now random symbols
             sym_master = ["@","!","$","%","^","&","*","(",")","<",">"]
             sym_list = []
-            for i in range(0,sym_count):
+            for i in range(0, sym_count):
                 # update i to be random with each iteration
                 i = random.choice(sym_master)
                 sym_list.append(i)
-            
-            # print(sym_list)
+
 
             # create set of all possible letters
             alpha_master = list(string.ascii_lowercase) + list(string.ascii_uppercase)
-            # print(alpha_master[40])
 
             # get random letters
             alpha_list = []
@@ -209,19 +207,14 @@ else:
             # Generate password length
             for i in range(0,alpha_length):
                 letter = random.choice(alpha_master)
-                # print(letter)
                 alpha_list.append(letter)
-            
-            # print(alpha_list)
-            
+
             character_list = num_list + sym_list + alpha_list
                 
             # print(character_list)
 
-            # Create random list using the character list with all letters, numbers and symbols to construct the final password
+            # Create random list using the character list to construct the final password
             random.shuffle(character_list)
-
-# print(password_list)    
 
             # create string out of listed characters
             final_password = ''.join(character_list)
