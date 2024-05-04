@@ -5,11 +5,8 @@ Author: Madeleine L.
 """
 # Resource: https://colorhunt.co/
 from tkinter import *
+from tkinter import messagebox
 import password_generator as pg
-YELLOW = "#ffaf45"
-ORANGE = "#fb6d48"
-PINK = "#d74b76"
-PURPLE = "#673f69"
 BLUE = "#3C5B6F"
 CREAM = "#fff2d7"
 
@@ -70,8 +67,16 @@ def store_credentials():
     user_creds = user_text.get()
     user_pwd = pwd_text.get()
 
-    with open("/Users/Shared/data.txt", "a") as cred_file:
-        cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
+    is_ok = messagebox.askokcancel(title=user_website
+                                   , message=(f"Please confirm credentials entered: \nEmail: {user_creds} \nPassword: "
+                                              f"{user_pwd} \nWould you like to save?"))
+    if is_ok:
+        with open("/Users/Shared/data.txt", "a") as cred_file:
+            cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
+
+        # pwd_text.copy(0, END)
+        web_text.delete(0, END)
+        pwd_text.delete(0, END)
 
 
 # ----------------------------- UI SETUP ---------------------------------------- #
