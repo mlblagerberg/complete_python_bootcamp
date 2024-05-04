@@ -67,16 +67,20 @@ def store_credentials():
     user_creds = user_text.get()
     user_pwd = pwd_text.get()
 
-    is_ok = messagebox.askokcancel(title=user_website
-                                   , message=(f"Please confirm credentials entered: \nEmail: {user_creds} \nPassword: "
-                                              f"{user_pwd} \nWould you like to save?"))
-    if is_ok:
-        with open("/Users/Shared/data.txt", "a") as cred_file:
-            cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
+    if len(user_website) == 0 or len(user_creds) == 0 or len(user_pwd) == 0:
+        messagebox.showinfo(title="Error", message="All entries must be complete before submitting.\n\nPlease go back and "
+                                                   f"fill out missing fields")
+    else:
+        is_ok = messagebox.askokcancel(title=user_website
+                                       , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
+                                                  f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
+        if is_ok:
+            with open("/Users/Shared/data.txt", "a") as cred_file:
+                cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
 
-        # pwd_text.copy(0, END)
-        web_text.delete(0, END)
-        pwd_text.delete(0, END)
+            # pwd_text.copy(0, END)
+            web_text.delete(0, END)
+            pwd_text.delete(0, END)
 
 
 # ----------------------------- UI SETUP ---------------------------------------- #
