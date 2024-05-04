@@ -68,8 +68,8 @@ def store_credentials():
     user_pwd = pwd_text.get()
 
     if len(user_website) == 0 or len(user_creds) == 0 or len(user_pwd) == 0:
-        messagebox.showinfo(title="Error", message="All entries must be complete before submitting.\n\nPlease go back and "
-                                                   f"fill out missing fields")
+        messagebox.showinfo(title="Error", message="All entries must be complete before submitting.\n\nPlease go back "
+                                                   "and fill out missing fields")
     else:
         is_ok = messagebox.askokcancel(title=user_website
                                        , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
