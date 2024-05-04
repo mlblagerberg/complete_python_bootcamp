@@ -47,13 +47,16 @@ def password_window():
         num = numbers.get()
         let = letters.get()
         pwd = pwd_int.get()
+        if sym + num + let == 0:
+            messagebox.showinfo(title="Error", message="You must select at least one character type to generate a "
+                                                       "password.")
+        else:
+            pwd_instance = pg.Password(letters_bol=let, numbers_bol=num, symbols_bol=sym, pwd_length=pwd)
+            password = pwd_instance.generate_password()
 
-        pwd_instance = pg.Password(letters_bol=let, numbers_bol=num, symbols_bol=sym, pwd_length=pwd)
-        password = pwd_instance.generate_password()
-
-        pwd_text.delete(0, END)
-        pwd_text.insert(0, f"{password}")
-        return password
+            pwd_text.delete(0, END)
+            pwd_text.insert(0, f"{password}")
+            return password
 
     pwd_button = Button(pwd_window, text="Create Password", bg=CREAM, fg=BLUE, highlightbackground=CREAM, width=60
                         , command=get_password)
