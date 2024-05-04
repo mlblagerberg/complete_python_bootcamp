@@ -1,6 +1,6 @@
 """Project: Password Generator
 Start: May 3rd, 2024
-Last touched: May 3rd, 2024
+Last touched: May 4th, 2024
 Author: Madeleine L.
 """
 
