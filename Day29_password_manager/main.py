@@ -7,6 +7,7 @@ Author: Madeleine L.
 from tkinter import *
 from tkinter import messagebox
 import password_generator as pg
+from pyperclip import copy
 BLUE = "#3C5B6F"
 CREAM = "#fff2d7"
 
@@ -56,6 +57,8 @@ def password_window():
 
             pwd_text.delete(0, END)
             pwd_text.insert(0, f"{password}")
+            # copy password to clipboard
+            copy(password)
             return password
 
     pwd_button = Button(pwd_window, text="Create Password", bg=CREAM, fg=BLUE, highlightbackground=CREAM, width=60
