@@ -70,8 +70,8 @@ def store_credentials():
     user_creds = user_text.get()
     user_pwd = pwd_text.get()
 
-    cred_file = open("/Users/Shared/data.txt", "a")
-    cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
+    with open("/Users/Shared/data.txt", "a") as cred_file:
+        cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
 
 
 # ----------------------------- UI SETUP ---------------------------------------- #
