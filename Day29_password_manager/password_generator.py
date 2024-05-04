@@ -6,6 +6,7 @@ Author: Madeleine L.
 
 import random
 import string
+random.seed(100)
 
 
 class Password:
@@ -17,16 +18,12 @@ class Password:
         self.length = pwd_length
 
     def generate_password(self):
-        password_length = self.length
-        char_lengths = []
-
-        # Set random count for each character type
-        char_lengths = [random.random() for n in range(sum(self.char_list))]
+        # Set random count for each character type ensuring count adds up to user specified length and that all
+        # character types are included that are specified
+        char_lengths = [(random.random() * self.char_list[n]) + self.char_list[n] for n in range(3)]
         total_length = sum(char_lengths)
         char_lengths = [int((m / total_length) * self.length) for m in char_lengths]
         char_lengths[-1] += self.length - sum(char_lengths)
-
-        # print(char_lengths)
 
         # set of all possible letters
         alpha_list = []
