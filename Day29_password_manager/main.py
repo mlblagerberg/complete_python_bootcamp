@@ -15,6 +15,7 @@ CREAM = "#fff2d7"
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
+
 def password_window():
     # ------------------------ PWD GEN UI --------------------------------------- #
     pwd_window = Toplevel(window)
@@ -60,8 +61,6 @@ def password_window():
     pwd_button = Button(pwd_window, text="Create Password", bg=CREAM, fg=BLUE, highlightbackground=CREAM, width=60
                         , command=get_password)
     pwd_button.grid(column=0, row=4, columnspan=4)
-
-
 
 # ---------------------------- SAVE CREDENTIALS --------------------------------- #
 

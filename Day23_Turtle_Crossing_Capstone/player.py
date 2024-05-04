@@ -16,7 +16,7 @@ class Player(Turtle):
     def __init__(self, screen_width, screen_height):
         super().__init__()
         self.penup()
-        self.color("green")
+        self.color("purple")
         self.shape("turtle")
         self.setheading(NORTH)
         self.screen_height = screen_height
