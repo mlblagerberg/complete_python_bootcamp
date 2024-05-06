@@ -8,6 +8,7 @@ from tkinter import *
 from tkinter import messagebox
 import password_generator as pg
 from pyperclip import copy
+import json
 BLUE = "#3C5B6F"
 CREAM = "#fff2d7"
 
@@ -72,21 +73,38 @@ def store_credentials():
     user_website = web_text.get()
     user_creds = user_text.get()
     user_pwd = pwd_text.get()
+    new_data = {
+        user_website: {
+            "email": user_creds,
+            "password": user_pwd,
+        }
+    }
 
     if len(user_website) == 0 or len(user_creds) == 0 or len(user_pwd) == 0:
         messagebox.showinfo(title="Error", message="All entries must be complete before submitting.\n\nPlease go back "
                                                    "and fill out missing fields")
     else:
-        is_ok = messagebox.askokcancel(title=user_website
-                                       , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
-                                                  f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
-        if is_ok:
-            with open("/Users/Shared/data.txt", "a") as cred_file:
-                cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
+    #     is_ok = messagebox.askokcancel(title=user_website
+    #                                    , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
+    #                                               f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
+    #     if is_ok:
+        with open("/Users/Shared/data.json", "w") as cred_file:
+            # cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
+            json.dump(new_data, cred_file)
+        # pwd_text.copy(0, END)
+        web_text.delete(0, END)
+        pwd_text.delete(0, END)
 
-            # pwd_text.copy(0, END)
-            web_text.delete(0, END)
-            pwd_text.delete(0, END)
+
+# ---------------------------- SEARCH CREDENTIALS --------------------------------- #
+# def search_credentials():
+#     cred_file = open("/Users/Shared/data.txt")
+#     for line in cred_file.readlines():
+#         cred_line = line.split(", ")
+#         print(cred_line[0])
+#         if cred_line[0].lower() == web_text.lower():
+#             messagebox.showinfo(title="Error",
+#                                 message="That website already exists")
 
 
 # ----------------------------- UI SETUP ---------------------------------------- #
@@ -124,5 +142,8 @@ gen_pwd.grid(row=3, column=2)
 
 add_pwd = Button(text="Add Password", highlightbackground=CREAM, fg=BLUE, width=33, command=store_credentials)
 add_pwd.grid(row=4, column=1, columnspan=2)
+
+search = Button(text="Search", highlightbackground=CREAM, fg=BLUE, width=10, command=search_credentials)
+search.grid(row=1, column=2)
 
 window.mainloop()
