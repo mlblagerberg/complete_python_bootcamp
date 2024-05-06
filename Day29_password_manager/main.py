@@ -125,5 +125,4 @@ gen_pwd.grid(row=3, column=2)
 add_pwd = Button(text="Add Password", highlightbackground=CREAM, fg=BLUE, width=33, command=store_credentials)
 add_pwd.grid(row=4, column=1, columnspan=2)
 
-
 window.mainloop()
