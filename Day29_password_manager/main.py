@@ -90,7 +90,7 @@ def store_credentials():
     #     if is_ok:
         with open("/Users/Shared/data.json", "w") as cred_file:
             # cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
-            json.dump(new_data, cred_file)
+            json.dump(new_data, cred_file, indent=4)
         # pwd_text.copy(0, END)
         web_text.delete(0, END)
         pwd_text.delete(0, END)
@@ -143,7 +143,7 @@ gen_pwd.grid(row=3, column=2)
 add_pwd = Button(text="Add Password", highlightbackground=CREAM, fg=BLUE, width=33, command=store_credentials)
 add_pwd.grid(row=4, column=1, columnspan=2)
 
-search = Button(text="Search", highlightbackground=CREAM, fg=BLUE, width=10, command=search_credentials)
+search = Button(text="Search", highlightbackground=CREAM, fg=BLUE, width=10)#, command=search_credentials)
 search.grid(row=1, column=2)
 
 window.mainloop()
