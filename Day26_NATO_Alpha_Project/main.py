@@ -14,7 +14,7 @@ print(nato_dict)
 
 
 # Create a list of the phonetic code words from a word that the user inputs.
-def nato_alpha():
+def nato_phonetic():
     user_phrase = input("Please input a word or phrase: ").upper()
     word_list = user_phrase.split()
     for user_word in word_list:
@@ -23,9 +23,9 @@ def nato_alpha():
             nato_code = [nato_dict[letter] for letter in word_letters]
         except KeyError:
             print("Only letters in the alphabet are excepted.")
-            nato_alpha()
+            nato_phonetic()
         else:
             print(f"{user_word}: {nato_code}")
 
 
-nato_alpha()
+nato_phonetic()
