@@ -88,9 +88,11 @@ def store_credentials():
     #                                    , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
     #                                               f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
     #     if is_ok:
-        with open("/Users/Shared/data.json", "w") as cred_file:
+        with open("/Users/Shared/data.json", "r") as cred_file:
             # cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
-            json.dump(new_data, cred_file, indent=4)
+            # json.dump(new_data, cred_file, indent=4)
+            data = json.load(cred_file)
+            print(data)
         # pwd_text.copy(0, END)
         web_text.delete(0, END)
         pwd_text.delete(0, END)
