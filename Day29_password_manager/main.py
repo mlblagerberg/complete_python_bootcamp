@@ -89,11 +89,13 @@ def store_credentials():
     #                                               f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
     #     if is_ok:
         with open("/Users/Shared/data.json", "r") as cred_file:
-            # cred_file.write(f"{user_website}, {user_creds}, {user_pwd}\n")
-            # json.dump(new_data, cred_file, indent=4)
+            # Read stored data
             data = json.load(cred_file)
-            print(data)
-        # pwd_text.copy(0, END)
+            # Update stored data with new entry
+            data.update(new_data)
+        with open("/Users/Shared/data.json", "w") as cred_file:
+            # Save updated data
+            json.dump(data, cred_file, indent=4)
         web_text.delete(0, END)
         pwd_text.delete(0, END)
 
