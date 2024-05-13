@@ -3,6 +3,7 @@ Start: May 1st, 2024
 Last touched: May 6th, 2024
 Author: Madeleine L.
 """
+from json import JSONDecodeError
 # Resource: https://colorhunt.co/
 from tkinter import *
 from tkinter import messagebox
@@ -88,16 +89,25 @@ def store_credentials():
     #                                    , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
     #                                               f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
     #     if is_ok:
-        with open("/Users/Shared/data.json", "r") as cred_file:
-            # Read stored data
-            data = json.load(cred_file)
-            # Update stored data with new entry
-            data.update(new_data)
-        with open("/Users/Shared/data.json", "w") as cred_file:
-            # Save updated data
-            json.dump(data, cred_file, indent=4)
-        web_text.delete(0, END)
-        pwd_text.delete(0, END)
+        try:
+            with open("/Users/Shared/data.json", "r") as cred_file:
+                # Read stored data
+                data = json.load(cred_file)
+                # Update stored data with new entry
+                data.update(new_data)  # Saves in dictionary format
+        except FileNotFoundError:
+            with open("/Users/Shared/data.json", "w") as cred_file:
+                # Save updated data
+                json.dump(new_data, cred_file, indent=4)
+        except JSONDecodeError:
+            with open("/Users/Shared/data.json", "w") as cred_file:
+                json.dump(data, cred_file, indent=4)
+        else:
+            with open("/Users/Shared/data.json", "w") as cred_file:
+                json.dump(data, cred_file, indent=4)
+
+            web_text.delete(0, END)
+            pwd_text.delete(0, END)
 
 
 # ---------------------------- SEARCH CREDENTIALS --------------------------------- #
