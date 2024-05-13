@@ -106,8 +106,8 @@ def store_credentials():
             with open("/Users/Shared/data.json", "w") as cred_file:
                 json.dump(data, cred_file, indent=4)
 
-            web_text.delete(0, END)
-            pwd_text.delete(0, END)
+        web_text.delete(0, END)
+        pwd_text.delete(0, END)
 
 
 # ---------------------------- SEARCH CREDENTIALS --------------------------------- #
