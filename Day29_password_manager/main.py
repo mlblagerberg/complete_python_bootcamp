@@ -85,10 +85,6 @@ def store_credentials():
         messagebox.showinfo(title="Error", message="All entries must be complete before submitting.\n\nPlease go back "
                                                    "and fill out missing fields")
     else:
-    #     is_ok = messagebox.askokcancel(title=user_website
-    #                                    , message=(f"Please confirm credentials entered: \n\nEmail: {user_creds} "
-    #                                               f"\n\nPassword: {user_pwd} \n\nWould you like to save?"))
-    #     if is_ok:
         try:
             with open("/Users/Shared/data.json", "r") as cred_file:
                 # Read stored data
@@ -111,7 +107,22 @@ def store_credentials():
 
 
 # ---------------------------- SEARCH CREDENTIALS --------------------------------- #
-# def search_credentials():
+def search_credentials():
+    try:
+        with open("/Users/Shared/data.json", "r") as cred_file:
+            # Read stored data
+            data = json.load(cred_file)
+            if web_text.get() in data:
+                stored_user = data[web_text.get()]["email"]
+                stored_pwd = data[web_text.get()]["password"]
+                messagebox.showinfo(title=f"Credentials for {web_text.get()}", message=f"User: {stored_user}\n"
+                                                                                       f"Password: {stored_pwd}")
+            else:
+                messagebox.showinfo(title=f"Entry does not exist", message=f"There is no credential pair stored for "
+                                                                           f"{web_text.get()}.")
+    except FileNotFoundError:
+        with open("/Users/Shared/data.json", "w") as cred_file:
+            messagebox.showinfo(title="Error", message="No password file is created yet.")
 #     cred_file = open("/Users/Shared/data.txt")
 #     for line in cred_file.readlines():
 #         cred_line = line.split(", ")
@@ -157,7 +168,7 @@ gen_pwd.grid(row=3, column=2)
 add_pwd = Button(text="Add Password", highlightbackground=CREAM, fg=BLUE, width=33, command=store_credentials)
 add_pwd.grid(row=4, column=1, columnspan=2)
 
-search = Button(text="Search", highlightbackground=CREAM, fg=BLUE, width=10)#, command=search_credentials)
+search = Button(text="Search", highlightbackground=CREAM, fg=BLUE, width=10, command=search_credentials)
 search.grid(row=1, column=2)
 
 window.mainloop()
