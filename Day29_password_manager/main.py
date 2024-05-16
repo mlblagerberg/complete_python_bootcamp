@@ -1,6 +1,6 @@
 """Project: Password Manager
 Start: May 1st, 2024
-Last touched: May 6th, 2024
+Last touched: May 16th, 2024
 Author: Madeleine L.
 """
 from json import JSONDecodeError
