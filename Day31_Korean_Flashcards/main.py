@@ -43,6 +43,6 @@ word_label = Label(text="Word", bg="white", font=("Ariel", 60, "bold"))
 title_label.place(x=400, y=150)
 word_label.place(x=355, y=263)
 
-
+# testing
 
 window.mainloop()
