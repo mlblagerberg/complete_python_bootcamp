@@ -13,12 +13,26 @@ from tkinter import *
 BACKGROUND_COLOR = "#B1DDC6"
 IMAGE_PATH = "~/GitHub/complete_python_bootcamp/Day31_Korean_Flashcards/images"
 
+
+# -------------------------------------- IMPORT DATA ----------------------------------------- #
 # words = pd.read_excel("한국어 학습용 어휘 목록.xls")
 words = pd.read_csv("한국어 학습용 어휘 목록 - 한국어학습용어휘등급표 원어 정보 정리 쿼리.csv")
 sorted_words = words.sort_values("순위 (ranking)")
 cleaned_words = sorted_words.drop(labels=["품사 (Part of speech)", "단어 (word)", "풀이 (Explanation)", "등급 (Rating)",
                                           "suffix number"], axis=1)
-print(cleaned_words.head(20))
+# print(cleaned_words.head(20))
+# -------------------------------------- Button functionality ----------------------------------------- #
+
+
+def incorrect_next():
+    pass
+
+
+def correct_next():
+    pass
+
+# -------------------------------------- UI SETUP ----------------------------------------- #
+
 
 # Create UI window
 window = Tk()
@@ -43,6 +57,10 @@ word_label = Label(text="Word", bg="white", font=("Ariel", 60, "bold"))
 title_label.place(x=400, y=150)
 word_label.place(x=355, y=263)
 
-# testing
+# Create buttons
+
+wrong = Button(window, image=x_image, bg=BACKGROUND_COLOR, highlightthickness=0, command=incorrect_next)
+correct = Button(window, image=check_image, bg=BACKGROUND_COLOR, highlightthickness=0, command=correct_next)
+
 
 window.mainloop()
