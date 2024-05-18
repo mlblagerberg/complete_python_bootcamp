@@ -18,7 +18,7 @@ words = pd.read_csv("한국어 학습용 어휘 목록 - 한국어학습용어�
 sorted_words = words.sort_values("순위 (ranking)")
 cleaned_words = sorted_words.drop(labels=["품사 (Part of speech)", "단어 (word)", "풀이 (Explanation)", "등급 (Rating)",
                                           "suffix number"], axis=1)
-print(cleaned_words.head())
+print(cleaned_words.head(20))
 
 # Create UI window
 window = Tk()
