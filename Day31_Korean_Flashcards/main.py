@@ -25,7 +25,8 @@ sorted_words = words.sort_values("순위 (ranking)")
 cleaned_words = sorted_words.drop(labels=["순위 (ranking)", "품사 (Part of speech)", "단어 (word)", "풀이 (Explanation)", "등급 (Rating)",
                                           "suffix number"], axis=1)
 word_dict = cleaned_words.to_dict(orient="records")
-# print(choice(word_dict))
+KEYS = list(word_dict[0].keys())
+# print(type(KEYS))
 # -------------------------------------- Button functionality ----------------------------------------- #
 
 
@@ -33,10 +34,10 @@ def next_card():
     global random_word, flip_timer
     window.after_cancel(flip_timer)
     random_word = choice(word_dict)
-    word = random_word["단어 (word) (cleaned)"]
+    word = random_word[KEYS[0]]
 
     canvas.itemconfig(card_image, image=card_front)
-    title_label.config(bg="white", fg="black")
+    title_label.config(text="Korean", bg="white", fg="black")
     word_label.config(text=f"{word}", bg="white", fg="black")
     word_label.place(x=375, y=263)
     flip_timer = window.after(3000, flip_card)
@@ -45,7 +46,7 @@ def next_card():
 def flip_card():
     # canvas.itemconfig(title_label, text="English", fill="white")
     canvas.itemconfig(card_image, image=card_back)
-    eng_word = random_word["english translation"]
+    eng_word = random_word[KEYS[1]]
     title_label.config(text="English", bg=CARD_BACKGROUND, fg="white")
     word_label.config(text=f"{eng_word}", bg=CARD_BACKGROUND, fg="white")
     # window.after_cancel()
