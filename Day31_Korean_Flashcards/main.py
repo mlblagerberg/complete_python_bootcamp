@@ -13,7 +13,9 @@ from random import choice
 from time import sleep
 
 BACKGROUND_COLOR = "#B1DDC6"
+CARD_BACKGROUND = "#91c1af"
 IMAGE_PATH = "~/GitHub/complete_python_bootcamp/Day31_Korean_Flashcards/images"
+random_word = {}
 
 
 # -------------------------------------- IMPORT DATA ----------------------------------------- #
@@ -23,21 +25,30 @@ sorted_words = words.sort_values("순위 (ranking)")
 cleaned_words = sorted_words.drop(labels=["순위 (ranking)", "품사 (Part of speech)", "단어 (word)", "풀이 (Explanation)", "등급 (Rating)",
                                           "suffix number"], axis=1)
 word_dict = cleaned_words.to_dict(orient="records")
-print(choice(word_dict))
+# print(choice(word_dict))
 # -------------------------------------- Button functionality ----------------------------------------- #
 
 
 def next_card():
+    global random_word, flip_timer
+    window.after_cancel(flip_timer)
     random_word = choice(word_dict)
     word = random_word["단어 (word) (cleaned)"]
-    word_label.config(text=f"{word}")
+
+    canvas.itemconfig(card_image, image=card_front)
+    title_label.config(bg="white", fg="black")
+    word_label.config(text=f"{word}", bg="white", fg="black")
     word_label.place(x=375, y=263)
-    # return random_word
+    flip_timer = window.after(3000, flip_card)
 
 
-# def flip_card():
-#     canvas.itemconfig(card_image, image=card_back)
-#     canvas.pack()
+def flip_card():
+    # canvas.itemconfig(title_label, text="English", fill="white")
+    canvas.itemconfig(card_image, image=card_back)
+    eng_word = random_word["english translation"]
+    title_label.config(text="English", bg=CARD_BACKGROUND, fg="white")
+    word_label.config(text=f"{eng_word}", bg=CARD_BACKGROUND, fg="white")
+    # window.after_cancel()
 
 
 # -------------------------------------- UI SETUP ----------------------------------------- #
@@ -45,6 +56,7 @@ def next_card():
 window = Tk()
 window.title("Flashy")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
+flip_timer = window.after(3000, func=flip_card)
 
 # Build canvas and add images
 canvas = Canvas(height=700, width=900, bg=BACKGROUND_COLOR, highlightthickness=0)
@@ -67,13 +79,9 @@ wrong = Button(image=x_image, bg=BACKGROUND_COLOR, highlightcolor=BACKGROUND_COL
 correct = Button(image=check_image, bg=BACKGROUND_COLOR, highlightcolor=BACKGROUND_COLOR, highlightthickness=0,
                  command=next_card)
 
-# flip_to_back = Button(image=card_front, bg=BACKGROUND_COLOR, highlightcolor=BACKGROUND_COLOR, highlightthickness=0,
-#                       command=flip_card)
-
 
 wrong.place(x=175, y=600)
 correct.place(x=625, y=600)
-# flip_to_back.place(x=50, y=30)
 
 next_card()
 
