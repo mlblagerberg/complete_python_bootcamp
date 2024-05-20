@@ -35,6 +35,11 @@ def next_card():
     # return random_word
 
 
+# def flip_card():
+#     canvas.itemconfig(card_image, image=card_back)
+#     canvas.pack()
+
+
 # -------------------------------------- UI SETUP ----------------------------------------- #
 # Create UI window
 window = Tk()
@@ -47,8 +52,7 @@ x_image = PhotoImage(file=f"{IMAGE_PATH}/wrong.png")
 check_image = PhotoImage(file=f"{IMAGE_PATH}/right.png")
 card_back = PhotoImage(file=f"{IMAGE_PATH}/card_back.png")
 card_front = PhotoImage(file=f"{IMAGE_PATH}/card_front.png")
-canvas.create_image(450, 300, image=card_back)
-canvas.create_image(450, 300, image=card_front)
+card_image = canvas.create_image(450, 300, image=card_front)
 canvas.pack()
 
 # Create titles for words and start of practice
@@ -63,9 +67,13 @@ wrong = Button(image=x_image, bg=BACKGROUND_COLOR, highlightcolor=BACKGROUND_COL
 correct = Button(image=check_image, bg=BACKGROUND_COLOR, highlightcolor=BACKGROUND_COLOR, highlightthickness=0,
                  command=next_card)
 
+# flip_to_back = Button(image=card_front, bg=BACKGROUND_COLOR, highlightcolor=BACKGROUND_COLOR, highlightthickness=0,
+#                       command=flip_card)
+
 
 wrong.place(x=175, y=600)
 correct.place(x=625, y=600)
+# flip_to_back.place(x=50, y=30)
 
 next_card()
 
