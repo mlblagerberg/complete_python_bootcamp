@@ -3,10 +3,11 @@ Start: May 21st, 2024
 Last touched: May 21st, 2024
 Author: Madeleine L.
 """
+
 import requests
 from datetime import datetime, timezone
 import time
-import math
+# import math
 
 LAT = 47.037872
 LONG = -122.900696
@@ -14,9 +15,6 @@ LONG = -122.900696
 # EARTH_RADIUS = 6371000  # in meters
 # HEIGHT = 1.75  # in meters
 # PERCENT_SKY = 0.60
-
-# If the ISS is close to my current position and it is dark out
-# Run code every 60 seconds then send an email
 
 
 def is_night():
@@ -32,11 +30,11 @@ def is_night():
     data = response.json()
     sunrise_hour = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
     sunset_hour = int(data["results"]["sunset"].split("T")[1].split(":")[0])
-    now = datetime.now(timezone.utc)
-    if sunset_hour <= now.hour <= sunrise_hour:
-        return True, now
+    current_datetime = datetime.now(timezone.utc)
+    if sunset_hour <= current_datetime.hour <= sunrise_hour:
+        return True, current_datetime
     else:
-        return False, now
+        return False, current_datetime
 
 # # Estimate visible sky
 # horizon_distance = (2*EARTH_RADIUS*HEIGHT) ** (1 / 2)
@@ -61,7 +59,6 @@ def iss_overhead():
 #     (math.sin(LAT) * math.sin(latitude)))
 # print(gcd)
 
-
 while True:
     overhead, lat_long = iss_overhead()
     night, now = is_night()
@@ -73,5 +70,3 @@ while True:
     else:
         with open("ISS_log.txt", "a") as iss_log:
             iss_log.write(f"At {now} the ISS is NOT visible at latitude: {lat_long[0]} and longitude: {lat_long[1]}\n")
-
-
