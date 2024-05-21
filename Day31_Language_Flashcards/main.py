@@ -1,6 +1,6 @@
 """Project: Korean Flashcards
 Start: May 16th, 2024
-Last touched: May 16th, 2024
+Last touched: May 21th, 2024
 Author: Madeleine L.
 """
 # Resources:
@@ -10,13 +10,11 @@ Author: Madeleine L.
 import pandas as pd
 from tkinter import *
 from random import choice
-from time import sleep
 
 BACKGROUND_COLOR = "#B1DDC6"
 CARD_BACKGROUND = "#91c1af"
-IMAGE_PATH = "~/GitHub/complete_python_bootcamp/Day31_Korean_Flashcards/images"
+IMAGE_PATH = "/complete_python_bootcamp/Day31_Language_Flashcards/images"
 random_word = {}
-
 
 # -------------------------------------- IMPORT DATA ----------------------------------------- #
 # words = pd.read_excel("한국어 학습용 어휘 목록.xls")
@@ -32,6 +30,7 @@ KEYS = list(word_dict[0].keys())
 
 def next_card():
     global random_word, flip_timer
+    # Cancel timer if it has already begun so we get proper 3 seconds on every flip
     window.after_cancel(flip_timer)
     random_word = choice(word_dict)
     word = random_word[KEYS[0]]
@@ -44,12 +43,10 @@ def next_card():
 
 
 def flip_card():
-    # canvas.itemconfig(title_label, text="English", fill="white")
     canvas.itemconfig(card_image, image=card_back)
     eng_word = random_word[KEYS[1]]
     title_label.config(text="English", bg=CARD_BACKGROUND, fg="white")
     word_label.config(text=f"{eng_word}", bg=CARD_BACKGROUND, fg="white")
-    # window.after_cancel()
 
 
 # -------------------------------------- UI SETUP ----------------------------------------- #
