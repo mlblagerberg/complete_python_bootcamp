@@ -32,9 +32,11 @@ def is_night():
     data = response.json()
     sunrise_hour = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
     sunset_hour = int(data["results"]["sunset"].split("T")[1].split(":")[0])
-    hour_now = datetime.now(timezone.utc)
-    if sunset_hour <= hour_now.hour <= sunrise_hour:
-        return True
+    now = datetime.now(timezone.utc)
+    if sunset_hour <= now.hour <= sunrise_hour:
+        return True, now
+    else:
+        return False, now
 
 # # Estimate visible sky
 # horizon_distance = (2*EARTH_RADIUS*HEIGHT) ** (1 / 2)
@@ -62,10 +64,14 @@ def iss_overhead():
 
 while True:
     overhead, lat_long = iss_overhead()
-    if is_night() and overhead:
-        time.sleep(60)
-        print(f"ISS should be visible in the sky at latitude: {lat_long[0]} and longitude: {lat_long[1]}")
+    night, now = is_night()
+    if night and overhead:
+        time.sleep(1500)
+        with open("ISS_log.txt", "a") as iss_log:
+            iss_log.write(f"At {now} the ISS should be visible in the sky at latitude: {lat_long[0]} and longitude: "
+                          f"{lat_long[1]}\n")
     else:
-        print(f"ISS is NOT visible at latitude: {lat_long[0]} and longitude: {lat_long[1]}")
+        with open("ISS_log.txt", "a") as iss_log:
+            iss_log.write(f"At {now} the ISS is NOT visible at latitude: {lat_long[0]} and longitude: {lat_long[1]}\n")
 
 
