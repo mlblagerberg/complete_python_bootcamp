@@ -7,14 +7,9 @@ Author: Madeleine L.
 import requests
 from datetime import datetime, timezone
 import time
-# import math
 
 LAT = 47.037872
 LONG = -122.900696
-# HEIGHT_ABOVE_SEA = 61  # feet: 201 meters: 61
-# EARTH_RADIUS = 6371000  # in meters
-# HEIGHT = 1.75  # in meters
-# PERCENT_SKY = 0.60
 
 
 def is_night():
@@ -36,10 +31,6 @@ def is_night():
     else:
         return False, current_datetime
 
-# # Estimate visible sky
-# horizon_distance = (2*EARTH_RADIUS*HEIGHT) ** (1 / 2)
-# visible_sky = horizon_distance*PERCENT_SKY
-
 
 def iss_overhead():
     response = requests.get(url="http://api.open-notify.org/iss-now.json")
@@ -52,12 +43,6 @@ def iss_overhead():
         return True, lat_long
     else:
         return False, lat_long
-
-# # Calculate distance to ISS from current lat/long
-# gcd = EARTH_RADIUS * math.acos(
-#     (math.cos(LAT) * math.cos(latitude) * math.cos(LONG - longitude)) +
-#     (math.sin(LAT) * math.sin(latitude)))
-# print(gcd)
 
 while True:
     overhead, lat_long = iss_overhead()
