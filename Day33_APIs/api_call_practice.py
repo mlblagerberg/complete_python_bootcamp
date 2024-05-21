@@ -1,9 +1,9 @@
-"""Project: APIs (ISS Tracking Example)
+"""Project: APIs Practice
 Start: May 21st, 2024
 Last touched: May 21st, 2024
 Author: Madeleine L.
 """
-# Respources: HTTP Status Code Glossary https://www.webfx.com/web-development/glossary/http-status-codes/
+# Resources: HTTP Status Code Glossary https://www.webfx.com/web-development/glossary/http-status-codes/
 
 # Application Program Interfaces (APIs): is a set of commands, protocols, and objects that programmers can use to create
 # software or interact with an external system
