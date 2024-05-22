@@ -4,7 +4,10 @@ Last touched: May 22nd, 2024
 Author: Madeleine L.
 """
 
-# Resources: https://opentdb.com/
+# Resources:
+# https://opentdb.com/
+# https://www.w3schools.com/html/html_entities.asp
+
 from question_model import Question
 from data import question_data
 from quiz_brain import QuizBrain
