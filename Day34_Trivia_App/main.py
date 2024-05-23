@@ -1,6 +1,6 @@
 """Project: Tkinter Trivia App
 Start: May 21st, 2024
-Last touched: May 22nd, 2024
+Last touched: May 23rd, 2024
 Author: Madeleine L.
 """
 
@@ -22,10 +22,8 @@ for question in question_data:
 
 
 quiz = QuizBrain(question_bank)
-quiz_ui = QuizInterface()
+quiz_ui = QuizInterface(quiz)
 
-# while quiz.still_has_questions():
-#     quiz.next_question()
 
 print("You've completed the quiz")
 print(f"Your final score was: {quiz.score}/{quiz.question_number}")
