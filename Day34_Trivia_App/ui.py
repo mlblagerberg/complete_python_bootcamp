@@ -7,7 +7,7 @@ Author: Madeleine L.
 from tkinter import *
 from quiz_brain import QuizBrain
 THEME_COLOR = "#375362"
-IMAGE_PATH = "/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp/Day34_Trivia_App/images"
+IMAGE_PATH = "~/GitHub/complete_python_bootcamp/Day34_Trivia_App/images"
 
 
 class QuizInterface:
@@ -30,17 +30,27 @@ class QuizInterface:
 
         false_png = PhotoImage(file=f"{IMAGE_PATH}/false.png")
         true_png = PhotoImage(file=f"{IMAGE_PATH}/true.png")
-        self.false_button = Button(image=false_png)
+        self.false_button = Button(image=false_png, command=self.false_clicked)
         self.false_button.grid(column=1, row=2)
-        self.true_button = Button(image=true_png)
+        self.true_button = Button(image=true_png, command=self.true_clicked)
         self.true_button.grid(column=0, row=2)
 
         self.get_next_question()
 
         self.window.mainloop()
 
-    # def true_clicked(self):
-    #     return True
+    def true_clicked(self):
+        if self.quiz.check_answer("True"):
+            self.score += 1
+            self.score_label.config(text=f"Score: {self.score}")
+        self.get_next_question()
+
+    def false_clicked(self):
+        if self.quiz.check_answer("False"):
+            self.score += 1
+            self.score_label.config(text=f"Score: {self.score}")
+        self.get_next_question()
+
     def get_next_question(self):
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=q_text)
