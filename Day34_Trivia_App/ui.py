@@ -50,25 +50,19 @@ class QuizInterface:
         self.give_feedback(is_right)
 
     def give_feedback(self, is_right):
-        global answer_timer
         if is_right:
             self.score += 1
             self.score_label.config(text=f"Score: {self.score}")
             self.canvas.config(bg=GREEN)
         else:
             self.canvas.config(bg=RED)
-        self.get_next_question()
-        answer_timer = self.window.after(500, self.reset_card_color)
-
-    def reset_card_color(self):
-        self.canvas.config(bg="white")
-        self.window.after_cancel(answer_timer)
+        self.window.after(500, self.get_next_question)
 
     def get_next_question(self):
+        self.canvas.config(bg="white")
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=q_text)
-        # self.canvas.config(bg="white")
-        print(q_text)
+        # print(q_text)
 
 
 
