@@ -7,6 +7,8 @@ Author: Madeleine L.
 from tkinter import *
 from quiz_brain import QuizBrain
 THEME_COLOR = "#375362"
+GREEN = "#C3FF93"
+RED = "#EE4E4E"
 IMAGE_PATH = "~/GitHub/complete_python_bootcamp/Day34_Trivia_App/images"
 
 
@@ -40,20 +42,32 @@ class QuizInterface:
         self.window.mainloop()
 
     def true_clicked(self):
-        if self.quiz.check_answer("True"):
-            self.score += 1
-            self.score_label.config(text=f"Score: {self.score}")
-        self.get_next_question()
+        is_right = self.quiz.check_answer("True")
+        self.give_feedback(is_right)
 
     def false_clicked(self):
-        if self.quiz.check_answer("False"):
+        is_right = self.quiz.check_answer("False")
+        self.give_feedback(is_right)
+
+    def give_feedback(self, is_right):
+        global answer_timer
+        if is_right:
             self.score += 1
             self.score_label.config(text=f"Score: {self.score}")
+            self.canvas.config(bg=GREEN)
+        else:
+            self.canvas.config(bg=RED)
         self.get_next_question()
+        answer_timer = self.window.after(500, self.reset_card_color)
+
+    def reset_card_color(self):
+        self.canvas.config(bg="white")
+        self.window.after_cancel(answer_timer)
 
     def get_next_question(self):
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=q_text)
+        # self.canvas.config(bg="white")
         print(q_text)
 
 
