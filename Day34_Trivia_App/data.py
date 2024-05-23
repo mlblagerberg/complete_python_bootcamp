@@ -1,13 +1,19 @@
 """Project: Data for Tkinter Trivia App
 Start: May 22nd, 2024
-Last touched: May 22nd, 2024
+Last touched: May 23rd, 2024
 Author: Udemy 100 Days of Code.
 Editor: Madeleine L.
 """
 
 import requests
 
-response = requests.get("https://opentdb.com/api.php?amount=10&type=boolean")
+parameters = {
+    "amount": 10,
+    "type": "boolean",
+
+}
+
+response = requests.get("https://opentdb.com/api.php?", params=parameters)
 response.raise_for_status()
 question_data = response.json()["results"]
 # print(question_data)
