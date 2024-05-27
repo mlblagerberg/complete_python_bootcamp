@@ -8,6 +8,9 @@ Author: Madeleine L.
 import requests
 import sys
 sys.path.append("/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp")
-from api_keys import WEATHER_API
+from api_keys import WEATHER_API, LAT, LONG
 
-URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}"
+URL = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={WEATHER_API}"
+
+response = requests.get(url=URL)
+print(response.text)
