@@ -1,8 +1,11 @@
 """Project: APIs ISS Location
 Start: May 21st, 2024
-Last touched: May 21st, 2024
+Last touched: May 24th, 2024
 Author: Madeleine L.
 """
+# Resources:
+# https://sunrise-sunset.org/api
+# http://open-notify.org/Open-Notify-API/ISS-Location-Now/
 
 import requests
 from datetime import datetime, timezone
