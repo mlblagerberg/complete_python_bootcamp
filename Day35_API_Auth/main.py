@@ -1,6 +1,6 @@
 """Project: API Auth - SMS Rain Alert
 Start: May 26th
-Last touched: May 26h, 2024
+Last touched: May 30th, 2024
 Author: Madeleine L.
 """
 # Resources:
