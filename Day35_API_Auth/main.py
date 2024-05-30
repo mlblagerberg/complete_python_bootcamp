@@ -7,11 +7,14 @@ Author: Madeleine L.
 # https://home.openweathermap.org/users/sign_up
 # https://openweathermap.org/forecast5
 # https://jsonviewer.stack.hu/
+# https://openweathermap.org/weather-conditions # Condition ID definitions
 
 import requests
 import sys
 sys.path.append("/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp")
 from constants_keys import WEATHER_API, LAT, LONG
+
+FORECAST_COUNT = 4
 
 # OWM_API_CURRENT_WEATHER = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={WEATHER_API}"
 OWM_API_ENDPOINT = "https://api.openweathermap.org/data/2.5/forecast?"
@@ -20,6 +23,7 @@ parameters = {
     "lat": LAT,
     "lon": LONG,
     "appid": WEATHER_API,
+    "cnt": FORECAST_COUNT
 }
 
 
@@ -31,6 +35,12 @@ data = response.json()
 print(data.keys())
 
 for forecast in range(len(data["list"])):
-    print(data["list"][forecast]["weather"])
+    weather = data["list"][forecast]["weather"]
+    first_condition = weather[0]
+    condition_id = first_condition["id"]
+    if condition_id < 700:
+        print("Bring an umbrella.")
+    else:
+        print("No umbrella needed.")
 
 # print(data["list"][0]["weather"])  # Weather ID and description
