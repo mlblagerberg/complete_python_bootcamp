@@ -12,14 +12,16 @@ Author: Madeleine L.
 
 import requests
 import sys
-import twilio
+from twilio.rest import Client
 sys.path.append("/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp")
-from constants_keys import WEATHER_API, LAT, LONG
+from constants_keys import WEATHER_API, LAT, LONG, TWILIO_AUTH_TOKEN, TWILIO_ACCOUNT_SID
 
 FORECAST_COUNT = 4
 
 # OWM_API_CURRENT_WEATHER = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={WEATHER_API}"
 OWM_API_ENDPOINT = "https://api.openweathermap.org/data/2.5/forecast?"
+AUTH_TOKEN = TWILIO_AUTH_TOKEN
+ACCOUNT_SID = TWILIO_ACCOUNT_SID
 
 parameters = {
     "lat": LAT,
@@ -40,9 +42,21 @@ for forecast in range(len(data["list"])):
     weather = data["list"][forecast]["weather"]
     first_condition = weather[0]
     condition_id = first_condition["id"]
-    if condition_id < 700:
-        print(f"{first_condition['main']}: Bring an umbrella.")
-    else:
-        print(f"{first_condition['main']}: No umbrella needed.")
 
+    client = Client(ACCOUNT_SID, AUTH_TOKEN)
+    if condition_id < 700:
+        # print(f"{first_condition['main']}: Bring an umbrella.")
+        message = client.messages.create(body= "It's going to rain today. Remember an ☔️",
+                                         from_="+18336402577",
+                                         to="+13604906012"
+                                         )
+    else:
+        # print(f"{first_condition['main']}: No umbrella needed.")
+        message = client.messages.create(body= "It's not supposed to rain today!",
+                                         from_="+18336402577",
+                                         to="+13604906012"
+                                         )
+
+print(message.status)
 # print(data["list"][0]["weather"])  # Weather ID and description
+
