@@ -12,21 +12,26 @@ Author: Madeleine L.
 
 import requests
 import sys
+import os
 from twilio.rest import Client
 sys.path.append("/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp")
-from constants_keys import WEATHER_API, LAT, LONG, TWILIO_AUTH_TOKEN, TWILIO_ACCOUNT_SID
+# from constants_keys import LAT, LONG
 
 FORECAST_COUNT = 4
 
 # OWM_API_CURRENT_WEATHER = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={WEATHER_API}"
 OWM_API_ENDPOINT = "https://api.openweathermap.org/data/2.5/forecast?"
-AUTH_TOKEN = TWILIO_AUTH_TOKEN
-ACCOUNT_SID = TWILIO_ACCOUNT_SID
+AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
+ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
+lat = os.environ.get("OLY_LAT")
+long = os.environ.get("OLY_LONG")
+
+weather_api_key = os.environ.get("WEATHER_API")
 
 parameters = {
-    "lat": LAT,
-    "lon": LONG,
-    "appid": WEATHER_API,
+    "lat": lat,
+    "lon": long,
+    "appid": weather_api_key,
     "cnt": FORECAST_COUNT
 }
 
@@ -36,7 +41,7 @@ response.raise_for_status()
 # print(response)  # Default to print response code
 data = response.json()
 # print(data)
-print(data.keys())
+# print(data.keys())
 
 for forecast in range(len(data["list"])):
     weather = data["list"][forecast]["weather"]
