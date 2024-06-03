@@ -15,7 +15,6 @@ import sys
 import os
 from twilio.rest import Client
 sys.path.append("/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp")
-# from constants_keys import LAT, LONG
 
 FORECAST_COUNT = 4
 
