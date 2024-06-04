@@ -1,6 +1,6 @@
 """Project: API Auth - Short Messaging Service (SMS) Rain Alert
 Start: May 26th
-Last touched: June 3rd, 2024
+Last touched: June 4th, 2024
 Author: Madeleine L.
 """
 # Resources:
@@ -9,6 +9,7 @@ Author: Madeleine L.
 # https://jsonviewer.stack.hu/
 # https://openweathermap.org/weather-conditions # Condition ID definitions
 # https://console.twilio.com/?frameUrl=%2Fconsole%3Fx-target-region%3Dus1
+# Other APIs to explore: https://apilist.fun/
 
 import requests
 import sys
