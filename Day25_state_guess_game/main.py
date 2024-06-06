@@ -48,13 +48,11 @@ while play_game:
         missing_states = [state for state in states if state not in answers]
         state_df = pd.DataFrame(missing_states, columns=['state'])
         state_df.to_csv("states_missed.csv")
-        # for state in answers:
-        #     states.remove(state)
-        #     state_df = pd.DataFrame(states, columns=['state'])
-        #     state_df.to_csv("states_missed.csv")
+        for state in answers:
+            states.remove(state)
+            state_df = pd.DataFrame(states, columns=['state'])
+            state_df.to_csv("states_missed.csv")
         play_game = False
-
-
 
 
 screen.exitonclick()

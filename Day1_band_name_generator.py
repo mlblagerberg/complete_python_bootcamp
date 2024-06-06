@@ -1,7 +1,7 @@
 """
 Project: Band Name Generator
 Start: January 17th, 2024
-Last touched: January 17th, 2024 
+Last touched: June 6th, 2024
 Author: Madeleine L.
 """
 
@@ -11,7 +11,7 @@ Author: Madeleine L.
 # What's your pet's name?
 
 print('Hello World!')
-print('Hello, ' + 'You suck... ' + '...JK.')
+print('Hello, ' + 'you suck... ' + '...JK.')
 
 # Basic interactions with user
 user_name = input("\nOk, really. What is your name? ")
