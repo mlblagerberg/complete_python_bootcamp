@@ -7,6 +7,7 @@ Author: Madeleine L.
 import requests
 from datetime import datetime, timedelta
 import os
+from json import dumps
 
 # # Resources
 # Stock Price API: https://www.alphavantage.co/
@@ -34,7 +35,7 @@ stock_data = response.json()
 today_stock = stock_data["Time Series (Daily)"][today]
 yesterday_stock = stock_data["Time Series (Daily)"][yesterday]
 #
-# print(f"Today's stock details: {today_stock}")
+print(f"Today's stock details: {today_stock}")
 # print(f"Yesterday's stock details: {yesterday_stock}")
 
 # TODO 2: If it was a large fluctuation (>10%) then find related news articles for company from the past week
@@ -44,13 +45,14 @@ news_url = "https://newsapi.org/v2/everything?"
 
 news_parameters = {
     "q": "ENPH",
-    "from": week_ago,
+    "from": yesterday,
     "sortBy": "popularity",
     "apiKey": news_api_key,
 }
 
 news_response = requests.get(news_url, params=news_parameters)
 news_data = news_response.json()
+# print(dumps(news_data))
 print(news_data)
 
 # TODO 3: Send notification with fluctuation and any relevant articles
