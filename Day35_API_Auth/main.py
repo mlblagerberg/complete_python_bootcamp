@@ -49,6 +49,8 @@ for forecast in range(len(data["list"])):
     condition_id = first_condition["id"]
     if condition_id < 700:
         rain = True
+    else:
+        rain = False
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 if rain:
@@ -57,17 +59,3 @@ if rain:
                                      from_="+18336402577",
                                      to="+13604906012"
                                      )
-
-
-# print(message.status)
-# print(data["list"][0]["weather"])  # Weather ID and description
-# Test logic
-# list = [4, 5, 3, 6]
-# for num in list:
-#     if num < 5:
-#         less = True
-#
-# if less:
-#     print("value is less than 5")
-# else:
-#     print("Not less than 5")

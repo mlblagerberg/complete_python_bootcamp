@@ -1,6 +1,6 @@
 """Project: Stock News Monitor
 Start: June 5th 2024
-Last touched: June 5th, 2024
+Last touched: June 14th, 2024
 Author: Madeleine L.
 """
 
@@ -30,7 +30,7 @@ stock_parameters = {
 stock_url = "https://www.alphavantage.co/query?"
 response = requests.get(stock_url, params=stock_parameters)
 stock_data = response.json()
-# print(data)
+print(stock_data)
 
 today_stock = stock_data["Time Series (Daily)"][today]
 yesterday_stock = stock_data["Time Series (Daily)"][yesterday]
