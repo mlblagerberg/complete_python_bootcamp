@@ -1,6 +1,6 @@
 """Project: Stock News Monitor
 Start: June 5th 2024
-Last touched: June 14th, 2024
+Last touched: July 1st, 2024
 Author: Madeleine L.
 """
 
@@ -19,7 +19,7 @@ yesterday = (datetime.today() - timedelta(1)).strftime("%Y-%m-%d")
 week_ago = (datetime.today() - timedelta(3)).strftime("%Y-%m-%d")
 
 stock_api_key = os.getenv("ALPHA_VANTAGE_API")
-# TODO 1: Get stock price delta between current day opening and previous day close
+# Get stock price delta between current day opening and previous day close
 stock_parameters = {
     "function": "TIME_SERIES_DAILY",
     "symbol": "ENPH",
@@ -44,7 +44,7 @@ price_delta = close_price - open_price
 print(round((price_delta/close_price)*100, 2))
 
 if round((price_delta/close_price)*100, 2) >= 10:
-    # TODO 2: If it was a large fluctuation (>10%) then find related news articles for company from the past week
+    # If it was a large fluctuation (>10%) then find related news articles for company from the past week
     news_api_key = os.getenv("NEWS_API")
 
     news_url = "https://newsapi.org/v2/everything?"
@@ -62,5 +62,5 @@ if round((price_delta/close_price)*100, 2) >= 10:
     # print(news_data)
 
 # TODO 3: Send notification with fluctuation and any relevant articles
-
+# skipping for now
 
