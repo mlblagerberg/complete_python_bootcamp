@@ -1,6 +1,6 @@
 """Project: Stock News Monitor
-Start: June 5th 2024
-Last touched: July 1st, 2024
+Start: June 5th, 2024
+Last touched: August 6th, 2024
 Author: Madeleine L.
 """
 
@@ -14,11 +14,8 @@ from json import dumps
 # News API: https://newsapi.org/
 # Twilio API: https://www.twilio.com/en-us
 
-today = datetime.today().strftime("%Y-%m-%d")
-yesterday = (datetime.today() - timedelta(1)).strftime("%Y-%m-%d")
-week_ago = (datetime.today() - timedelta(3)).strftime("%Y-%m-%d")
-
 stock_api_key = os.getenv("ALPHA_VANTAGE_API")
+# print(stock_api_key)
 # Get stock price delta between current day opening and previous day close
 stock_parameters = {
     "function": "TIME_SERIES_DAILY",
@@ -32,11 +29,20 @@ response = requests.get(stock_url, params=stock_parameters)
 stock_data = response.json()
 # print(stock_data)
 
+# print(datetime.now())
+most_current = max(stock_data["Time Series (Daily)"])
+today = datetime.today().strftime("%Y-%m-%d")
+today = min(today, most_current)
+yesterday = (datetime.today() - timedelta(1)).strftime("%Y-%m-%d")
+print(yesterday)
+week_ago = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
+print(week_ago)
+
 today_stock = stock_data["Time Series (Daily)"][today]
 yesterday_stock = stock_data["Time Series (Daily)"][yesterday]
 #
-print(f"Today's stock details: {today_stock}")
-print(f"Yesterday's stock details: {yesterday_stock}")
+print(f"Most current day ({today}) stock details: {today_stock}")
+print(f"Previous day ({yesterday}) stock details: {yesterday_stock}")
 # print(f"Yesterday's stock details: {yesterday_stock}")
 open_price = float(today_stock["1. open"])
 close_price = float(yesterday_stock["4. close"])
