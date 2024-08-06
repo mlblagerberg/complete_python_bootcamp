@@ -6,9 +6,14 @@ Author: Madeleine L.
 
 import os
 import requests
+from datetime import datetime
 
 TOKEN = os.getenv("PIXELA_TOKEN")
 USER = "madeleine"
+GRAPH_ID = "movementgraph1"
+
+MINUTES = 10
+DATE = datetime.today().strftime("%Y%m%d")
 
 # Resources: Pixela - https://pixe.la/
 
@@ -18,8 +23,11 @@ USER = "madeleine"
 # put: updates something in external service
 # delete: remove something from external service
 
+# print(current_date)
+
 pixela_endpoint = "https://pixe.la/v1/users"
 graph_endpoint = f"{pixela_endpoint}/{USER}/graphs"
+data_endpoint = f"{pixela_endpoint}/{USER}/graphs/{GRAPH_ID}/{DATE}"
 
 user_parameters = {
     "token": TOKEN,
@@ -32,7 +40,7 @@ user_parameters = {
 # print(response.text)
 
 graph_config = {
-    "id": "movementgraph1",
+    "id": GRAPH_ID,
     "name": "Movement Graph",
     "unit": "minutes",
     "type": "int",
@@ -47,4 +55,18 @@ headers = {
 # response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 # print(response.text)
 
+
+# Get existing pixel data to update
+pixel_data = requests.get(url=data_endpoint, headers=headers)
+current_data = (int(pixel_data.json()["quantity"]))
+
+current_data += MINUTES
+
+
+pixel_update = {
+    "quantity": str(current_data),
+}
+
+response = requests.put(url=data_endpoint, json=pixel_update, headers=headers)
+print(response.text)
 
