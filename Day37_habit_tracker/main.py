@@ -12,7 +12,7 @@ TOKEN = os.getenv("PIXELA_TOKEN")
 USER = "madeleine"
 GRAPH_ID = "movementgraph1"
 
-MINUTES = 10
+MINUTES = 0
 DATE = datetime.today().strftime("%Y%m%d")
 
 # Resources: Pixela - https://pixe.la/
@@ -23,11 +23,12 @@ DATE = datetime.today().strftime("%Y%m%d")
 # put: updates something in external service
 # delete: remove something from external service
 
+current_date = datetime.today().strftime("%Y%m%d")
 # print(current_date)
 
 pixela_endpoint = "https://pixe.la/v1/users"
 graph_endpoint = f"{pixela_endpoint}/{USER}/graphs"
-data_endpoint = f"{pixela_endpoint}/{USER}/graphs/{GRAPH_ID}/{DATE}"
+data_endpoint = f"{pixela_endpoint}/{USER}/graphs/{GRAPH_ID}/{current_date}"
 
 user_parameters = {
     "token": TOKEN,
@@ -69,4 +70,15 @@ pixel_update = {
 
 response = requests.put(url=data_endpoint, json=pixel_update, headers=headers)
 print(response.text)
+
+# minutes = 14
+# data_endpoint = f"{pixela_endpoint}/{USER}/graphs/{GRAPH_ID}"
+#
+# pixel_update = {
+#     "date": "20240806",
+#     "quantity": str(minutes),
+# }
+#
+# response = requests.post(url=data_endpoint, json=pixel_update, headers=headers)
+# print(response.text)
 
