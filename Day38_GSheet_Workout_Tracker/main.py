@@ -48,7 +48,7 @@ try:
 except requests.exceptions.HTTPError as err:
     print(f"HTTP error occurred: {err}")
 
-print(response)
+# print(response)
 exercise = response["name"]
 duration_min = response["duration_min"]
 calories = response["nf_calories"]
@@ -59,7 +59,7 @@ calories = response["nf_calories"]
 
 current_date = datetime.now().strftime("%Y/%m/%d")
 current_time = datetime.now().strftime("%I:%M:%S")
-print(current_date)
+# print(current_date)
 
 # Google Sheet Endpoint
 sheet_endpoint = "https://api.sheety.co/cb16434dc56835525f9150d06b23af49/trackedWorkouts/workouts"
@@ -79,7 +79,7 @@ headers = {
 }
 
 response = requests.post(url=sheet_endpoint, json=workout_data, headers=headers)
-print(response.json())
+# print(response.json())
 
 
 

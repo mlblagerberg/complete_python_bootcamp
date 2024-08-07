@@ -12,10 +12,11 @@ TOKEN = os.getenv("PIXELA_TOKEN")
 USER = "madeleine"
 GRAPH_ID = "movementgraph1"
 
-MINUTES = 11
+MINUTES = 0
 DATE = datetime.today().strftime("%Y%m%d")
 
 # Resources: Pixela - https://pixe.la/
+# My graph - https://pixe.la/v1/users/madeleine/graphs/movementgraph1.html
 
 # Definitions:
 # get: pull something from external service
@@ -58,10 +59,15 @@ headers = {
 
 
 # Get existing pixel data to update
-pixel_data = requests.get(url=update_endpoint, headers=headers)
-current_data = (int(pixel_data.json()["quantity"]))
+try:
+    pixel_data = requests.get(url=update_endpoint, headers=headers)
+    current_data = (int(pixel_data.json()["quantity"]))
+except KeyError:
+    current_data = 0
 
+# print(current_data)
 current_data += MINUTES
+# print(current_data)
 
 
 pixel_update = {
