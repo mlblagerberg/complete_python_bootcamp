@@ -12,7 +12,7 @@ TOKEN = os.getenv("PIXELA_TOKEN")
 USER = "madeleine"
 GRAPH_ID = "movementgraph1"
 
-MINUTES = 10
+MINUTES = 11
 DATE = datetime.today().strftime("%Y%m%d")
 
 # Resources: Pixela - https://pixe.la/
