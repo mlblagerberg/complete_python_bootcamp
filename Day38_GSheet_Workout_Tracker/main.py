@@ -22,12 +22,13 @@ GENDER = "female"
 
 input_text = input("Tell me which exercise you did: ")
 
+# Exercise NLP Endpoint
 nlp_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
 headers = {
     "x-app-id": APP_ID,
     "x-app-key": API_KEY,
-    # 'Content-Type': 'application/json',
+    'Content-Type': 'application/json',
 }
 
 parameters = {
@@ -51,14 +52,30 @@ exercise = response["name"]
 duration_min = response["duration_min"]
 calories = response["nf_calories"]
 
-print(exercise)
-print(duration_min)
-print(calories)
+# print(exercise)
+# print(duration_min)
+# print(calories)
 
-current_date = datetime.today().strftime("%Y%m%d")
-current_time = datetime.today().strftime("%H:%M:%S")
-
+current_date = datetime.now().strftime("%Y/%m/%d")
+current_time = datetime.now().strftime("%I:%M:%S")
 print(current_date)
-print(current_time)
+
+# Google Sheet Endpoint
+sheet_endpoint = "https://api.sheety.co/cb16434dc56835525f9150d06b23af49/trackedWorkouts/workouts"
+
+workout_data = {
+    "workout": {
+        "date": current_date,
+        "time": current_time,
+        "exercise": exercise,
+        "duration": duration_min,
+        "calories": calories,
+    }
+}
+
+response = requests.post(url=sheet_endpoint, json=workout_data)
+print(response.json())
+
+
 
 
