@@ -12,9 +12,9 @@ import requests
 import os
 from datetime import datetime
 
-APP_ID = "d63b9126"  # os.getenv("NUTRITIONIX_APP_ID")
-API_KEY = "6426eb5f0db8028f140de504b71fd6f8"  # os.getenv("NUTRITIONIX_API_KEY")
-print(API_KEY)
+APP_ID = os.getenv("NUTRITIONIX_APP_ID")
+API_KEY = os.getenv("NUTRITIONIX_API_KEY")
+
 WEIGHT_KG = 90
 HEIGHT_CM = 175.26
 AGE = 37
@@ -42,6 +42,23 @@ response = requests.post(url=nlp_endpoint, json=parameters, headers=headers)
 
 try:
     response.raise_for_status()
-    print(response.json())
+    response = response.json()["exercises"][0]
 except requests.exceptions.HTTPError as err:
     print(f"HTTP error occurred: {err}")
+
+print(response)
+exercise = response["name"]
+duration_min = response["duration_min"]
+calories = response["nf_calories"]
+
+print(exercise)
+print(duration_min)
+print(calories)
+
+current_date = datetime.today().strftime("%Y%m%d")
+current_time = datetime.today().strftime("%H:%M:%S")
+
+print(current_date)
+print(current_time)
+
+
