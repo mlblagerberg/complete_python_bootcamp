@@ -1,6 +1,6 @@
 """Project: Workout Tracker
 Start: August 6th, 2024
-Last touched: August 6th, 2024
+Last touched: August 7th, 2024
 Author: Madeleine L.
 """
 

@@ -1,6 +1,6 @@
 """Project: Habit Tracker - Daily Movement Graph
 Start: July 1st, 2024
-Last touched: August 6th, 2024
+Last touched: August 7th, 2024
 Author: Madeleine L.
 """
 
