@@ -39,7 +39,7 @@ def print_csv_rows(file):
         print(f"File not found: {file}")
 
 
-print_csv_rows('weather_data.csv')
+# print_csv_rows('weather_data.csv')
 
 
 def print_csv_dictionary_rows(file):
@@ -53,23 +53,24 @@ def print_csv_dictionary_rows(file):
         print(f"File not found: {file}")
 
 
-print_csv_dictionary_rows('weather_data.csv')
+# print_csv_dictionary_rows('weather_data.csv')
 
 
-def print_filtered_csv_rows(file, filter_column, filter_value, filter_function='='):
+def print_filtered_csv_rows(file, filter_column, filter_value):
     """Takes a csv file and three filtering parameters and then prints each row meeting filter requirements as a
     dictionary. filter_column: column name from csv. filter_value: the value you want to filter the column on.
-    filter_function: whether you want rows that are equal '=', less '<' than or greater '>' than the filter_value.
-    Default is equal."""
+    """
     try:
         with open(file, mode='r') as data:
             weather_data = csv.DictReader(data)
             for row in weather_data:
-                print(row)
+                # print(row)
+                if row[filter_column].lower() == filter_value.lower():
+                    print(row)
     except FileNotFoundError:
         print(f"File not found: {file}")
 
-    if filter_column:
 
+print_filtered_csv_rows('weather_data.csv', 'day', 'monday')
 
 
