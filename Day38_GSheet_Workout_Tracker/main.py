@@ -12,8 +12,9 @@ import requests
 import os
 from datetime import datetime
 
-APP_ID = os.getenv("NUTRITIONIX_APP_ID")
-API_KEY = os.getenv("NUTRITIONIX_API_KEY")
+APP_ID = os.getenv('NUTRITIONIX_APP_ID')
+API_KEY = os.getenv('NUTRITIONIX_API_KEY')
+SHEETY_AUTH = os.getenv('SHEETY_AUTH')
 
 WEIGHT_KG = 90
 HEIGHT_CM = 175.26
@@ -73,7 +74,11 @@ workout_data = {
     }
 }
 
-response = requests.post(url=sheet_endpoint, json=workout_data)
+headers = {
+    'Authorization': f'Basic {SHEETY_AUTH}'
+}
+
+response = requests.post(url=sheet_endpoint, json=workout_data, headers=headers)
 print(response.json())
 
 
