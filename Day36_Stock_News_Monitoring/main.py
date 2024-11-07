@@ -1,6 +1,6 @@
 """Project: Stock News Monitor
 Start: June 5th, 2024
-Last touched: August 6th, 2024
+Last touched: November 7th, 2024
 Author: Madeleine L.
 """
 
@@ -30,22 +30,21 @@ stock_data = response.json()
 # print(stock_data)
 
 # print(datetime.now())
-most_current = max(stock_data["Time Series (Daily)"])
-today = datetime.today().strftime("%Y-%m-%d")
-today = min(today, most_current)
-yesterday = (datetime.today() - timedelta(1)).strftime("%Y-%m-%d")
-print(yesterday)
-week_ago = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
-print(week_ago)
+latest_date_str = max(stock_data["Time Series (Daily)"])  # Save string so that it can be referenced when calling API
+# print(latest_date_str)
+latest_date = datetime.strptime(latest_date_str, "%Y-%m-%d")   # Convert string to datetime to do datetime math
+# print(latest_date)
+yesterday = (latest_date - timedelta(1)).strftime("%Y-%m-%d")
+week_ago = (latest_date - timedelta(7)).strftime("%Y-%m-%d")
 
-today_stock = stock_data["Time Series (Daily)"][today]
-yesterday_stock = stock_data["Time Series (Daily)"][yesterday]
+latest_stock = stock_data["Time Series (Daily)"][latest_date_str]
+previous_day_stock = stock_data["Time Series (Daily)"][yesterday]
 #
-print(f"Most current day ({today}) stock details: {today_stock}")
-print(f"Previous day ({yesterday}) stock details: {yesterday_stock}")
+print(f"Most current day ({latest_date}) stock details: {latest_stock}")
+print(f"Previous day ({yesterday}) stock details: {previous_day_stock}")
 # print(f"Yesterday's stock details: {yesterday_stock}")
-open_price = float(today_stock["1. open"])
-close_price = float(yesterday_stock["4. close"])
+open_price = float(latest_stock["1. open"])
+close_price = float(previous_day_stock["4. close"])
 price_delta = close_price - open_price
 print(round((price_delta/close_price)*100, 2))
 
