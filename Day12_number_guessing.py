@@ -1,13 +1,15 @@
 """
 Project: Blackjack Capstone
 Start: February 5th, 2024
-Last touched: February 7th, 2024 
+Last touched: April 15th, 2025
 Author: Madeleine L.
 """
 
+
 import random
 from ascii_logos import ngg_logo
-### Scope review
+
+# Scope review
 # enemies = 1
 
 # def increase_enemies():
@@ -40,7 +42,7 @@ def check_guess(num_guess, lives, rand_num):
 
 
 print(ngg_logo)
-print("Welcome to the Number Guessing Game!\nI'm thinging of a number between 1 and 100.")
+print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
 difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
 random_number = random.randint(1,100)
 guess = int(input("Make a guess: "))

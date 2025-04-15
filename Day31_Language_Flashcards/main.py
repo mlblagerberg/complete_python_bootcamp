@@ -13,7 +13,7 @@ from random import choice
 
 BACKGROUND_COLOR = "#B1DDC6"
 CARD_BACKGROUND = "#91c1af"
-IMAGE_PATH = "/complete_python_bootcamp/Day31_Language_Flashcards/images"
+IMAGE_PATH = "/Users/madeleinebeattylagerberg/GitHub/complete_python_bootcamp/Day31_Language_Flashcards/images"
 random_word = {}
 
 # -------------------------------------- IMPORT DATA ----------------------------------------- #
